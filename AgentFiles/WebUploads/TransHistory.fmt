@@ -1,0 +1,9 @@
+7.0
+7
+1	SQLCHAR	0	255	","	1	LogixTransNum
+2	SQLCHAR	0	255	","	2	CustomerPrimaryExtID
+3	SQLCHAR	0	255	","	3	CustomerTypeID
+4	SQLCHAR	0	255	","	4	ExtLocationCode
+5	SQLCHAR	0	255	","	5	TransDate
+6	SQLCHAR	0	255	","	6	TerminalNum
+7	SQLCHAR 0	255	"\r\n"	7	POSTransNum

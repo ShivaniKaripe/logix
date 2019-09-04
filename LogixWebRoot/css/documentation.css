@@ -1,0 +1,119 @@
+/* NCR AMS documentation stylesheet */
+/* version:7.3.1.138972.Official Build (SUSDAY10202) */
+
+/* GENERAL DECLARATIONS============== */
+
+a {
+  color: #0000cc;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:visited {
+  color: #6600cc;
+}
+
+abbr, acronym {
+  border-bottom: 0;
+  cursor: default;
+}
+
+body {
+  background: #ffffff url("") no-repeat top center;
+  color: #000000;
+  counter-reset: section;
+  counter-reset: subsection;
+  counter-reset: subsubsection;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  margin: 0;
+  text-align: left;
+}
+
+h1, h2, h3 {
+  color: #0f5b2d;
+}
+h1 {
+  font-size: 1.6em;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3 {
+  font-size: 1em;
+}
+
+/* General section rules */
+section {
+  background: transparent url("../images/sweep-small.png") no-repeat top right;
+  border-top: 0.15em solid #0f5b2d;
+  counter-increment: section;
+  margin: 0;
+  padding: 0 2em 2em 2em;
+  page-break-after: always;
+}
+section>article {
+  counter-increment: subsection;
+}
+section>article>div {
+  counter-increment: subsubsection;
+}
+
+/* FrontMatter rules */
+#FrontMatter {
+}
+#FrontMatter>section h1:before {
+  content: "";
+  white-space: pre;
+}
+#FrontMatter>section>article h2:before {
+  content: "";
+  white-space: pre;
+}
+#FrontMatter>section>article>div h3:before {
+  content: "";
+  white-space: pre;
+}
+#Cover, #Copyright {
+  background-image: none !important;
+  border-top: 0 !important;
+}
+#Cover h1 {
+  background: transparent url("../images/plaque.png") no-repeat top center;
+  color: #ffffff;
+  font-size: 1.6em;
+  text-align: left;
+}
+
+/* BodyMatter rules */
+#BodyMatter {
+}
+#BodyMatter>section h1:before {
+  content: "Chapter " counter(section, decimal) "\A";
+  white-space: pre;
+}
+#BodyMatter>section>article h2:before {
+  content: counter(section, decimal) "." counter(subsection, decimal) " ";
+  white-space: pre;
+}
+#BodyMatter>section>article>div h3:before {
+  content: counter(section, decimal) "." counter(subsection, decimal) "." counter(subsubsection, decimal) " ";
+  white-space: pre;
+}
+  
+/* EndMatter rules */
+#EndMatter {
+}
+#EndMatter>section h1:before {
+  content: "Appendix " counter(section, upper-alpha) "\A";
+  white-space: pre;
+}
+#EndMatter>section>article h2:before {
+  content: counter(section, upper-alpha) "." counter(subsection, decimal) " ";
+  white-space: pre;
+}
+#EndMatter>section>article>div h3:before {
+  content: counter(section, upper-alpha) "." counter(subsection, decimal) "." counter(subsubsection, decimal) " ";
+  white-space: pre;
+}

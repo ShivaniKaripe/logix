@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Customers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ErrorMessage" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Customer">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GeneralInformation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="CustomerPK" type="xs:long" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="FirstName" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="MiddleName" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="LastName" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="AltID" type="stringLen20" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Verifier" type="stringLen20" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="EmployeeID" type="stringLen26" minOccurs="1" maxOccurs="1" />
+					<xs:element name="Employee" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="TestCard" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="CustomerStatus" type="enumCustomerStatus" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="Household" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+					<xs:element name="EnrollmentDate" type="xs:date" minOccurs="1" maxOccurs="1"  nillable="true" />
+                    <xs:element name="Address" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="City" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="State" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="ZIP" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Country" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Phone" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="MobilePhone" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Email" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="DateOfBirth" type="xs:date" minOccurs="1" maxOccurs="1" nillable="true"/>
+                    <xs:element name="Password" type="stringLen20" minOccurs="1" maxOccurs="1" />
+					<xs:element name="DriverLicenseID" type="stringLen20" minOccurs="0" maxOccurs="1" />
+					<xs:element name="TaxExemptID" type="stringLen20" minOccurs="0" maxOccurs="1" />
+					<xs:element name="DateOpened" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+					<xs:element name="ARCustomer" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+					<xs:element name="CompoundCharge" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+					<xs:element name="FinanceCharge" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+					<xs:element name="CreditLimit" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+					<xs:element name="APR" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Cards" minOccurs="0" maxOccurs="1" >
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="unbounded" name="Card">
+                      <xs:complexType>
+                        <xs:attribute name="id" type="stringLen26" use="required" />
+                        <xs:attribute name="type" type="stringLen100" use="required" />
+                        <xs:attribute name="status" type="stringLen50" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="returnCode" type="enumReturnCodes" use="required" />
+      <xs:attribute name="responseTime" type="xs:dateTime" use="required" />
+      <xs:attribute name="recordCount" type="xs:nonNegativeInteger" use="required" />
+      <xs:attribute name="hasMore" type="xs:boolean" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="stringLen20">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen26">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="26" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen50">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+    <xs:simpleType name="stringLen100">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen1000">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1000" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumReturnCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS" />
+      <xs:enumeration value="INVALID_GUID" />
+      <xs:enumeration value="CUSTOMER_NOT_FOUND" />
+      <xs:enumeration value="APPLICATION_EXCEPTION" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="enumCustomerStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE" />
+      <xs:enumeration value="INACTIVE" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

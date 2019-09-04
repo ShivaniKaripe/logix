@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="offerreport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="reportrecord">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="programcode" type="programCodeString" />
+              <xs:element name="offercode" type="xs:positiveInteger" />
+              <xs:element name="offerdescription" type="offerNameString" />
+              <xs:element name="startdate" type="xs:date" />
+              <xs:element name="enddate" type="xs:date" />
+              <xs:element name="productgroups" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="productgroup">
+                      <xs:complexType>
+                        <xs:attribute name="id" type="xs:positiveInteger" use="required" />
+                        <xs:attribute name="name" type="pgNameString" use="required" />
+                        <xs:attribute name="excluded" type="xs:boolean" use="optional" />
+                        <xs:attribute name="anyproduct" type="xs:boolean" use="optional" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="reportdate" type="xs:dateTime" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="programCodeString">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="13" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="offerNameString">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="200" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="pgNameString">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="400" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

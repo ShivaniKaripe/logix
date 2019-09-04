@@ -1,0 +1,1 @@
+<%@ WebService Language="VB" Class="LogixGroupManagement" CodeBehind="~/App_Code/VBCode/LogixGroupManagement.vb" %>

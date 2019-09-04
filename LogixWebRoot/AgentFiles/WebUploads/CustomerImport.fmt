@@ -1,0 +1,14 @@
+9.0
+11
+1	SQLCHAR	0	0	"\t"	1	PrimaryExtID	""
+2	SQLCHAR	0	0	"\t"	2	FirstName	""
+3	SQLCHAR	0	0	"\t"	3	LastName	""
+4	SQLCHAR	0	0	"\t"	4	Employee	""
+5	SQLCHAR	0	0	"\t"	5	CardStatusID	""
+6	SQLCHAR	0	0	"\t"	6	HHID	""
+7	SQLCHAR	0	0	"\t"	7	AltID	""
+8	SQLCHAR	0	0	"\t"	14	CardType	""
+9	SQLCHAR	0	0	"\t"	16	InitialCardIDOriginal	""
+10	SQLCHAR	0	0	"\t"	17	HHIDOriginal	""
+11	SQLCHAR	0	0	"\r\n"	18	AltIDOriginal	""
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="SearchCriteria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ExtCRMInterface" type="xs:string" minOccurs="1" maxOccurs="1" />
+        <xs:element name="RecordLimit" type="xs:long" minOccurs="0" maxOccurs="1" />
+        <xs:element name="Columns" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="columnNameType" minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="columnNameType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PKID" />
+      <xs:enumeration value="ClientLocationCode" />
+      <xs:enumeration value="LocationID" />
+      <xs:enumeration value="BoxID" />
+      <xs:enumeration value="TransactionNumber" />
+      <xs:enumeration value="PrimaryExtID" />
+      <xs:enumeration value="OfferID" />
+      <xs:enumeration value="ClientOfferID" />
+      <xs:enumeration value="ROID" />
+      <xs:enumeration value="IssuanceDate" />
+      <xs:enumeration value="DeliverableType" />
+      <xs:enumeration value="Void" />
+      <xs:enumeration value="RewardQty" />
+      <xs:enumeration value="ProgramID" />
+      <xs:enumeration value="RewardValue" />
+      <xs:enumeration value="UniqueID" />
+      <xs:enumeration value="Expiration" />
+      <xs:enumeration value="ChargeBackVendorID" />
+      <xs:enumeration value="CashierNum" />
+      <xs:enumeration value="Gross" />
+      <xs:enumeration value="Net" />
+      <xs:enumeration value="ChargebackDept" />
+      <xs:enumeration value="PromoEngine" />
+      <xs:enumeration value="ExtCRMInterface" />
+      <xs:enumeration value="SourceTypeID" />
+      <xs:enumeration value="ExceedManualThreshold" />
+      <xs:enumeration value="LogixTransNum" />
+      <xs:enumeration value="VendorCouponCode" />
+      <xs:enumeration value="ManufacturerCoupon" />
+      <xs:enumeration value="CustomerTypeID" />
+      <xs:enumeration value="StatusFlag" />
+      <xs:enumeration value="DiscountedUPC" />
+      <xs:enumeration value="CardTypeID" />
+      <xs:enumeration value="ResolvedCustomerID" />
+      <xs:enumeration value="HHID" />
+      <xs:enumeration value="AirmileMemberID" />
+      <xs:enumeration value="OfferCatExtID" />
+      <xs:enumeration value="PromoEngineSubtypeID" />
+      <xs:enumeration value="ConditionalUPCs" />
+      <xs:enumeration value="TriggerID" />
+      <xs:enumeration value="ExtRewardID" />
+      <xs:enumeration value="RewardData"/>
+      <xs:enumeration value="TriggerCode" />
+      <xs:enumeration value="TrackableCouponCode" />
+      <xs:enumeration value="TrackableCouponProgramID" />
+      <xs:enumeration value="Is_instantwin_winner" />
+	  <xs:enumeration value="Coupon" />
+	  <xs:enumeration value="CouponExtProgramID" />
+	  <xs:enumeration value="ConsumerAccountNumber" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

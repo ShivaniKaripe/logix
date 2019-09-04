@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CustomerService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CustomerOffers" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Customer" type="CustomerType" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="Offer" type="OfferType" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+
+  </xs:element>
+  
+  <!-- Complex Types -->
+  <xs:complexType name="CustomerType">
+    <xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="id" type="twenty-sixChars" use="required"/>
+    <xs:attribute name="mode" type="modeType" use="required"/>
+    <xs:attribute name="added" type="xs:boolean" use="optional"/>
+    <xs:attribute name="removed" type="xs:boolean" use="optional"/>
+    <xs:attribute name="errorcode" type="xs:nonNegativeInteger" use="optional"/>
+    <xs:attribute name="errormessage" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="OfferType">
+    <xs:sequence />
+    <xs:attribute name="id" type="twentyChars" use="required"/>
+    <xs:attribute name="mode" type="modeType" use="required"/>
+    <xs:attribute name="added" type="xs:boolean" use="optional"/>
+    <xs:attribute name="removed" type="xs:boolean" use="optional"/>
+    <xs:attribute name="errorcode" type="xs:nonNegativeInteger" use="optional"/>
+    <xs:attribute name="errormessage" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <!-- Simple Types -->
+  <xs:simpleType name="twentyChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="twenty-sixChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="26" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="modeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADD" />
+      <xs:enumeration value="REMOVE" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

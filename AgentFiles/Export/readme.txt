@@ -1,0 +1,1 @@
+This directory is used for XML files exported by Logix.

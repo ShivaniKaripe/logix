@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebTest Name="Copy of AMS_5.99_IPLInitprocess" Id="385b659e-5868-4148-94d2-98166fd7899a" Owner="" Priority="2147483647" Enabled="True" CssProjectStructure="" CssIteration="" Timeout="0" WorkItemIds="" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" Description="" CredentialUserName="" CredentialPassword="" PreAuthenticate="True" Proxy="" StopOnError="False" RecordedResultFile="AMS_5.99_IPLprocess.635fc30a-1f85-4378-bdf0-e6aa1b2f9d90.rec.webtestresult">
+  <Items>
+    <TransactionTimer Name="AMS_IPL_Offers">
+      <Items>
+        <Comment CommentText="Enter URL" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-Offers.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_PG">
+      <Items>
+        <Comment CommentText="IPL-PG" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-PG.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_Cust">
+      <Items>
+        <Comment CommentText="IPL-Customers" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-Customers.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_CG">
+      <Items>
+        <Comment CommentText="IPL-CG" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-CG.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_Points">
+      <Items>
+        <Comment CommentText="IPL-Points" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-Points.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_RD">
+      <Items>
+        <Comment CommentText="IPL-RD" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-RD.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_RA">
+      <Items>
+        <Comment CommentText="IPL-RA" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-RA.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_SV">
+      <Items>
+        <Comment CommentText="IPL-SV" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-SV.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_UR">
+      <Items>
+        <Comment CommentText="IPL-UR" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-UR.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_CA">
+      <Items>
+        <Comment CommentText="IPL-CA" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-CA.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+    <TransactionTimer Name="AMS_IPL_SF">
+      <Items>
+        <Comment CommentText="IPL-SF" />
+        <Request Method="GET" Version="1.1" Url="{{WebServer1}}/connectors/cpe/IPL-SF.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <QueryStringParameters>
+            <QueryStringParameter Name="mode" Value="ipl" RecordedValue="ipl" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="serial" Value="{{DataSource1.IPLInit#csv.Serial}}" RecordedValue="1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </Items>
+    </TransactionTimer>
+  </Items>
+  <DataSources>
+    <DataSource Name="DataSource1" Provider="Microsoft.VisualStudio.TestTools.DataSource.CSV" Connection="|DataDirectory|\IPLInit.csv">
+      <Tables>
+        <DataSourceTable Name="IPLInit#csv" SelectColumns="SelectOnlyBoundColumns" AccessMethod="Unique" />
+      </Tables>
+    </DataSource>
+  </DataSources>
+  <ContextParameters>
+    <ContextParameter Name="WebServer1" Value="http://192.168.102.251" />
+  </ContextParameters>
+  <ValidationRules>
+    <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidateResponseUrl, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="Response URL" Description="Validates that the response URL after redirects are followed is the same as the recorded response URL.  QueryString parameters are ignored." Level="Low" ExectuionOrder="BeforeDependents" />
+    <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleResponseTimeGoal, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="Response Time Goal" Description="Validates that the response time for the request is less than or equal to the response time goal as specified on the request.  Response time goals of zero will be ignored." Level="Low" ExectuionOrder="AfterDependents">
+      <RuleParameters>
+        <RuleParameter Name="Tolerance" Value="0" />
+      </RuleParameters>
+    </ValidationRule>
+  </ValidationRules>
+</WebTest>

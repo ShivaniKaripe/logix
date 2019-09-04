@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PointsTransfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Criteria" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SourceCard" type="Card" minOccurs="1" maxOccurs="1" />
+              <xs:element name="DestinationCard" type="Card" minOccurs="1" maxOccurs="1" />
+              <xs:element name="PointsProgram" type="Program" minOccurs="1" maxOccurs="1" />
+              <xs:element name="Transfer" type="TransferType" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Results" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReturnCode" type="ReturnCodes" minOccurs="1" maxOccurs="1" />
+              <xs:element name="Message" type="xs:string" minOccurs="1" maxOccurs="1" />
+              <xs:element name="TransferAmount" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Card">
+    <xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="cardNumber" type="xs:string" use="required" />
+    <xs:attribute name="cardType" type="xs:nonNegativeInteger" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="Program">
+    <xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="logixID" type="xs:positiveInteger" use="required" />
+  </xs:complexType>
+  <xs:complexType name="TransferType">
+    <xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="value" type="xs:positiveInteger" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="ReturnCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TRANSFER_FULLY_ADJUSTED" />
+      <xs:enumeration value="TRANSFER_PARTIALLY_ADJUSTED" />
+      <xs:enumeration value="TRANSFER_FAILED" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

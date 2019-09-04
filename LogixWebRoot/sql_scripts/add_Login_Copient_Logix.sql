@@ -1,0 +1,7 @@
+IF NOT EXISTS(SELECT name FROM sys.syslogins WHERE name = 'Copient_Logix')
+BEGIN
+	CREATE LOGIN Copient_Logix 
+	WITH PASSWORD = 0x0100B0E8C9B6827DB1178E81FC06F52B98E1BE7A368E1A337693 HASHED;
+END
+GO
+EXEC sp_addsrvrolemember 'Copient_Logix', 'bulkadmin';

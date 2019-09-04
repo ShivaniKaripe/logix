@@ -1,0 +1,13 @@
+7.0
+11
+1	SQLCHAR	0	255	","	1	LogixTransNum
+2	SQLCHAR	0	255	","	2	CustomerPrimaryExtID
+3	SQLCHAR	0	255	","	3	CustomerTypeID
+4	SQLCHAR	0	255	","	4	ExtLocationCode
+5	SQLCHAR	0	255	","	5	TransDate
+6	SQLCHAR	0	255	","	6	TerminalNum
+7	SQLCHAR 0	255	","	7	POSTransNum
+8	SQLCHAR 0	255	","	9	PresentedCustomerID
+9	SQLCHAR 0	255	","	10	PresentedCardTypeID
+10	SQLCHAR 0	255	","	11	HHID
+11	SQLCHAR	0	255	"\r\n"	12	Replayed

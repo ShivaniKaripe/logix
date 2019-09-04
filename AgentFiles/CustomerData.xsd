@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CustomerData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Response" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Message" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="BatchID" type="stringLen36" minOccurs="0" maxOccurs="1" />
+              <xs:element name="BatchCount" type="xs:int" minOccurs="1" maxOccurs="1" />
+              <xs:element name="Remaining" type="xs:int" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+            <xs:attribute name="returnCode" type="returnCodeType" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Customer" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ChangeDetails" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AdminUserID" type="xs:int" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="ChangeDate" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="ChangeID" type="xs:int" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="BatchID" type="stringLen36" minOccurs="0" maxOccurs="1" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Data" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="CustomerPK" type="xs:long" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="FirstName" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="LastName" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Employee" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="CardStatusID" type="xs:int" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="CurrYearSTD" type="xs:decimal" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="LastYearSTD" type="xs:decimal" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Password" type="stringLen20" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="HHPK" type="xs:long" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="LastComm" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="CommFrequency" type="xs:int" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="CommEmail" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="CommPrint" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="BannerID" type="xs:int" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="AltID" type="stringLen20" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Verifier" type="stringLen20" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="AltIDOptOut" type="xs:int" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="TestCard" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="MiddleName" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="EmployeeID" type="stringLen26" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="CustomerStatusID" type="xs:int" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="CustomerTypeID" type="xs:int" minOccurs="1" maxOccurs="1" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ExtendedData" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="CustomerPK" type="xs:long" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Address" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="City" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="State" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Zip" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Phone" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Email" type="stringLen1000" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Country" type="stringLen50" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="DOB" type="stringLen8" minOccurs="1" maxOccurs="1" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:long" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="stringLen8">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen20">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen26">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="26" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen36">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="36" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen50">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen255">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>  <xs:simpleType name="stringLen1000">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1000" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="returnCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS" />
+      <xs:enumeration value="INVALID_GUID" />
+      <xs:enumeration value="APPLICATION_EXCEPTION" />
+      <xs:enumeration value="TIME_LOCKED" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

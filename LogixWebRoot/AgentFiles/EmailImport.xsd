@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <!-- Definition of Simple Types -->
+  <xs:simpleType name="customerCodeType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="0" />
+      <xs:enumeration value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Definition of Complex Types -->
+  <xs:complexType name="customerType">
+    <xs:sequence />
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="customerCodeType" use="required"/>
+    <xs:attribute name="updated" type="xs:boolean" use="required"/>
+  </xs:complexType>
+
+  <!-- Definition of Elements -->
+  <xs:element name="offer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="redemptions" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="removals" minOccurs="0" maxOccurs="1">
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="redemptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customer" type="customerType" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="removals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customer" type="customerType" minOccurs="1" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>  
+
+</xs:schema>

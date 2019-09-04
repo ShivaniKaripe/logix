@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CustomerInquiry">
+    <xs:complexType mixed="false">
+      <xs:sequence minOccurs="0" maxOccurs="1">
+        <xs:element name="UpdateCustomer" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="CardID" type="twenty-sixChars" minOccurs="1" maxOccurs="1" />
+              <xs:element name="ExtCardTypeID" type="xs:string" minOccurs="1" maxOccurs="1" />
+              <xs:element name="FirstName" type="fiftyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="LastName" type="fiftyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Phone" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Address" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="City" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="State" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ZIP" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Email" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Country" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Comments" type="eightyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="DriverLicenseID" type="twentyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="TaxExemptID" type="twentyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ARCustomer" type="bit" minOccurs="0" maxOccurs="1" />
+              <xs:element name="DateOpened" type="xs:date" minOccurs="0" maxOccurs="1" />
+              <xs:element name="CompoundCharge" type="bit" minOccurs="0" maxOccurs="1" />
+              <xs:element name="FinanceCharge" type="bit" minOccurs="0" maxOccurs="1" />
+              <xs:element name="CreditLimit" type="decimalSixteenTwo" minOccurs="0" maxOccurs="1" />
+              <xs:element name="APR" type="decimalFiveTwo" minOccurs="0" maxOccurs="1" />
+			  <xs:element name="DigitalReceipt" type="xs:integer" minOccurs="0" maxOccurs="1" />
+			  <xs:element name="PaperReceipt" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+            </xs:all>
+            <xs:attribute name="updated" type="xs:boolean" use="optional" />
+            <xs:attribute name="message" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Message" type="xs:string" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="returnCode" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="twentyChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="twenty-sixChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="26" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="fiftyChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="eightyChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="80" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="bit">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimalSixteenTwo">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="-99999999999999.99" />
+      <xs:maxInclusive value="99999999999999.99" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="decimalFiveTwo">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="-999.99" />
+      <xs:maxInclusive value="999.99" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="cardStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE" />
+      <xs:enumeration value="INACTIVE" />
+      <xs:enumeration value="CANCELED" />
+      <xs:enumeration value="EXPIRED" />
+      <xs:enumeration value="LOST_STOLEN" />
+      <xs:enumeration value="DEFAULT_CARD" />
+      <xs:enumeration value="LOCKED" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="customerStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE" />
+      <xs:enumeration value="INACTIVE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="percentType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="transferPolicyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DO_NOT_TRANSFER_BALANCES" />
+      <xs:enumeration value="PROPORTIONAL_FOR_ALL_OFFERS" />
+      <xs:enumeration value="AUTO_TRANSFERABLE_OFFERS_ONLY" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

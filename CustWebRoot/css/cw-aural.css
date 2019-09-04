@@ -1,0 +1,47 @@
+/* Customer website aural stylesheet */
+/* version:7.3.1.138972.Official Build (SUSDAY10202) */
+
+abbr {
+  speak: spell-out;
+  speak-numeral: digits;
+  }
+
+acronym {
+  speak: spell-out;
+  speak-numeral: digits;
+  }
+
+body {
+  volume: 50;
+  speak: normal;
+  pause: 100%;
+  azimuth: 0deg;
+  speech-rate: 220;
+  voice-family: Blake, male;
+  pitch: 120Hz;
+  pitch-range: 50;
+  stress: 50;
+  richness: 65;
+  speak-punctuation: none;
+  speak-numeral: continuous;
+  }
+
+i {
+  volume: 55;
+  pause: 120%;
+  speech-rate: 200;
+  pitch: 130Hz;
+  pitch-range: 65;
+  stress: 65;
+  richness: 70;
+  }
+
+h1 {
+  pause: 1000ms;
+  }
+h2 {
+  pause: 500ms
+  }
+h3 {
+  pause: 400ms
+  }

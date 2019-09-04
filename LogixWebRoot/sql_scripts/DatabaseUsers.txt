@@ -1,0 +1,39 @@
+
+== Logix Database Users 7.3.1 ==
+
+
+Database Users
+______________
+
+Logix can use one of two methods to access the database instances: Windows 
+authentication, or SQL Server authentication. 
+
+
+
+SQL Server Authentication
+
+To use SQL Server authentication, you must create a login on the database 
+server(s) named 'Copient_Logix' with the password 'App0mattox'. This is the 
+user/password the Logix system will use to login to the databases by default. 
+
+On each Logix database, a user named 'Copient_Logix' must be created, associated 
+with the 'Copient_Logix' login. The Copient_Logix user must then be added to the
+Copient_Logix_uspRole. 
+
+
+
+Windows Authentication
+
+To use Windows (Active Directory) authentication, you must first create the  
+environment variable LOGIXDBACCESS with the value "ACTIVE_DIRECTORY" on your
+Logix web server(s). On your SQL Servers, you must create a login for the 
+Windows user your Logix web site runs as (by default '<domain>\CopientWEB'), 
+and a login for the Windows user(s) your Logix Agent services run as (by 
+default '<domain>\CopientSVC'). The associated users must then be created on 
+each database.
+
+The user(s) created must then be added to the Copient_Logix_uspRole.
+
+
+---------------------------------------------------------------------
+$Rev: 33910 $ $Date: 2011-07-13 10:16:28 -0400 (Wed, 13 Jul 2011) $

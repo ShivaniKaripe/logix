@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="LocationGroupList">
+     <xs:complexType>
+		<xs:sequence>
+		  <xs:element name="ErrorMessage" type="xs:string" minOccurs="0" maxOccurs="1" />
+		  <xs:element name="LocationGroupID" type="xs:positiveInteger" minOccurs="0"/>
+		  <xs:element name="ExtGroupID"  type="ExtGroupIDLength" minOccurs="0"/>
+		  <xs:element name="Name" type="lgNameString" minOccurs="0"/>
+		  <xs:element name="Locations" maxOccurs="1" minOccurs="0">
+			<xs:complexType>
+				<xs:sequence>
+				  <xs:element name="Store" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name = "LocationID" type="xs:nonNegativeInteger" maxOccurs="1" />
+							<xs:element name = "ExtLocationCode" type="ExtGroupIDLength" maxOccurs="1" />
+							<xs:element name = "LocationName"  type="LocationNameLength" maxOccurs ="1" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			</xs:complexType>
+		  </xs:element>
+		</xs:sequence>
+	  <xs:attribute name="returnCode" type="LocationGroupListReturnCodes" use="required" />
+      <xs:attribute name="responseTime" type="xs:dateTime" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="lgNameString">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="200" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ExtGroupIDLength">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+    <xs:simpleType name="LocationNameLength">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LocationGroupListReturnCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS" />
+      <xs:enumeration value="INVALID_GUID" />
+      <xs:enumeration value="LOCATION_GROUP_NOT_FOUND" />
+      <xs:enumeration value="APPLICATION_EXCEPTION" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

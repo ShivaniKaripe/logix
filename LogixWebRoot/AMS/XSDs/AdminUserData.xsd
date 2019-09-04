@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="RestrictedNameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RestrictedEmailType">
+    <xs:restriction base="xs:string">
+		<xs:minLength value="1"/>
+      <xs:maxLength value="200"/>
+	<xs:pattern value= "^$|(\W|^)[a-zA-Z0-9_.]{0,25}@[a-zA-Z]{0,30}\.([a-zA-Z]{0,30}|[a-zA-Z]{0,30}\.[a-zA-Z]{0,30})" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AdminUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:integer" name="AdminUserID" minOccurs="0" maxOccurs="0"/>
+        <xs:element name="EmployeeID" minOccurs="0" maxOccurs="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:string"> 
+			    <xs:minLength value="1"/>
+				<xs:maxLength value="30"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element type="RestrictedNameType" name="FirstName" minOccurs="1" maxOccurs="1" />                 
+        <xs:element type="RestrictedNameType" name="LastName" minOccurs="1" maxOccurs="1" />        
+        <xs:element type="RestrictedNameType" name="UserName" minOccurs="1" maxOccurs="1" />
+        <xs:element type="RestrictedEmailType" name="Email" minOccurs="0" maxOccurs="1" />                
+        <xs:element type="RestrictedEmailType" name="AlertEmail" minOccurs="0" maxOccurs="1" />          
+        <xs:element  name="LanguageID" minOccurs="0" maxOccurs="1">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+				<xs:maxLength value="10"/>
+			</xs:restriction>
+		</xs:simpleType>
+		</xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

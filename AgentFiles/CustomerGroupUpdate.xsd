@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="CustomerGroupUpdate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ImportByLogixID" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ID" type="xs:int" minOccurs="0"/>
+							<xs:element name="Name" type="nameString" minOccurs="0"/>
+							<xs:element name="BulkData" type="xs:string"/>
+							<xs:element name="Operation" type="custGroupOperationType" minOccurs="0"/>
+						</xs:sequence>
+            <xs:attribute name="statuscode" type="xs:string" use="optional" />
+            <xs:attribute name="Description" type="xs:string" use="optional" />
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ImportByExternalID" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ID" type="extIdString"/>
+							<xs:element name="Name" type="nameString" minOccurs="0"/>
+							<xs:element name="BulkData" type="xs:string"/>
+							<xs:element name="Operation" type="custGroupOperationType" minOccurs="0"/>
+						</xs:sequence>
+            <xs:attribute name="statuscode" type="xs:string" use="optional" />
+            <xs:attribute name="Description" type="xs:string" use="optional" />
+					</xs:complexType>
+				</xs:element>
+        <xs:element name="ErrorMessage" type="xs:string" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+      <xs:attribute name="returnCode" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="nameString">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="extIdString">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="custGroupOperationType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="augment"/>
+			<xs:enumeration value="remove"/>
+			<xs:enumeration value="replace"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

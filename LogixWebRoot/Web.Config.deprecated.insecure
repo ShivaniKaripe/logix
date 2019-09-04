@@ -1,0 +1,107 @@
+<configuration>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+  <configSections>
+    <section name="microsoft.web.services3" type="Microsoft.Web.Services3.Configuration.WebServicesConfiguration, Microsoft.Web.Services3, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+  </configSections>
+  <appSettings />
+  <microsoft.web.services3>
+    <policy fileName="wse3policyCache.config" />
+  </microsoft.web.services3>
+  <system.web>
+    <httpRuntime maxRequestLength="102400" executionTimeout="1200" requestValidationMode="2.0" />
+    <customErrors mode="Off" />
+    <compilation debug="false" strict="false" explicit="true" targetFramework="4.0">
+      <assemblies>
+        <add assembly="AMSPreferenceLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="CAM, Version=1.0.0.1, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="CMOffer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="CommonInc, Version=1.0.0.3, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="ConnectorInc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="CPEOffer, Version=1.0.0.1, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="CryptLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="CustomerInquiry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="CustomerUpdate, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="CustomizedCustomerInquiry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="EmailFeed, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="ExportXml, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="ExportXmlCPE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <!--<add assembly="ExportXmlDP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D"/>-->
+        <add assembly="ExportXmlUE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="ExternalCustomerAccounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="ExternalRewards, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="GZIPInc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="ImportXml, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="ImportXmlCPE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <!--<add assembly="ImportXmlDP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D"/>-->
+        <add assembly="ImportXmlUE, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="Locations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=81044e042e70522b" />
+        <add assembly="Logger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="LogixInc, Version=1.0.0.2, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="LogixValueObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="MasterDataLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="Options, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ac8312396b313c75" />
+        <add assembly="PhraseLib, Version=1.0.0.2, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="Points, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="ProductGroup, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="StoredValue, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2C63963CE2D73A2D" />
+        <add assembly="System.DirectoryServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <add assembly="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+        <add assembly="System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+        <add assembly="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+        <add assembly="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.DirectoryServices.Protocols, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.EnterpriseServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.ServiceProcess, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+        <add assembly="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089" />
+        <add assembly="System.Web.RegularExpressions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A" />
+      </assemblies>
+    </compilation>
+    <httpModules>
+      <add name="PrevalidationSanitizer" type="Copient.PrevalidationSanitizer" />
+    </httpModules>
+    <webServices>
+      <protocols>
+        <add name="HttpGet" />
+        <add name="HttpPost" />
+      </protocols>
+    </webServices>
+    <pages controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID" />
+  </system.web>
+  <system.codedom>
+  </system.codedom>
+  <!-- 
+    The system.webServer section is required for running ASP.NET AJAX under Internet
+    Information Services 7.0.  It is not necessary for previous version of IIS.
+  -->
+  <system.webServer>
+    <modules>
+      <remove name="ServiceModel" />
+      <add name="ErrorHandlerModule" type="System.Web.Mobile.ErrorHandlerModule, System.Web.Mobile, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" preCondition="managedHandler" />
+      <add name="ServiceModel" type="System.ServiceModel.Activation.HttpModule, System.ServiceModel.Activation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler" />
+      <add name="PrevalidationSanitizer" type="Copient.PrevalidationSanitizer" preCondition="managedHandler" />
+    </modules>
+    <handlers>
+      <remove name="svc-Integrated" />
+      <remove name="xoml-Integrated" />
+      <add name="*.vbhtml_*" path="*.vbhtml" verb="*" type="System.Web.HttpForbiddenHandler" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.vbhtm_*" path="*.vbhtm" verb="*" type="System.Web.HttpForbiddenHandler" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.cshtml_*" path="*.cshtml" verb="*" type="System.Web.HttpForbiddenHandler" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.cshtm_*" path="*.cshtm" verb="*" type="System.Web.HttpForbiddenHandler" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.aspq_*" path="*.aspq" verb="*" type="System.Web.HttpForbiddenHandler" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.xamlx_*" path="*.xamlx" verb="*" type="System.Xaml.Hosting.XamlHttpHandlerFactory, System.Xaml.Hosting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.xoml_*" path="*.xoml" verb="*" type="System.ServiceModel.Activation.HttpHandler, System.ServiceModel.Activation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.svc_*" path="*.svc" verb="*" type="System.ServiceModel.Activation.HttpHandler, System.ServiceModel.Activation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.soap_*" path="*.soap" verb="*" type="System.Runtime.Remoting.Channels.Http.HttpRemotingHandlerFactory, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.rem_*" path="*.rem" verb="*" type="System.Runtime.Remoting.Channels.Http.HttpRemotingHandlerFactory, System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*.asmx_*" path="*.asmx" verb="*" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="ScriptResource.axd_GET,HEAD" path="ScriptResource.axd" verb="GET,HEAD" type="System.Web.Handlers.ScriptResourceHandler, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="*_AppService.axd_*" path="*_AppService.axd" verb="*" type="System.Web.Script.Services.ScriptHandlerFactory, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="integratedMode,runtimeVersionv2.0" />
+      <add name="eurl.axd_*" path="eurl.axd" verb="*" type="System.Web.HttpNotFoundHandler" preCondition="integratedMode,runtimeVersionv2.0" />
+    </handlers>
+    <validation validateIntegratedModeConfiguration="false" />
+  </system.webServer>
+</configuration>

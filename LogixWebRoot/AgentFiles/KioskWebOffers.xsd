@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Offers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Offer" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OfferID" type="xs:long" minOccurs="1" maxOccurs="1" />
+              <xs:element name="Name" type="stringLen100" minOccurs="1" maxOccurs="1" />
+              <xs:element name="Description" type="stringLen1000" minOccurs="0" maxOccurs="1" />
+              <xs:element name="OfferType" type="OfferTypeCodes" minOccurs="1" maxOccurs="1" />
+              <xs:element name="ProgramID" type="xs:long" minOccurs="0" maxOccurs="1" />
+              <xs:element name="TriggerAmount" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Category" type="stringLen255" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Action" type="ActionType" minOccurs="1" maxOccurs="1" />
+              <xs:element name="CouponReward" type="xs:string" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Error" minOccurs="0" maxOccurs="1" type="xs:string" />
+      </xs:sequence>
+      <xs:attribute name="returnCode" type="statusCodeType" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="stringLen100">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen255">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>  <xs:simpleType name="stringLen1000">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1000" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="statusCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS" />
+      <xs:enumeration value="INVALID_GUID" />
+      <xs:enumeration value="APPLICATION_EXCEPTION" />
+      <xs:enumeration value="INVALID_LOCATION" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ActionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Call" />
+      <xs:enumeration value="Print" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OfferTypeCodes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PointsRedemption" />
+      <xs:enumeration value="ClubAccumulation" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

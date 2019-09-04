@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="LogixOfferService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Offer" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Customers" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Customer" minOccurs="0" maxOccurs="unbounded" >
+                      <xs:complexType>
+                        <xs:attribute name="id" type="xs:string" use="required" />
+                        <xs:attribute name="anycardholder" type="xs:boolean" use="optional" />
+                        <xs:attribute name="anycustomer" type="xs:boolean" use="optional" />
+                        <xs:attribute name="newcardholders" type="xs:boolean" use="optional" />
+                        <xs:attribute name="excluded" type="xs:boolean" use="optional" />
+                      </xs:complexType>
+                    </xs:element>                   
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="logixId" type="xs:string" use="required" />
+            <xs:attribute name="operation" type="operationType" use="required" />
+            <xs:attribute name="success" type="xs:boolean" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Customer" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Offers" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Offer" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="id" type="xs:string" use="required" />
+                        <xs:attribute name="logixId" type="xs:string" use="required" />
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType> 
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="operation" type="operationType" use="required" />
+            <xs:attribute name="success" type="xs:boolean" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Error" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence />
+            <xs:attribute name="code" type="xs:string" use="required" />
+            <xs:attribute name="message" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:simpleType name="operationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADD_OFFER" />
+      <xs:enumeration value="UPDATE_OFFER" />
+      <xs:enumeration value="REMOVE_OFFER" />
+      <xs:enumeration value="ADD_BANNER" />
+      <xs:enumeration value="REMOVE_BANNER" />
+      <xs:enumeration value="UPDATE_CLIENT_ID" />
+      <xs:enumeration value="ADD_CUSTOMER_OFFER" />
+      <xs:enumeration value="REMOVE_CUSTOMER_OFFER" />
+      <xs:enumeration value="ADD_PRODUCT_OFFER" />
+      <xs:enumeration value="REMOVE_PRODUCT_OFFER" />
+      <xs:enumeration value="GET_CUSTOMER_OFFERS" />
+      <xs:enumeration value="GET_OFFER_CUSTOMERS" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="errorcodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ERROR_NONE" />
+      <xs:enumeration value="ERROR_IMPORT_FAILED" />
+      <xs:enumeration value="ERROR_MISSING_CLIENT_ID" />
+      <xs:enumeration value="ERROR_XML_INVALID_DOC" />
+      <xs:enumeration value="ERROR_XML_EMPTY_DOC" />
+      <xs:enumeration value="ERROR_XML_BAD_SOURCE_ID" />
+      <xs:enumeration value="ERROR_XSD_NOT_FOUND" />
+      <xs:enumeration value="ERROR_APPLICATION" />
+      <xs:enumeration value="ERROR_OFFER_ALREADY_EXISTS" />
+      <xs:enumeration value="ERROR_OFFER_DOES_NOT_EXIST" />
+      <xs:enumeration value="ERROR_OFFER_UPDATE_FAILED" />
+      <xs:enumeration value="ERROR_OFFER_REMOVE_FAILED" />
+      <xs:enumeration value="ERROR_BANNER_ALREADY_ASSSIGNED" />
+      <xs:enumeration value="ERROR_BANNER_ADD_FAILED" />
+      <xs:enumeration value="ERROR_BANNER_NOT_ASSIGNED" />
+      <xs:enumeration value="ERROR_BANNER_REMOVE_FAILED" />
+      <xs:enumeration value="ERROR_BANNERS_NOT_ENABLED" />
+      <xs:enumeration value="ERROR_OFFER_ID_CHANGE_FAILED" />
+      <xs:enumeration value="ERROR_INVALID_CUSTOMER_ID" />
+      <xs:enumeration value="ERROR_ADD_PRODUCT_FAILED" />
+      <xs:enumeration value="ERROR_REMOVE_PRODUCT_FAILED" />
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

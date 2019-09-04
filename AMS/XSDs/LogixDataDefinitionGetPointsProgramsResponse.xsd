@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="GetPointsPrograms">
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:element name="PointPrograms">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="PointProgram" maxOccurs="unbounded" minOccurs="0">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="ProgramID" type="xs:int"></xs:element>
+                                                               <xs:element name="ProgramName" type="xs:string"></xs:element>
+															   <xs:element name="Description" type="xs:string"  minOccurs="0"/>
+                                                               <xs:element name="PromoVarID"  type="xs:int"></xs:element>
+															   <xs:element name="LastLoadMsg" type="xs:date"  minOccurs="0"/>
+                                                               <xs:element name="ExternalProgram" type="xs:boolean"></xs:element>
+                                                               <xs:element name="ExternalID" type="xs:int"></xs:element>
+                                                               <xs:element name="AutoDelete" type="xs:boolean"></xs:element>
+															   <xs:element name="AdjustmentUPC" type="xs:string"  minOccurs="0"/>
+                                                               <xs:element name="CAMProgram" type="xs:boolean"></xs:element>
+															   <xs:element name="EngineSubTypePKID" type="xs:long"  minOccurs="0"/>
+															   <xs:element name="CategoryID" type="xs:long"  minOccurs="0"/>
+                                                               <xs:element name="ExtHostTypeID" type="xs:int"></xs:element>
+                                                               <xs:element name="DecimalValues" type="xs:boolean"></xs:element>
+                                                               <xs:element name="ReturnHandlingTypeID" type="xs:int"></xs:element>
+                                                               <xs:element name="DisallowRedeemInEarnTrans" type="xs:int"></xs:element>
+                                                               <xs:element name="AllowNegativeBal" type="xs:int"></xs:element>
+                                                               <xs:element name="ScorecardBold" type="xs:boolean"></xs:element>
+															   <xs:element name="BuckOfferID" type="xs:long"  minOccurs="0"/>
+															   <xs:element name="BuckTierNumber" type="xs:long"  minOccurs="0"/>
+                                                               <xs:element name="PointsProgramMigration" minOccurs="0" >
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="MigrationProgramID" type="xs:int"></xs:element>
+                                                                                 <xs:element name="MigrationDate" type="xs:dateTime" minOccurs="0"></xs:element>
+                                                                                 <xs:element name="LastMigrationDate" type="xs:dateTime" minOccurs="0"></xs:element>
+                                                                                 <xs:element name="LastEmailDate" type="xs:dateTime" minOccurs="0"></xs:element>
+                                                                                 <xs:element name="Deleted" type="xs:boolean"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="PointsProgramDeletion" minOccurs="0" >
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="DeletionDate" type="xs:dateTime"></xs:element>
+																				 <xs:element name="LastDeletionDate" type="xs:dateTime"  minOccurs="0"/>
+                                                                                 <xs:element name="LastEmailDate" type="xs:dateTime" minOccurs="0"></xs:element>
+                                                                                 <xs:element name="Deleted" type="xs:boolean"></xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:element name="PointsProgramTranslations" minOccurs="0" >
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="PointsProgramTranslation" minOccurs="0" maxOccurs="unbounded">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="PKID" type="xs:int"></xs:element>
+                                                                                                   <xs:element name="LanguageID" type="xs:int"></xs:element>
+                                                                                                   <xs:element name="ScorecardDesc" type="xs:string"></xs:element>
+                                                                                             </xs:sequence>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+															     <xs:element name="ScorecardDesc" type="xs:string"  minOccurs="0"/>
+															     <xs:element name="AllowAnyCustomer" type="xs:boolean"  minOccurs="0"/>
+                                                             </xs:sequence>
+                                                    </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="Status">
+                                 <xs:complexType>
+                                       <xs:attribute name="operation" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="success" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="responsecode" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="message" type="xs:string"></xs:attribute>
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>

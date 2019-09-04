@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="HierarchyLevels">    
+          <xs:complexType>
+            <xs:sequence maxOccurs="1">
+              <xs:element name="LevelDetail" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element name="LevelName" type="LevelNameType" />
+                    <xs:element name="LevelInHierarchy" type="xs:int" />
+                  </xs:all>
+                </xs:complexType>
+              </xs:element>
+             </xs:sequence>
+            <xs:attribute name="ExtHierarchyID" type="ExtHierarchyIDType" use="required" />
+          </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="LevelNameType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ExtHierarchyIDType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,4 @@
+# Logix 5 /robots.txt file
+
+User-agent: *
+Disallow: /

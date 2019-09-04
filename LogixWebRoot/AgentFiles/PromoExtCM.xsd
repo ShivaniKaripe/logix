@@ -1,0 +1,1510 @@
+﻿<?xml version="1.0"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Offer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Header" minOccurs="1" maxOccurs="1" type="OfferHeaderType">
+        </xs:element>
+        <xs:element name="BuckOffer" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ParentOfferName" type="StringType" minOccurs="1" maxOccurs="1" />
+              <xs:element name="ParentNumberOfTiers" type="Int32Type" minOccurs="1" maxOccurs="1" />
+              <xs:element name="ChildOfferName" type="StringType" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ChildTierNumber" type="Int32Type" minOccurs="1" maxOccurs="1" />
+              <xs:element name="ChildType" type="Int32Type" minOccurs="1" maxOccurs="1" />
+              <xs:element name="PointsProgramName" type="StringType" minOccurs="0" maxOccurs="1" />
+              <xs:element name="CustomerGroupName" type="StringType" minOccurs="0" maxOccurs="1" />
+              <xs:element name="PaperChildOffers" type="BooleanType" minOccurs="1" maxOccurs="1" />
+              <xs:element name="DigitalChildOffers" type=" BooleanType " minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FolderIDs" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FolderID" minOccurs="0" maxOccurs="unbounded" type="Int32Type" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="UserDefinedFieldValues" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UserDefinedFieldValue" minOccurs="0" maxOccurs="unbounded" type="UserDefinedType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OptIn" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Condition">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ConditionID" type="xs:long" />
+                    <xs:element name="ConditionTypeID" type="xs:int" />
+                    <xs:element name="EngineID" type="xs:int" />
+                    <xs:element name="EvaluateOfflineCustomer" type="xs:boolean" />
+                    <xs:element name="DisallowEdit" type="xs:boolean" />
+                    <xs:element name="RequiredFromTemplate" type="xs:boolean" />
+                    <xs:element name="HouseHoldEnabled" type="xs:boolean" />
+                    <xs:element  minOccurs="1" maxOccurs="1" name="OfferEligibilityCondition">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="OfferEligibilityConditionID" type="xs:long" />
+                          <xs:element name="EngineID" type="xs:int" />
+                          <xs:element name="ConditionID" type="xs:long" />
+                          <xs:element name="JoinTypeID" type="xs:int" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="StoredValueCondition">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="StoredValueConditionID" type="xs:long" />
+                          <xs:element name="ConditionID" type="xs:long" />
+                          <xs:element name="SVProgramID" type="xs:long" />
+                          <xs:element name="Quantity" type="xs:int" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="PointsCondition">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="PointsConditionID" type="xs:long" />
+                          <xs:element name="ConditionID" type="xs:long" />
+                          <xs:element name="ProgramID" type="xs:long" />
+                          <xs:element name="Quantity" type="xs:int" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerConditionDetails">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="CustomerConditionDetailsID" type="xs:long" />
+                          <xs:element name="ConditionID" type="xs:long" />
+                          <xs:element name="CustomerGroupID" type="xs:long" />
+                          <xs:element name="Excluded" type="xs:boolean" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Conditions" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Condition" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ConditionID" type="Int64Type" minOccurs="0" maxOccurs="1" />
+                    <xs:choice minOccurs="1" maxOccurs="1">
+                      <xs:element name="Customer">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="CustomerGroupID" type="Int64Type" minOccurs="1" maxOccurs="1" />
+                            <xs:element name="AnyCardholderOverrideAllowed" type="BooleanType" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="ExcludedCustomerGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+                            <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="GroupRequiredFromTemplate" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Product">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="JoinOperation" type="JoinStringType" minOccurs="0" maxOccurs="1" default="And"/>
+                            <xs:element name="ProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0"/>
+                            <xs:element name="ExcludedProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0"/>
+                            <xs:element name="ValueType" type="ProductConditionValueStringType" minOccurs="0" maxOccurs="1" default="Quantity"/>
+                            <xs:element name="GrantType" type="ConditionGrantStringType" minOccurs="0" maxOccurs="1" default="GreaterThanOrEqual" />
+                            <xs:element name="MinimumOrderItemsOnly" type="BooleanType" minOccurs="0" maxOccurs="1" default="false"/>
+                            <xs:element name="DiscountableItemsOnly" type="BooleanType" minOccurs="0" maxOccurs="1" default="false"/>
+                            <xs:element name="UseNetValues" type="BooleanType" minOccurs="0" maxOccurs="1" default="false"/>
+                            <xs:element name="DoNotItemDistribute" type="BooleanType" minOccurs="0" maxOccurs="1" default="false"/>
+                            <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="GroupRequiredFromTemplate" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditProductGroup" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditValue" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditGrant" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditOptions" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Tiers" type="ConditionTiersType" minOccurs="1" maxOccurs="1" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Points">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="JoinOperation" type="JoinStringType" minOccurs="0" maxOccurs="1" default="And" />
+                            <xs:element name="ProgramID" type="Int64Type" minOccurs="1" maxOccurs="1" />
+                            <xs:element name="Algorithm" type="PointsAlgorithmStringType" minOccurs="0" maxOccurs="1" default="PreviouslyEarnedOnly"/>
+                            <xs:element name="GrantType" type="ConditionGrantStringType" minOccurs="0" maxOccurs="1" default="GreaterThanOrEqual" />
+                            <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="ProgramRequiredFromTemplate" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditProgram" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditValue" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditGrant" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Tiers" type="ConditionTiersType" minOccurs="1" maxOccurs="1" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Tender">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="JoinOperation" type="JoinStringType" minOccurs="0" maxOccurs="1" default="And" />
+                            <xs:element name="GrantType" type="ConditionGrantStringType" minOccurs="0" maxOccurs="1" default="GreaterThanOrEqual" />
+                            <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditTenders" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditValue" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditGrant" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Tenders" minOccurs="1" maxOccurs="1">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="TenderCode" type="TenderCodeIntType" minOccurs="1" maxOccurs="unbounded" />
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Tiers" type="ConditionTiersType" minOccurs="1" maxOccurs="1" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="TimeDay">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="JoinOperation" type="JoinStringType" minOccurs="0" maxOccurs="1" default="And" />
+                            <xs:element name="Sunday" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Monday" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Tuesday" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Wednesday" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Thursday" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Friday" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Saturday" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="StartHour" type="HoursIntType" minOccurs="0" maxOccurs="1" default="0" />
+                            <xs:element name="StartMinute" type="MinutesIntType" minOccurs="0" maxOccurs="1" default="0" />
+                            <xs:element name="EndHour" type="HoursIntType" minOccurs="0" maxOccurs="1" default="0" />
+                            <xs:element name="EndMinute" type="MinutesIntType" minOccurs="0" maxOccurs="1" default="0" />
+                            <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditDay" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditTime" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="StoredValue">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="JoinOperation" type="JoinStringType" minOccurs="0" maxOccurs="1" default="And" />
+                            <xs:element name="ProgramID" type="Int64Type" minOccurs="1" maxOccurs="1" />
+                            <xs:element name="Algorithm" type="StoredValueAlgorithmStringType" minOccurs="0" maxOccurs="1" default="PreviouslyEarnedOnly"/>
+                            <xs:element name="GrantType" type="ConditionGrantStringType" minOccurs="0" maxOccurs="1" default="GreaterThanOrEqual" />
+                            <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="ProgramRequiredFromTemplate" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditProgram" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditValue" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditGrant" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Tiers" type="ConditionTiersType" minOccurs="1" maxOccurs="1" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="AdvancedLimit">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="JoinOperation" type="JoinStringType" minOccurs="0" maxOccurs="1" default="And" />
+                            <xs:element name="ProgramID" type="Int64Type" minOccurs="1" maxOccurs="1" />
+                            <xs:element name="Algorithm" type="AdvancedLimitAlgorithmStringType" minOccurs="0" maxOccurs="1" default="HostValueOnly"/>
+                            <xs:element name="GrantType" type="ConditionGrantStringType" minOccurs="0" maxOccurs="1" default="GreaterThanOrEqual" />
+                            <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="ProgramRequiredFromTemplate" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditProgram" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditValue" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="DisallowEditGrant" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+                            <xs:element name="Tiers" type="ConditionTiersType" minOccurs="1" maxOccurs="1" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Rewards" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Reward" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RewardID" type="Int64Type" minOccurs="0" maxOccurs="1" />
+                    <xs:choice minOccurs="1" maxOccurs="1">
+                      <xs:element name="Discount" type="DiscountReward" />
+                      <xs:element name="Points" type="PointsReward" />
+                      <xs:element name="PrintedMessage" type="PrintedMessageReward" />
+                      <xs:element name="CashierMessage" type="CashierMessageReward" />
+                      <xs:element name="GrantMembership" type="GrantMembershipReward" />
+                      <xs:element name="RevokeMembership" type="RevokeMembershipReward" />
+                      <xs:element name="StoredValue" type="PointsReward" />
+                      <xs:element name="AdvancedLimit" type="PointsReward" />
+                      <xs:element name="TenderPoints" type="PointsReward" />
+                      <xs:element name="CentsOffFuel" type="CentsOffFuelReward" />
+                      <xs:element name="PassThru" type="PassThruReward" />
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Banners" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Banner" minOccurs="0" maxOccurs="unbounded" type="BannerType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Terminals" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Terminal" minOccurs="0" maxOccurs="unbounded" type="TerminalType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LocationGroups" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LocationGroup" minOccurs="0" maxOccurs="unbounded" type="LocationGroupType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EditPermissions" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DisallowEditProductionDates" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="DisallowEditPriority" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="DisallowEditEmployeeFiltering" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="DisallowEditLimits" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="DisallowEditTiers" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="DisallowEditCRMEngine" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="DisallowEditSweepstakes" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="DisallowEditConditions" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="DisallowEditRewards" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="RequireProductGroupCondition" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="RequirePointsProgramCondition" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+              <xs:element name="RequireCustomerGroupCondition" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Channels" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Channel" minOccurs="1" maxOccurs="unbounded" type="ChannelType" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="Auxiliary" minOccurs="0" maxOccurs="1" type="AuxiliaryType" />
+      </xs:sequence>
+      <xs:attribute name="Version" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1.00.00" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Engine" type="xs:string" use="required" fixed="CM" />
+      <xs:attribute name="ExternalSourceCode" type="xs:string" use="required" />
+      <xs:attribute name="IDsAreExternal" type="xs:boolean" use="optional" default="true" />
+      <xs:attribute name="SendOutbound" type="xs:boolean" use="optional" default="false" />
+      <xs:attribute name="DeleteOffer" type="xs:boolean" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <!-- Complex Types Start -->
+  <xs:complexType name="OfferHeaderType">
+    <xs:all>
+      <xs:element name="OfferID" type="Int64Type" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ExtOfferID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="DeleteOffer" type="BooleanType" minOccurs="0" maxOccurs="1" default="false"/>
+      <xs:element name="AutoDeploy" type="Int32Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="Name" type="StringType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ProdStartDate" type="DateTimeType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ProdEndDate" type="DateTimeType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TestStartDate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TestEndDate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Description" type="StringType" minOccurs="0" maxOccurs="1" default=""/>
+      <xs:element name="IsTemplate" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="FromTemplate" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="CategoryCode" type="Int32Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="OfferTypeID" type="OfferTypeIDIntType" minOccurs="0" maxOccurs="1" default="1" />
+      <xs:element name="TierType" type="TierStringType" minOccurs="0" maxOccurs="1" default="NoTiers"/>
+      <xs:element name="NumTiers" type="Int32Type" minOccurs="1" maxOccurs="1" default="0"/>
+      <xs:element name="LimitValue" type="Int32Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="LimitType" type="LimitStringType" minOccurs="0" maxOccurs="1" default="Transaction" />
+      <xs:element name="LimitPeriod" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="LimitVariableID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="AdvancedLimitID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="EmployeeFiltering" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="NonEmployeesOnly" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="CreatedDate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="CRMRestricted" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="CRMEngineID" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="InboundCRMEngineID" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="PriorityLevel" type="PriorityLevelIntType" minOccurs="0" maxOccurs="1" default="50"/>
+      <xs:element name="InstantWin" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="NumPrizesAllowed" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="OddsOfWinning" type="Int32Type" minOccurs="0" maxOccurs="1" default="100" />
+      <xs:element name="RandomWinners" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="InstantWinRecalculate" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="ExtOfferID2" type="StringType" minOccurs="0" maxOccurs="1" default="" />
+      <xs:element name="UseLegacyWebKiosk" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="CashierApprovalMessage" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisabledOnCFW" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="LastUpdatedByAdminID" type="Int32Type" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ExportToEDW" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Favorite" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisplayOnWebKiosk" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="AutoTransferable" type="BooleanType" minOccurs="0" maxOccurs="1" default="true" />
+      <xs:element name="HighValue" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="FobEligible" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisplayStartDate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DisplayEndDate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="WorkflowStatus" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="RedemThresholdPerHour" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="DisableOfferOffline" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="UserDefinedType">
+    <xs:all>
+      <xs:element name="ExtID" type="StringType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Description" type="StringType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UDFDataType" type="UDFDataTypeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="UDFPresentationStyle" type="UDFPresentationStyleType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ValidValues" type="UDFValidValuesType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="Value" type="UserDefinedDataValue" minOccurs="1" maxOccurs="1" />
+    </xs:all>
+    <xs:attribute name="isMultiValue" type="xs:boolean" use="optional"></xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="UserDefinedDataValue">
+    <xs:choice>
+      <xs:element name="String" type="StringType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Date" type="DateType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Integer" type="Int32Type" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Boolean" type="BooleanType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ListBox" type="ListBoxType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="NumericRange" type="NumericRangeType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Likert" type="LikertType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ImageURL" type="StringType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name ="UDFDataTypeType">
+    <xs:attribute type="xs:string" name="Type"/>
+    <xs:attribute type="xs:string" name="ExtTypeID"/>
+  </xs:complexType>
+  <xs:complexType name ="UDFPresentationStyleType">
+    <xs:attribute type="xs:string" name="PresentationStyleID"/>
+  </xs:complexType>
+  <xs:complexType name="UDFValidValuesType">
+    <xs:sequence>
+      <xs:element name="ValidValue" type="UDFValidValueType" minOccurs="0"  maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name ="PresentationStylesType">
+    <xs:sequence>
+      <xs:element name="PresentationStyle" type ="PresentationStyleType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PresentationStyleType">
+    <xs:all>
+      <xs:element name="Style" type="xs:string"/>
+      <xs:element name="ID" type="xs:string"/>
+    </xs:all>
+    <xs:attribute name="UDFPS_ID" type="xs:int"/>
+  </xs:complexType>
+  <xs:complexType name="UDFValidValueType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:integer" name="udfvpk"></xs:attribute>
+        <xs:attribute type="xs:boolean" name="isdefault"></xs:attribute>
+        <xs:attribute type="xs:integer" name="displayorder"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ListBoxType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="ListBox"/>
+        <xs:attribute name="DisplayText" type="xs:string" use="optional"></xs:attribute>
+        <xs:attribute name="UDFVPK" type="xs:string" use="optional"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="NumericRangeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="NumericRange"/>
+        <xs:attribute name="DisplayText" type="xs:string" use="optional"></xs:attribute>
+        <xs:attribute name="UDFVPK" type="xs:string" use="optional"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LikertType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Likert"/>
+        <xs:attribute name="DisplayText" type="xs:string" use="optional"></xs:attribute>
+        <xs:attribute name="UDFVPK" type="xs:string" use="optional"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ConditionTiersType">
+    <xs:sequence>
+      <xs:element name="Tier" type="ConditionTierType" minOccurs="1" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConditionTierType">
+    <xs:sequence>
+      <xs:element name="TierID" type="Int64Type" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TierLevel" type="ByteType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TierValue" type="DecimalType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DecimalTiersType">
+    <xs:sequence>
+      <xs:element name="Tier" type="DecimalTierType" minOccurs="1" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DecimalTierType">
+    <xs:sequence>
+      <xs:element name="TierID" type="Int64Type" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TierLevel" type="ByteType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TierValue" type="DecimalType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Int64TiersType">
+    <xs:sequence>
+      <xs:element name="Tier" type="Int64TierType" minOccurs="1" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Int64TierType">
+    <xs:sequence>
+      <xs:element name="TierID" type="Int64Type" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TierLevel" type="ByteType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TierValue" type="Int64Type" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Int32TiersType">
+    <xs:sequence>
+      <xs:element name="Tier" type="Int32TierType" minOccurs="1" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Int32TierType">
+    <xs:sequence>
+      <xs:element name="TierID" type="Int64Type" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TierLevel" type="ByteType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TierValue" type="Int32Type" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TextTiersType">
+    <xs:sequence>
+      <xs:element name="Tier" type="TextTierType" minOccurs="1" maxOccurs="unbounded">
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TextTierType">
+    <xs:sequence>
+      <xs:element name="TierID" type="Int64Type" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TierLevel" type="ByteType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TierValue" type="StringType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DiscountReward">
+    <xs:sequence>
+      <xs:element name="ProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="ExcludedProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="DiscountType" type="DiscountStringType" minOccurs="1" maxOccurs="1" />
+      <xs:element name="TriggerQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="1" />
+      <xs:element name="ApplyToQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="1" />
+      <xs:element name="StoredValueID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="LimitValue" type="DecimalType" minOccurs="0" maxOccurs="1" default="0.0" />
+      <xs:element name="LimitValueType" type="LimitValueStringType" minOccurs="0" maxOccurs="1" default="Amount" />
+      <xs:element name="LimitType" type="LimitStringType" minOccurs="0" maxOccurs="1" default="Transaction" />
+      <xs:element name="LimitPeriod" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="LimitVariableID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="AdvancedLimitID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="AllowNegative" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="BestDeal" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="PromoteToTransactionLevel" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="SameItem" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DoNotItemDistribute" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DiscountableItemsOnly" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="EffectMinimumOrder" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="StaticFuel" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Sponsor" type="SponsorStringType" minOccurs="0" maxOccurs="1" default="Store" />
+      <xs:element name="ReceiptText" type="StringType" minOccurs="0" maxOccurs="1" default="" />
+      <xs:element name="WebText" type="StringType" minOccurs="0" maxOccurs="1" default="" />
+      <xs:element name="DepartmentCode" type="Int32Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="SpecialPricing" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="SpecialPricingRepeatAtLevel" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditProductGroup" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditOptions" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditDistribution" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditLimits" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditSponsor" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditMessage" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditDepartment" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditSpecialPricing" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditStoredValue" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="VirtualLink" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Tiers" type="DecimalTiersType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GrantMembershipReward">
+    <xs:sequence>
+      <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Tiers" type="Int64TiersType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RevokeMembershipReward">
+    <xs:sequence>
+      <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Tiers" type="Int64TiersType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PrintedMessageReward">
+    <xs:sequence>
+      <xs:element name="ProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="ExcludedProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="TriggerQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="ApplyToQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="1"/>
+      <xs:element name="LimitValue" type="DecimalType" minOccurs="0" maxOccurs="1" default="0.0" />
+      <xs:element name="LimitValueType" type="LimitValueStringType" minOccurs="0" maxOccurs="1" default="Amount" />
+      <xs:element name="LimitType" type="LimitStringType" minOccurs="0" maxOccurs="1" default="Transaction" />
+      <xs:element name="LimitPeriod" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="LimitVariableID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="Sponsor" type="SponsorStringType" minOccurs="0" maxOccurs="1" default="Store" />
+      <xs:element name="MessageType" type="PrinterMessageStringType" minOccurs="0" maxOccurs="1" default="AfterTrailer"/>
+      <xs:element name="PromoteToTransactionLevel" type="BooleanType" minOccurs="0" maxOccurs="1" default="false"/>
+      <xs:element name="SuppressZeroBalance" type="BooleanType" minOccurs="0" maxOccurs="1" default="false"/>
+      <xs:element name="PrintOnBack" type="BooleanType" minOccurs="0" maxOccurs="1" default="false"/>
+      <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditProductGroup" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditOptions" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditDistribution" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditLimits" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditSponsor" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditMessage" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Tiers" type="TextTiersType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CashierMessageReward">
+    <xs:sequence>
+      <xs:element name="ProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" />
+      <xs:element name="ExcludedProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TriggerQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="ApplyToQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="1"/>
+      <xs:element name="LimitValue" type="DecimalType" minOccurs="0" maxOccurs="1" default="0.0" />
+      <xs:element name="LimitValueType" type="LimitValueStringType" minOccurs="0" maxOccurs="1" default="Amount" />
+      <xs:element name="LimitType" type="LimitStringType" minOccurs="0" maxOccurs="1" default="Transaction" />
+      <xs:element name="LimitPeriod" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="LimitVariableID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="Sponsor" type="SponsorStringType" minOccurs="0" maxOccurs="1" default="Store" />
+      <xs:element name="DisplayImediately" type="BooleanType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditProductGroup" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditDistribution" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditLimits" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditSponsor" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditMessage" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Tiers" type="TextTiersType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointsReward">
+    <xs:sequence>
+      <xs:element name="ProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="ExcludedProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="DistributionType" type="PointsDistributionStringType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="TriggerQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="1" />
+      <xs:element name="ApplyToQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="1" />
+      <xs:element name="ProgramID" type="Int64Type" minOccurs="1" maxOccurs="1" />
+      <xs:element name="LimitValue" type="DecimalType" minOccurs="0" maxOccurs="1" default="0.0" />
+      <xs:element name="LimitValueType" type="LimitValueStringType" minOccurs="0" maxOccurs="1" default="Amount" />
+      <xs:element name="LimitType" type="LimitStringType" minOccurs="0" maxOccurs="1" default="Transaction" />
+      <xs:element name="LimitPeriod" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="LimitVariableID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="AdvancedLimitID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="PromoteToTransactionLevel" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DoNotItemDistribute" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DiscountableItemsOnly" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Sponsor" type="SponsorStringType" minOccurs="0" maxOccurs="1" default="Store" />
+      <xs:element name="ReceiptText" type="StringType" minOccurs="0" maxOccurs="1" default="" />
+      <xs:element name="WebText" type="StringType" minOccurs="0" maxOccurs="1" default="" />
+      <xs:element name="DepartmentCode" type="Int32Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="SpecialPricing" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="SpecialPricingRepeatAtLevel" type="Int32Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="WeightUOM" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditProductGroup" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditOptions" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditDistribution" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditLimits" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditSponsor" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditMessage" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditDepartment" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditSpecialPricing" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditProgram" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Tiers" type="Int32TiersType" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CentsOffFuelReward">
+    <xs:sequence>
+      <xs:element name="ProductGroupID" type="Int64Type" minOccurs="1" maxOccurs="1" />
+      <xs:element name="CentsOff" type="Int32Type" minOccurs="1" maxOccurs="1" />
+      <xs:element name="PointsRequired" type="Int32Type" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ProgramID" type="Int64Type" minOccurs="1" maxOccurs="1" />
+      <xs:element name="LimitValue" type="DecimalType" minOccurs="0" maxOccurs="1" default="0.0" />
+      <xs:element name="LimitValueType" type="LimitValueStringType" minOccurs="0" maxOccurs="1" default="Amount" />
+      <xs:element name="LimitType" type="LimitStringType" minOccurs="0" maxOccurs="1" default="Transaction" />
+      <xs:element name="LimitPeriod" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="LimitVariableID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="Sponsor" type="SponsorStringType" minOccurs="0" maxOccurs="1" default="Store" />
+      <xs:element name="DepartmentCode" type="Int32Type" minOccurs="0" maxOccurs="1" default="0"/>
+      <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditProductGroup" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditDistribution" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditLimits" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditSponsor" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditDepartment" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditProgram" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PassThruReward">
+    <xs:sequence>
+      <xs:element name="XmlExternalID" type="Int32Type" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="ExcludedProductGroupID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="TriggerQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="ApplyToQuantity" type="Int32Type" minOccurs="0" maxOccurs="1" default="1" />
+      <xs:element name="LimitValue" type="DecimalType" minOccurs="0" maxOccurs="1" default="0.0" />
+      <xs:element name="LimitValueType" type="LimitValueStringType" minOccurs="0" maxOccurs="1" default="Amount" />
+      <xs:element name="LimitType" type="LimitStringType" minOccurs="0" maxOccurs="1" default="Transaction" />
+      <xs:element name="LimitPeriod" type="Int32Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="LimitVariableID" type="Int64Type" minOccurs="0" maxOccurs="1" default="0" />
+      <xs:element name="Sponsor" type="SponsorStringType" minOccurs="0" maxOccurs="1" default="Store" />
+      <xs:element name="LastUpdate" type="DateTimeType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="DisallowEdit" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditProductGroup" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditDistribution" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditLimits" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditSponsor" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="DisallowEditXml" type="BooleanType" minOccurs="0" maxOccurs="1" default="false" />
+      <xs:element name="Tiers" type="TextTiersType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BannerType">
+    <xs:sequence>
+      <xs:element name="BannerID" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" type="StringType" default=""/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TerminalType">
+    <xs:sequence>
+      <xs:element name="TerminalCode" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" type="StringType" default=""/>
+      <xs:element name="Excluded" minOccurs="0" maxOccurs="1" type="BooleanType" default="false"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocationGroupType">
+    <xs:sequence>
+      <xs:element name="LocationGroupID" minOccurs="1" maxOccurs="1" type="Int64Type" />
+      <xs:element name="Name" minOccurs="0" maxOccurs="1" type="StringType" default=""/>
+      <xs:element name="Excluded" minOccurs="0" maxOccurs="1" type="BooleanType" default="false"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuxiliaryType">
+    <xs:all>
+      <xs:element name="CustomerGroups" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CustomerGroup" minOccurs="1" maxOccurs="unbounded" type="AuxCGType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProductGroups" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ProductGroup" minOccurs="1" maxOccurs="unbounded" type="AuxPGType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LocationGroups" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="LocationGroup" minOccurs="1" maxOccurs="unbounded" type="AuxLocGroupType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PointsPrograms" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="PointsProgram" minOccurs="1" maxOccurs="unbounded" type="AuxPTType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StoredValuePrograms" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="StoredValueProgram" minOccurs="1" maxOccurs="unbounded" type="AuxSVType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AdvancedLimitPrograms" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AdvancedLimitProgram" minOccurs="1" maxOccurs="unbounded" type="AuxALType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Tenders" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Tender" minOccurs="1" maxOccurs="unbounded" type="AuxTenderType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Terminals" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Terminal" minOccurs="1" maxOccurs="unbounded" type="AuxTerminalType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Banners" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Banner" minOccurs="1" maxOccurs="unbounded" type="AuxBannerType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Departments" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Department" minOccurs="1" maxOccurs="unbounded" type="AuxDepartmentType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Categories" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Category" minOccurs="1" maxOccurs="unbounded" type="AuxCategoryType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Folders" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Folder" minOccurs="1" maxOccurs="unbounded" type="AuxFolderType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExternalInterfaces" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ExternalInterface" minOccurs="1" maxOccurs="unbounded" type="AuxExternalInterfaceType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UserDefinedFields" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="PresentationStyles" minOccurs="0" maxOccurs="1" type="PresentationStylesType" />
+            <xs:element name="UserDefinedField" minOccurs="1" maxOccurs="unbounded" type="AuxExternalUdfType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxCGType">
+    <xs:sequence>
+      <xs:element name="Header" minOccurs="1" maxOccurs="1" type="AuxCGHdrType" />
+      <xs:element name="Customers" minOccurs="0" maxOccurs="1" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuxCGHdrType">
+    <xs:all>
+      <xs:element name="CustomerGroupID" minOccurs="1" maxOccurs="1" type="Int64Type" />
+      <xs:element name="ExternalID" minOccurs="0" maxOccurs="1" type="Int64Type" default="0" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="AnyCustomer" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="AnyCardholder" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="NewCardholders" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="IsOptInGroup" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="BannerID" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxPGType">
+    <xs:sequence>
+      <xs:element name="Header" minOccurs="1" maxOccurs="1" type="AuxPGHdrType" />
+      <xs:element name="Products" minOccurs="0" maxOccurs="1" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuxPGHdrType">
+    <xs:all>
+      <xs:element name="ProductGroupID" minOccurs="1" maxOccurs="1" type="Int64Type" />
+      <xs:element name="ExternalID" minOccurs="0" maxOccurs="1" type="Int64Type" default="0" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="Description" minOccurs="0" maxOccurs="1" type="StringType" default="" />
+      <xs:element name="AnyProduct" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxLocGroupType">
+    <xs:sequence>
+      <xs:element name="Header" minOccurs="1" maxOccurs="1" type="AuxLocGroupHdrType" />
+      <xs:element name="Locations" minOccurs="0" maxOccurs="1" type="AuxLocationsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuxLocGroupHdrType">
+    <xs:all>
+      <xs:element name="LocationGroupID" minOccurs="1" maxOccurs="1" type="Int64Type" />
+      <xs:element name="ExternalID" minOccurs="0" maxOccurs="1" type="StringType" default="" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="Description" minOccurs="0" maxOccurs="1" type="StringType" default="" />
+      <xs:element name="AllLocations" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="BannerID" minOccurs="0" maxOccurs="1" type="Int32Type" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxLocationsType">
+    <xs:sequence>
+      <xs:element name="Location" minOccurs="0" maxOccurs="unbounded" type="AuxLocationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuxLocationType">
+    <xs:all>
+      <xs:element name="LocationCode" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="LocationName" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="BannerID" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxPTType">
+    <xs:all>
+      <xs:element name="ProgramID" minOccurs="1" maxOccurs="1" type="Int64Type" />
+      <xs:element name="ExternalID" minOccurs="0" maxOccurs="1" type="Int64Type" default="0" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="PromoVarID" minOccurs="1" maxOccurs="1" type="Int64Type" />
+      <xs:element name="Description" minOccurs="0" maxOccurs="1" type="StringType" default="" />
+      <xs:element name="TenderPointsProgram" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="AutoDelete" minOccurs="0" maxOccurs="1" type="BooleanType" default="true" />
+      <xs:element name="CategoryCode" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+      <xs:element name="ExternalProgram" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="ExternalHostTypeID" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+      <xs:element name="ApplyEarnedPendingPoints" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxSVType">
+    <xs:all>
+      <xs:element name="ProgramID" minOccurs="1" maxOccurs="1" type="Int64Type" />
+      <xs:element name="ExternalID" minOccurs="0" maxOccurs="1" type="Int64Type" default="0" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="Type" minOccurs="1" maxOccurs="1" type="StoredValueStringType" />
+      <xs:element name="ExpireType" minOccurs="1" maxOccurs="1" type="StoredValueExpireStringType" />
+      <xs:element name="ExpirePeriodType" minOccurs="1" maxOccurs="1" type="StoredValuePeriodStringType" />
+      <xs:element name="ExpirePeriod" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+      <xs:element name="ExpireTOD" minOccurs="0" maxOccurs="1" type="StringType" default="" />
+      <xs:element name="ExpireDate" minOccurs="0" maxOccurs="1" type="DateTimeType" default="" />
+      <xs:element name="Description" minOccurs="0" maxOccurs="1" type="StringType" default="" />
+      <xs:element name="Value" minOccurs="0" maxOccurs="1" type="DecimalType" default="0.0" />
+      <xs:element name="UnitOfMeasureLimit" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+      <xs:element name="OneUnitPerRec" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="AllowReissue" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="AutoDelete" minOccurs="0" maxOccurs="1" type="BooleanType" default="true" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxALType">
+    <xs:all>
+      <xs:element name="ProgramID" minOccurs="1" maxOccurs="1" type="Int64Type" />
+      <xs:element name="ExternalID" minOccurs="0" maxOccurs="1" type="Int64Type" default="0" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="Type" minOccurs="1" maxOccurs="1" type="AdvancedLimitStringType" />
+      <xs:element name="LimitValue" minOccurs="1" maxOccurs="1" type="DecimalType" />
+      <xs:element name="LimitType" minOccurs="0" maxOccurs="1" type="LimitStringType" default="Transaction" />
+      <xs:element name="LimitPeriod" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+      <xs:element name="LimitVariableID" minOccurs="0" maxOccurs="1" type="Int64Type" default="0" />
+      <xs:element name="Description" minOccurs="0" maxOccurs="1" type="StringType" default="" />
+      <xs:element name="AutoDelete" minOccurs="0" maxOccurs="1" type="BooleanType" default="true" />
+      <xs:element name="StartDate" minOccurs="0" maxOccurs="1" type="DateTimeType" default="" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxBannerType">
+    <xs:all>
+      <xs:element name="BannerID" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="ExternalID" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="AllBanners" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxTerminalType">
+    <xs:all>
+      <xs:element name="TerminalCode" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="Description" minOccurs="0" maxOccurs="1" type="StringType" default="" />
+      <xs:element name="FuelProcessing" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="AnyTerminal" minOccurs="0" maxOccurs="1" type="BooleanType" default="false" />
+      <xs:element name="BannerID" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxTenderType">
+    <xs:all>
+      <xs:element name="TenderCode" minOccurs="1" maxOccurs="1" type="TenderCodeIntType" />
+      <xs:element name="Description" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxDepartmentType">
+    <xs:all>
+      <xs:element name="DepartmentCode" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="BannerID" minOccurs="0" maxOccurs="1" type="Int32Type" default="0" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxCategoryType">
+    <xs:all>
+      <xs:element name="CategoryCode" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxFolderType">
+    <xs:all>
+      <xs:element name="FolderID" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="AccessLevelID" minOccurs="0" maxOccurs="1" type="Int32Type" />
+      <xs:element name="StartDate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+      <xs:element name="EndDate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+      <xs:element name="Parent" minOccurs="0" maxOccurs="1" type="AuxFolderType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxExternalInterfaceType">
+    <xs:all>
+      <xs:element name="ExtInterfaceID" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="Name" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="Description" minOccurs="0" maxOccurs="1" type="StringType"/>
+      <xs:element name="ExtCode" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="AutoDeploy" minOccurs="0" maxOccurs="1" type="BooleanType" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+      <xs:element name="DefaultAsMfgCoupon" minOccurs="0" maxOccurs="1" type="BooleanType" />
+      <xs:element name="MaxOffers" minOccurs="0" maxOccurs="1" type="Int32Type" />
+      <xs:element name="DefaultAsLogixID" minOccurs="0" maxOccurs="1" type="BooleanType" />
+      <xs:element name="AllowExtOfferIDChange" minOccurs="0" maxOccurs="1" type="BooleanType" />
+      <xs:element name="EnableIssuance" minOccurs="0" maxOccurs="1" type="BooleanType" />
+      <xs:element name="MfgDefaultReceiptMessage" minOccurs="0" maxOccurs="1" type="StringType" />
+      <xs:element name="NonMfgDefaultReceiptMessage" minOccurs="0" maxOccurs="1" type="StringType" />
+      <xs:element name="AutoSendOutbound" minOccurs="0" maxOccurs="1" type="BooleanType" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="AuxExternalUdfType">
+    <xs:all>
+      <xs:element name="ExternalID" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="Description" minOccurs="0" maxOccurs="1" type="StringType"/>
+      <xs:element name="Type" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="AdvancedSearch" minOccurs="0" maxOccurs="1" type="BooleanType" />
+      <xs:element name="LastUpdate" minOccurs="0" maxOccurs="1" type="DateTimeType" />
+      <xs:element name="UDFPS_ID" minOccurs="0" maxOccurs="1" type="Int64Type" />
+      <xs:element name="ValidValues" type="UDFValidValuesType" minOccurs="0" maxOccurs="1"/>
+    </xs:all>
+    <xs:attribute name="isMultiValue" type="xs:boolean" use="optional"></xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="ChannelType">
+    <xs:all>
+      <xs:element name="ID" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="StartDate" minOccurs="1" maxOccurs="1" type="DateType" />
+      <xs:element name="EndDate" minOccurs="1" maxOccurs="1" type="DateType" />
+      <xs:element name="ChannelOfferAssets" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ChannelOfferAsset" minOccurs="1" maxOccurs="unbounded" type="ChannelOfferAssetType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="OfferEligibilityConditionType">
+    <xs:all>
+      <xs:element name="OfferEligibilityConditionID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="EngineID" minOccurs="1" maxOccurs="1" type="xs:int" />
+      <xs:element name="ConditionID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="JoinTypeID" minOccurs="1" maxOccurs="1" type="xs:int" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="CustomerConditionDetailsType">
+    <xs:all>
+      <xs:element name="CustomerConditionDetailsID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="ConditionID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="CustomerGroupID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="Excluded" minOccurs="1" maxOccurs="1" type="xs:boolean" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="PointsConditionType">
+    <xs:all>
+      <xs:element name="PointsConditionID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="ConditionID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="ProgramID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="Quantity" minOccurs="1" maxOccurs="1" type="xs:int" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="StoredValueConditionType">
+    <xs:all>
+      <xs:element name="StoredValueConditionID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="ConditionID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="SVProgramID" minOccurs="1" maxOccurs="1" type="xs:long" />
+      <xs:element name="Quantity" minOccurs="1" maxOccurs="1" type="xs:int" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="ChannelOfferAssetType">
+    <xs:all>
+      <xs:element name="MediaTypeID" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="MediaData" minOccurs="1" maxOccurs="1" type="StringType" />
+      <xs:element name="MediaFormatID" minOccurs="1" maxOccurs="1" type="Int32Type" />
+      <xs:element name="LanguageID" minOccurs="1" maxOccurs="1" type="Int32Type" />
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="ByteType">
+    <xs:simpleContent>
+      <xs:extension base="xs:byte">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Byte" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Int16Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:short">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Int16" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Int32Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:integer">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Int32" />
+        <xs:attribute name="DisplayText" type="xs:string" use="optional"></xs:attribute>
+        <xs:attribute name="UDFVPK" type="xs:string" use="optional"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Int64Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:long">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Int64" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BooleanType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Boolean" />
+        <xs:attribute name="DisplayText" type="xs:string" use="optional"></xs:attribute>
+        <xs:attribute name="UDFVPK" type="xs:string" use="optional"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DoubleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:float">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Double" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DecimalType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Decimal" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateTimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="DateTime" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Date" />
+        <xs:attribute name="DisplayText" type="xs:string" use="optional"></xs:attribute>
+        <xs:attribute name="UDFVPK" type="xs:string" use="optional"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StringType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+        <xs:attribute name="DisplayText" type="xs:string" use="optional"></xs:attribute>
+        <xs:attribute name="UDFVPK" type="xs:string" use="optional"></xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="JoinStringType">
+    <xs:simpleContent>
+      <xs:extension base="JoinType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ProductConditionValueStringType">
+    <xs:simpleContent>
+      <xs:extension base="ProductConditionValueType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ConditionGrantStringType">
+    <xs:simpleContent>
+      <xs:extension base="ConditionGrantType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PointsAlgorithmStringType">
+    <xs:simpleContent>
+      <xs:extension base="PointsAlgorithmType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StoredValueAlgorithmStringType">
+    <xs:simpleContent>
+      <xs:extension base="StoredValueAlgorithmType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StoredValueStringType">
+    <xs:simpleContent>
+      <xs:extension base="StoredValueType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StoredValueExpireStringType">
+    <xs:simpleContent>
+      <xs:extension base="StoredValueExpireType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StoredValuePeriodStringType">
+    <xs:simpleContent>
+      <xs:extension base="StoredValuePeriodType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AdvancedLimitAlgorithmStringType">
+    <xs:simpleContent>
+      <xs:extension base="AdvancedLimitAlgorithmType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AdvancedLimitStringType">
+    <xs:simpleContent>
+      <xs:extension base="AdvancedLimitType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SponsorStringType">
+    <xs:simpleContent>
+      <xs:extension base="SponsorType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LimitValueStringType">
+    <xs:simpleContent>
+      <xs:extension base="LimitValueType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LimitStringType">
+    <xs:simpleContent>
+      <xs:extension base="LimitType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DiscountStringType">
+    <xs:simpleContent>
+      <xs:extension base="DiscountType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PrinterMessageStringType">
+    <xs:simpleContent>
+      <xs:extension base="PrinterMessageType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PointsDistributionStringType">
+    <xs:simpleContent>
+      <xs:extension base="PointsDistributionType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="HoursIntType">
+    <xs:simpleContent>
+      <xs:extension base="HoursType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Int32" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MinutesIntType">
+    <xs:simpleContent>
+      <xs:extension base="MinutesType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Int32" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TenderCodeIntType">
+    <xs:simpleContent>
+      <xs:extension base="TenderCodeType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Int32" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TierStringType">
+    <xs:simpleContent>
+      <xs:extension base="TierType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="String" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="OfferTypeIDIntType">
+    <xs:simpleContent>
+      <xs:extension base="OfferTypeIDType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Int32" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PriorityLevelIntType">
+    <xs:simpleContent>
+      <xs:extension base="PriorityLevelType">
+        <xs:attribute name="DataType" type="xs:string" use="optional" fixed="Int32" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <!-- Simple Types Start -->
+  <xs:simpleType name="JoinType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="And" />
+      <xs:enumeration value="Or" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ProductConditionValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MinimumOrder" />
+      <xs:enumeration value="Transaction" />
+      <xs:enumeration value="TransactionDiscountable" />
+      <xs:enumeration value="Quantity" />
+      <xs:enumeration value="Amount" />
+      <xs:enumeration value="Weight" />
+      <xs:enumeration value="Volume" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ConditionGrantType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EachTime" />
+      <xs:enumeration value="Equal" />
+      <xs:enumeration value="GreaterThanOrEqual" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PointsAlgorithmType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PreviouslyEarnedOnly" />
+      <xs:enumeration value="CurrentlyEarnedOnly" />
+      <xs:enumeration value="TotalEarned" />
+      <xs:enumeration value="NetEarned" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StoredValueAlgorithmType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PreviouslyEarnedOnly" />
+      <xs:enumeration value="CurrentlyEarnedOnly" />
+      <xs:enumeration value="TotalEarned" />
+      <xs:enumeration value="NetEarned" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StoredValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Points" />
+      <xs:enumeration value="CentsOff" />
+      <xs:enumeration value="CentsOffPerUnitMeasure" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StoredValueExpireType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FixedDateTime" />
+      <xs:enumeration value="DayPeriodAtFixedTime" />
+      <xs:enumeration value="ExactPeriod" />
+      <xs:enumeration value="MonthsAfterCurrentMonth" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="StoredValuePeriodType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Days" />
+      <xs:enumeration value="Hours" />
+      <xs:enumeration value="Months" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AdvancedLimitAlgorithmType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HostValueOnly" />
+      <xs:enumeration value="CurrentComputedOnly" />
+      <xs:enumeration value="Present" />
+      <xs:enumeration value="Net" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AdvancedLimitType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OfferCount" />
+      <xs:enumeration value="RewardDollar" />
+      <xs:enumeration value="RewardWeight" />
+      <xs:enumeration value="RewardVolume" />
+      <xs:enumeration value="RewardPoints" />
+      <xs:enumeration value="RewardMessage" />
+      <xs:enumeration value="RewardLimit" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SponsorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Store" />
+      <xs:enumeration value="Vendor" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LimitValueType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Count" />
+      <xs:enumeration value="Amount" />
+      <xs:enumeration value="Weight" />
+      <xs:enumeration value="Volume" />
+      <xs:enumeration value="Points" />
+      <xs:enumeration value="TransactionAmount" />
+      <xs:enumeration value="MinimumOrderAmount" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LimitType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Transaction" />
+      <xs:enumeration value="Customer" />
+      <xs:enumeration value="Days" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DiscountType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AmountOffTransaction" />
+      <xs:enumeration value="PercentOffTransaction" />
+      <xs:enumeration value="AmountOffItem" />
+      <xs:enumeration value="PercentOffItem" />
+      <xs:enumeration value="AmountOffPerWeight" />
+      <xs:enumeration value="AmountOffPerVolume" />
+      <xs:enumeration value="PricePoint" />
+      <xs:enumeration value="PricePointPerWeight" />
+      <xs:enumeration value="FreeItem" />
+      <xs:enumeration value="StoredValue" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PrinterMessageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Regular" />
+      <xs:enumeration value="Summary" />
+      <xs:enumeration value="AfterTrailer" />
+      <xs:enumeration value="Sweepstakes" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PointsDistributionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Transaction" />
+      <xs:enumeration value="TransactionAmount" />
+      <xs:enumeration value="DiscountableAmount" />
+      <xs:enumeration value="Item" />
+      <xs:enumeration value="Dollar" />
+      <xs:enumeration value="Weight" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HoursType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="23" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MinutesType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="59" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TenderCodeType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1" />
+      <xs:maxInclusive value="99999" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TierType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoTiers" />
+      <xs:enumeration value="OfferTiers" />
+      <xs:enumeration value="ItemTiers" />
+      <xs:enumeration value="BuckTiers" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OfferTypeIDType">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="1" />
+      <xs:enumeration value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PriorityLevelType">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="99" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

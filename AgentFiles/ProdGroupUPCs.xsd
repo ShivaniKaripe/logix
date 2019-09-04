@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="upcreport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="reportrecord">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="productgroupid" type="xs:positiveInteger" />
+              <xs:element name="name" type="pgNameString" />
+              <xs:element maxOccurs="unbounded" name="upc" type="upcString" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="reportdate" type="xs:dateTime" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="pgNameString">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="400" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="upcString">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="26" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

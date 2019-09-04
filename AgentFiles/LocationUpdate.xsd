@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:6.1.0.91203.Unstable Build - WUSLF250051-5LO -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="LocationUpdate">
+		<xs:complexType mixed="false">
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="UpdateLocation" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<!-- LocationID is deprecated as of Version 5.8b01, RetailerLocationCode should be now used -->
+							<xs:element name="LocationID" type="twentyChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="RetailerLocationCode" type="twentyChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="LocationName" type="hundredChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="Address1" type="twohundredChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="Address2" type="twohundredChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="City" type="hundredChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="State" type="fiftyChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="Zip" type="twentyChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="ISO3166Alpha2CountryCode" type="twoChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="TestingLocation" type="bit" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="BannerID" type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="TimeZone" type="twentyChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="ISO4217CurrencyCode" type="threeChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="Contact" type="hundredChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="Phone" type="twentyChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="Description" type="thousandChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="UnitOfMeasureSetID" type="xs:int" minOccurs="0" maxOccurs="1" />
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RemoveLocation" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<!-- LocationID is deprecated as of Version 5.8b01, RetailerLocationCode should be now used -->
+							<xs:element name="LocationID" type="twentyChars" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="RetailerLocationCode" type="twentyChars" minOccurs="0" maxOccurs="1"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="twoChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="threeChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="twentyChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="bit">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="fiftyChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="hundredChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="twohundredChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="thousandChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1000"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,4 @@
+7.0
+2
+1	SQLCHAR	0	20	","	1	ClientOfferID
+2	SQLCHAR	0	26	"|"	3	ExternalID

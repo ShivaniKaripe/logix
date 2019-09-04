@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebTest Name="ClipBundle" Id="acf02364-4585-4891-89a4-e38ba0f9ad0b" Owner="" Priority="2147483647" Enabled="True" CssProjectStructure="" CssIteration="" Timeout="0" WorkItemIds="" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" Description="" CredentialUserName="" CredentialPassword="" PreAuthenticate="True" Proxy="" StopOnError="False" RecordedResultFile="WebTest3.ebaca965-f7fb-4b42-b005-6ed1a6d185bf.rec.webtestresult">
+  <Items>
+    <TransactionTimer Name="AMS_5.99_ClipBundle">
+      <Items>
+        <Request Method="POST" Version="1.1" Url="{{WebServer1}}/connectors/CPE/ExternalOfferConnector.asmx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="">
+          <Headers>
+            <Header Name="SOAPAction" Value="http://www.copienttech.com/ExternalOfferConnector/ClipBundle" />
+          </Headers>
+          <ValidationRules>
+            <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="Find Text" Description="Verifies the existence of the specified text in the response." Level="High" ExectuionOrder="BeforeDependents">
+              <RuleParameters>
+                <RuleParameter Name="FindText" Value="success=&quot;true&quot;" />
+                <RuleParameter Name="IgnoreCase" Value="False" />
+                <RuleParameter Name="UseRegularExpression" Value="False" />
+                <RuleParameter Name="PassIfTextFound" Value="True" />
+              </RuleParameters>
+            </ValidationRule>
+          </ValidationRules>
+          <StringHttpBody ContentType="text/xml" InsertByteOrderMark="False">PAA/AHgAbQBsACAAdgBlAHIAcwBpAG8AbgA9ACIAMQAuADAAIgAgAGUAbgBjAG8AZABpAG4AZwA9ACIAdQB0AGYALQA4ACIAPwA+AA0ACgA8AHMAbwBhAHAAOgBFAG4AdgBlAGwAbwBwAGUAIAB4AG0AbABuAHMAOgB4AHMAaQA9ACIAaAB0AHQAcAA6AC8ALwB3AHcAdwAuAHcAMwAuAG8AcgBnAC8AMgAwADAAMQAvAFgATQBMAFMAYwBoAGUAbQBhAC0AaQBuAHMAdABhAG4AYwBlACIAIAB4AG0AbABuAHMAOgB4AHMAZAA9ACIAaAB0AHQAcAA6AC8ALwB3AHcAdwAuAHcAMwAuAG8AcgBnAC8AMgAwADAAMQAvAFgATQBMAFMAYwBoAGUAbQBhACIAIAB4AG0AbABuAHMAOgBzAG8AYQBwAD0AIgBoAHQAdABwADoALwAvAHMAYwBoAGUAbQBhAHMALgB4AG0AbABzAG8AYQBwAC4AbwByAGcALwBzAG8AYQBwAC8AZQBuAHYAZQBsAG8AcABlAC8AIgA+AA0ACgAgACAAPABzAG8AYQBwADoAQgBvAGQAeQA+AA0ACgAgACAAIAAgADwAQwBsAGkAcABCAHUAbgBkAGwAZQAgAHgAbQBsAG4AcwA9ACIAaAB0AHQAcAA6AC8ALwB3AHcAdwAuAGMAbwBwAGkAZQBuAHQAdABlAGMAaAAuAGMAbwBtAC8ARQB4AHQAZQByAG4AYQBsAE8AZgBmAGUAcgBDAG8AbgBuAGUAYwB0AG8AcgAvACIAPgANAAoAIAAgACAAIAAgACAAPABFAHgAdABlAHIAbgBhAGwAUwBvAHUAcgBjAGUASQBEAD4AVABlAHMAdABTAG8AdQByAGMAZQAxADwALwBFAHgAdABlAHIAbgBhAGwAUwBvAHUAcgBjAGUASQBEAD4ADQAKACAAIAAgACAAIAAgADwAQwB1AHMAdABvAG0AZQByAE8AZgBmAGUAcgBEAGEAdABhAD4AVABlAHMAdABTAG8AdQByAGMAZQAxACwAewB7AEQAYQB0AGEAUwBvAHUAcgBjAGUAMQAuAEMAbABpAHAAIwBjAHMAdgAuAFgASQBEAH0AfQAsAHsAewBEAGEAdABhAFMAbwB1AHIAYwBlADEALgBDAGwAaQBwACMAYwBzAHYALgBTAGUAcgBpAGEAbAB9AH0APAAvAEMAdQBzAHQAbwBtAGUAcgBPAGYAZgBlAHIARABhAHQAYQA+AA0ACgAgACAAIAAgADwALwBDAGwAaQBwAEIAdQBuAGQAbABlAD4ADQAKACAAIAA8AC8AcwBvAGEAcAA6AEIAbwBkAHkAPgANAAoAPAAvAHMAbwBhAHAAOgBFAG4AdgBlAGwAbwBwAGUAPgA=</StringHttpBody>
+        </Request>
+      </Items>
+    </TransactionTimer>
+  </Items>
+  <DataSources>
+    <DataSource Name="DataSource1" Provider="Microsoft.VisualStudio.TestTools.DataSource.CSV" Connection="|DataDirectory|\Clip.csv">
+      <Tables>
+        <DataSourceTable Name="Clip#csv" SelectColumns="SelectOnlyBoundColumns" AccessMethod="Unique" />
+      </Tables>
+    </DataSource>
+  </DataSources>
+  <ContextParameters>
+    <ContextParameter Name="WebServer1" Value="http://192.168.102.251" />
+  </ContextParameters>
+</WebTest>

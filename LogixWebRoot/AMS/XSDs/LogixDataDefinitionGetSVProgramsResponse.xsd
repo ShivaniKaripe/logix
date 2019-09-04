@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+        <xs:element name="GetSVPrograms">
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:element name="StoredValuePrograms">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="StoredValueProgram" maxOccurs="unbounded" minOccurs="0">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="SVProgramID" type="xs:int"></xs:element>
+                                                               <xs:element name="Name" type="xs:string"></xs:element>
+                                                               <xs:element name="Value" type="xs:int"></xs:element>
+                                                               <xs:element name="CreatedDate" type="xs:dateTime" minOccurs="0"></xs:element>
+                                                               <xs:element name="Deleted" type="xs:boolean"></xs:element>
+															   <xs:element name="Description" type="xs:string" minOccurs="0"></xs:element>
+                                                               <xs:element name="OneUnitPerRec" type="xs:boolean"></xs:element>
+                                                               <xs:element name="SVExpireType" type="xs:boolean"></xs:element>
+                                                               <xs:element name="SVExpirePeriodType" type="xs:int" minOccurs="0"></xs:element>
+                                                               <xs:element name="ExpirePeriod" type="xs:int" minOccurs="0"></xs:element>
+															   <xs:element name="ExpireTOD" type="xs:string" minOccurs="0"></xs:element>
+                                                               <xs:element name="ExpireDate" type="xs:dateTime" minOccurs="0"></xs:element>
+                                                               <xs:element name="SVTypeID" type="xs:int"></xs:element>
+                                                               <xs:element name="UnitOfMeasureLimit" type="xs:int"></xs:element>
+                                                               <xs:element name="AllowReissue" type="xs:boolean"></xs:element>
+                                                               <xs:element name="CMOAStatusFlag" type="xs:int"></xs:element>
+                                                               <xs:element name="CPEStatusFlag" type="xs:int"></xs:element>
+                                                               <xs:element name="Visible" type="xs:boolean" minOccurs="0"></xs:element>
+                                                               <xs:element name="AutoDelete" type="xs:boolean"></xs:element>
+															   <xs:element name="ExtProgramID" type="xs:string" minOccurs="0"></xs:element>
+                                                               <xs:element name="ScorecardID" type="xs:int" minOccurs="0"></xs:element>
+															   <xs:element name="ScorecardDesc" type="xs:string" minOccurs="0"></xs:element>
+                                                               <xs:element name="ScorecardBold" type="xs:boolean"></xs:element>
+															   <xs:element name="AdjustmentUPC" type="xs:string" minOccurs="0"></xs:element>
+															   <xs:element name="EngineSubTypePKID" type="xs:int" minOccurs="0"></xs:element>
+                                                               <xs:element name="ReturnHandlingTypeID" type="xs:int"></xs:element>
+                                                               <xs:element name="DisallowRedeemInEarnTrans" type="xs:int"></xs:element>
+                                                               <xs:element name="AllowNegativeBal" type="xs:int"></xs:element>
+                                                               <xs:element name="RedemptionRestrictionID" type="xs:int" minOccurs="0"></xs:element>
+                                                               <xs:element name="MemberRedemptionId" type="xs:int" minOccurs="0"></xs:element>
+															   <xs:element name="FuelPartner" type="xs:boolean" minOccurs="0"></xs:element>
+															   <xs:element name="AutoRedeem" type="xs:boolean" minOccurs="0"></xs:element>
+															   <xs:element name="AllowAdjustments" type="xs:boolean" minOccurs="0"></xs:element>
+															   <xs:element name="ExpireCentralServerTZ" type="xs:string" minOccurs="0"></xs:element>
+															   <xs:element name="AllowAnyCustomer" type="xs:boolean" minOccurs="0"></xs:element>
+                                                               <xs:element name="SVProgramTransaltions">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="SVProgramTransaltion" maxOccurs="unbounded">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="PKID" type="xs:int"></xs:element>
+                                                                                                   <xs:element name="LanguageID" type="xs:int"></xs:element>
+                                                                                                   <xs:element name="ScorecardDesc" type="xs:string"></xs:element>
+                                                                                             </xs:sequence>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="Status">
+                                 <xs:complexType>
+                                       <xs:attribute name="operation" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="success" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="responsecode" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="message" type="xs:string"></xs:attribute>
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>

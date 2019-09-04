@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CustomerContact">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Contact" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" type="xs:string" minOccurs="1" maxOccurs="1" />
+              <xs:element name="Customer" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="CustomerID" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="CustomerTypeID" type="customerIDType" minOccurs="1" maxOccurs="1" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="User" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ID" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="UserName" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="FirstName" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="LastName" type="xs:string" minOccurs="1" maxOccurs="1" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Activities" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AddToOffer" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ActivityTime" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="SelectedOffer" minOccurs="1" maxOccurs="1" type="selectedOfferType">
+                    </xs:element>
+                    <xs:element name="CustomerGroup" minOccurs="1" maxOccurs="1" type="customerGroupType">
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="RemoveFromOffer" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ActivityTime" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="SelectedOffer" minOccurs="1" maxOccurs="1" type="selectedOfferType">
+                    </xs:element>
+                    <xs:element name="CustomerGroup" minOccurs="1" maxOccurs="1" type="customerGroupType">
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="PointsAdjustment" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ActivityTime" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="SelectedOffer" minOccurs="1" maxOccurs="1" type="selectedOfferType">
+                    </xs:element>
+                    <xs:element name="PointsProgram" minOccurs="0" maxOccurs="unbounded" type="programType">
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="StoredValueAdjustment" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ActivityTime" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="SelectedOffer" minOccurs="1" maxOccurs="1" type="selectedOfferType">
+                    </xs:element>
+                    <xs:element name="StoredValueProgram" minOccurs="1" maxOccurs="1" type="programType">
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AccumulationAdjustment" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ActivityTime" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="SelectedOffer" minOccurs="1" maxOccurs="1" type="selectedOfferType">
+                    </xs:element>
+                    <xs:element name="PreAdjustBalance" type="xs:decimal" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="Adjustment" type="xs:decimal" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="PostAdjustBalance" type="xs:decimal" minOccurs="1" maxOccurs="1" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="responseTime" type="xs:dateTime" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="customerIDType">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:enumeration value="0" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="offerType">
+    <xs:sequence>
+      <xs:element name="ID" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="associatedOffersType">
+    <xs:sequence>
+      <xs:element name="Offer" type="offerType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customerGroupType">
+    <xs:sequence>
+      <xs:element name="ID" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="AssociatedOffers" type="associatedOffersType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="selectedOfferType">
+    <xs:sequence>
+      <xs:element name="ID" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="programType">
+    <xs:sequence>
+      <xs:element name="ID" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="PreAdjustBalance" type="xs:decimal" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Adjustment" type="xs:decimal" minOccurs="1" maxOccurs="1" />
+      <xs:element name="PostAdjustBalance" type="xs:decimal" minOccurs="1" maxOccurs="1" />
+      <xs:element name="AssociatedOffers" type="associatedOffersType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

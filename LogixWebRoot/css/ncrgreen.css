@@ -1,0 +1,484 @@
+/* Logix 5 screen stylesheet */
+/* version:7.3.1.138972.Official Build (SUSDAY10202) */
+/* "NCR Green" variant */
+
+
+/* GENERAL DECLARATIONS============== */
+
+body {
+  background: #ffffff url("../images/ncrgreen/gradient.png") no-repeat top center;
+}
+
+* html body {
+  margin: 147px 0 0 0;
+}
+
+#title {
+  color: #003000;
+}
+
+/* offer redemption section in IE9 with h2 attributes */
+.redemption {
+  color: #FFFFFF;
+  margin: 1px;
+  padding: 0;
+}
+
+.tempofferredeem {
+  background-color: #ffdddd;
+  border: 1px solid #ff0000;
+  display: block;
+  float: right;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0 3px 3px 0;
+  padding: 1px 3px 1px 2px;
+  position: relative;
+  right: -5px;
+}
+
+* html .tempofferredeem {
+  padding: 0 1px 0 0;
+  top: -18px;
+}
+
+/* DIV CASCADES====================== */
+
+/* BAR SECTION */
+#bar {
+  background: url("");
+  color: #c5e4cd;
+  font-size: 10px;
+  height: 15px;
+  padding: 0;
+  text-align: right;
+  top: 32px;
+  width: 450px;
+  margin-left: 326px;
+}
+
+* html #bar {
+  top: 33px;
+}
+
+  #bar a {
+    color: #c5e4cd;
+  }
+
+#time, #date, #user, #logout {
+  left: -10px;
+  position: relative;
+}
+
+
+/* LOGOS SECTION */
+#logos {
+  background: url("../images/ncrgreen/banner.png") no-repeat top left;
+  height: 50px;
+  top: 0;
+}
+
+#logix {
+  background: url("../images/ncrgreen/ncr.png") no-repeat top left;
+  height: 32px;
+  margin: 8px 0 0 10px;
+  width: 109px;
+}
+
+#licensee {
+  background: url("../images/logos/licensee.png") no-repeat top right;
+  float: right;
+  height: 30px;
+  margin: 4px 10px 0 0;
+  text-align: right;
+  width: 113px;
+}
+
+
+/* TABS SECTION */
+#tabs {
+  background: #1a6f34 url("../images/ncrgreen/tabs.png") repeat-x;
+  border: 0;
+  height: 24px;
+  top: 50px;
+}
+
+* html #tabs {
+  top: 49px;
+  height: 25px;
+}
+
+  #tabs a, #tabs a.on {
+    background: url("");
+    color: #ffffff;
+    float: left;
+    height: 23px;
+    left: 10px;
+    line-height: 14px;
+    margin: 1px 3px 0 0;
+    padding: 4px 0 0 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 92px;
+  }
+
+  * html #tabs a {
+    height: 23px;
+    top: 1px;
+  }
+
+    #tabs a:hover {
+      background: url("../images/ncrgreen/tab-hover.png") no-repeat;
+    }
+
+    #tabs a.on {
+      background: url("../images/ncrgreen/tab-on.png") no-repeat;
+      color: #1d6f34;
+      font-weight: bold;
+      height: 25px;
+    }
+
+    * html #tabs a.on {
+      height: 23px;
+    }
+
+      #tabs a.on:hover {
+        background: url("../images/ncrgreen/tab-on.png") no-repeat;
+        color: #003000;
+      }
+
+
+/* SUBTABS SECTION */
+#subtabs {
+  border: 1px solid #1a6f34;
+  border-bottom: 0;
+  border-top: 0;
+  top: 74px;
+  width: 774px;
+}
+
+* html #subtabs {
+  width: 776px;
+}
+.border
+{
+      border: 1px solid #4a8c5d;
+}
+
+  #subtabs a {
+    background: #ffffff url("../images/subtab.png") repeat-x bottom;
+    border: 1px solid #4a8c5d;
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    color: #003000;
+    float: left;
+    height: 15px;
+    left: 11px;
+    line-height: 12px;
+    margin: 9px 3px 0 0;
+    padding: 2px 5px 1px 5px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 1px;
+    max-width: 100%;
+  }
+
+  * html #subtabs a {
+    height: 20px;
+  }
+
+    #subtabs a.on {
+      background: #ffffff url("");
+      border-bottom: 1px solid #ffffff;
+      font-weight: bold;
+      height: 15px;
+    }
+
+    * html #subtabs a.on {
+      height: 21px;
+    }
+
+    #subtabs a:hover {
+      background: #ffffff url("");
+      color: #000000;
+    }
+
+
+/* INTRO SECTION */
+#intro {
+  border: 1px solid #1a6f34;
+  border-bottom: 0;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  top: 103px;
+  width: 754px;
+}
+
+* html #intro {
+  width: 776px;
+}
+
+.template #intro {
+  background: #ffffff url("../images/template.png");
+}
+
+
+/* LIST BAR */
+#searcher, .searcher1, #paginator,#paginator1 ,#filter , #enginefilter ,.customsearch {
+  background-color: #cceecc;
+}
+
+#tempfilter {
+  background-color: White;
+}
+
+
+/* MAIN SECTION */
+#main {
+  background: #ffffff url("../images/ncrgreen/main-gradient.png") repeat-x bottom;
+  border: 1px solid #4a8c5d;
+  border-top: 0;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  bottom: 0;
+  top: 145px;
+}
+
+* html #main {
+  top: 0;
+}
+
+#criteriabar {
+  background-color: #47a764;
+  word-wrap:break-word;
+}
+
+
+/* BOXES */
+.box {
+  background: #ffffff url("../images/ncrgreen/box.png") repeat-x top;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+  .box h2 {
+    color: #ffffff;
+  }
+
+    .box h2 a {
+      color: #ffffff;
+    }
+
+#warnings {
+  background: #ffffff url('../images/ncrgreen/box-important.png') repeat-x top;
+}
+
+.popup .boxwrap {
+  background: url("../images/ncrgreen/box.png") repeat-x scroll center top #FFFFFF;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  text-align: left;
+  text-indent: 5px;
+}
+
+  .popup .boxwrap h3 {
+    padding-top: 5px;
+    height: 20px;
+    color: White;
+  }
+
+
+
+
+
+/*Gray box*/
+
+.greybox {
+  background: WHITE url("../images/ncr/grayBox.png") repeat-x top;
+  border-radius: 5px;
+  height: auto;
+  -moz-border-radius: 5px;
+  border: 1px solid black;
+}
+
+  .greybox h2 {
+    color: WHITE;
+  }
+
+    .greybox h2 a {
+      color: WHITE;
+    }
+
+.popup .greyboxwrap {
+  background: url("../images/ncr/grayBox.png") repeat-x scroll center top GRAY;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  text-align: left;
+  text-indent: 5px;
+}
+
+  .popup .greyboxwrap h3 {
+    padding-top: 5px;
+    height: 20px;
+    color: WHITE;
+  }
+
+
+
+/* TABLES============================ */
+
+.list {
+  background-color: #ffffff;
+}
+
+
+
+/* DATE PICKER======================= */
+
+.dpTable {
+  background-color: #eeeeee;
+}
+
+.dpDayHighlightTD {
+  background-color: #cccccc;
+}
+
+.dpTDHover {
+  background-color: #aaaaaa;
+}
+
+.dpDayTD {
+  background-color: #888888;
+}
+
+.dpButton {
+  background: #cccccc;
+}
+
+.dpTodayButton {
+  background: #cccccc;
+  color: #444444;
+}
+
+
+
+/* "THICKBOX" RULES================= */
+
+#TB_title {
+  background: #ffffff url("../images/ncrgreen/box.png") repeat-x top;
+}
+
+#TB_closeWindowButton {
+  color: #ffffff !important;
+}
+
+#TB_ajaxWindowTitle h2 {
+  color: #ffffff;
+}
+
+
+
+/* MISCELLANEOUS===================== */
+
+.detailsbox {
+  border: 1px solid #7f9db9;
+}
+
+#importbar {
+  background-color: #000080;
+}
+
+#importclose {
+  background-color: #000080;
+}
+
+.shaded {
+  background-color: #f0f0f0;
+}
+
+.shadedmid {
+  background-color: #d0ccff;
+}
+
+.shadeddark {
+  background-color: #c0ddff;
+}
+
+.shadedlight {
+  background-color: #ddeeff;
+}
+
+.shadedlighter {
+  background-color: #eeeeff;
+}
+
+
+
+/* FOLDER RULES====================== */
+
+
+#foldertreebrowse {
+  background: #ffffff;
+}
+
+#foldertoolbar {
+  background-color: #eeffee;
+}
+
+#foldertoolbarbrowse {
+  background-color: #eeffee;
+}
+
+#folderstatusbar {
+  background-color: #eeffee;
+}
+
+.selected {
+  border: 1px solid #66cc66;
+}
+
+.folderdialog {
+  background-color: #eeffee;
+}
+
+.foldertitlebar {
+  background-color: #1d7337;
+}
+
+/**********************************
+
+  Server Health Styles
+  
+**********************************/
+.serverhealth-intro {
+  border: 1px solid #1a6f34;
+  border-bottom: 0;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  top: 103px;
+  width: 754px;
+  height: 6.25em;
+}
+
+* html .serverhealth-intro{
+  width: 776px;
+}
+
+.template .serverhealth-intro {
+  background: #ffffff url("../images/template.png");
+}
+
+.border
+{
+    border: 1px solid #4a8c5d;
+}
+.serverhealth-main {
+  background: #ffffff url("../images/ncrgreen/main-gradient.png") repeat-x bottom;
+  border: 1px solid #4a8c5d;
+  border-radius: 0;
+  bottom: 0;
+  -moz-border-radius: 0;
+  top: 15.75em;
+}

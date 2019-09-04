@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema id="AgingReport" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="agingreport">
+    <xs:complexType mixed="false">
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="reportrecord" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="programcode" type="xs:string" />
+              <xs:element name="outstandingpointsvalue" type="xs:decimal" />
+              <xs:element name="outstandingrewardsvalue" type="xs:decimal" />
+              <xs:element name="p0to30value" type="xs:decimal" />
+              <xs:element name="p31to60value" type="xs:decimal" />
+              <xs:element name="p61to90value" type="xs:decimal" />
+              <xs:element name="p91to180value" type="xs:decimal" />
+              <xs:element name="p181to365value" type="xs:decimal" />
+              <xs:element name="poutsidevalue" type="xs:decimal" />
+              <xs:element name="pallvalue" type="xs:decimal" />
+              <xs:element name="r0to30value" type="xs:decimal" />
+              <xs:element name="r31to60value" type="xs:decimal" />
+              <xs:element name="r61to90value" type="xs:decimal" />
+              <xs:element name="r91to180value" type="xs:decimal" />
+              <xs:element name="r181to365value" type="xs:decimal" />
+              <xs:element name="routsidevalue" type="xs:decimal" />
+              <xs:element name="rallvalue" type="xs:decimal" />
+              <xs:element name="expiredliability" type="xs:decimal" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="start" type="xs:dateTime" />
+      <xs:attribute name="end" type="xs:dateTime" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

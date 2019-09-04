@@ -1,0 +1,28 @@
+/* Logix 5 handheld stylesheet */
+/* version:7.3.1.138972.Official Build (SUSDAY10202) */
+
+
+/* GENERAL DECLARATIONS============== */
+
+html {
+  overflow: auto !important;
+  }
+
+body {
+  height: auto !important;
+  }
+
+
+
+/* DIV CASCADES====================== */
+
+/* WRAPS SURROUNDING ENTIRE PAGE */
+#wrap {
+  height: auto !important;
+  }
+
+
+/* MAIN SECTION */
+#main {
+  bottom: auto !important;
+  }

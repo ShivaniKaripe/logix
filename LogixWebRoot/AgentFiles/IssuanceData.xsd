@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="IssuanceData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Row" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="PKID" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ClientLocationCode" type="stringLen20" minOccurs="0" maxOccurs="1" />
+              <xs:element name="LocationID" minOccurs="0" maxOccurs="1" type="xs:int" />
+              <xs:element name="BoxID" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="TransactionNumber" type="stringLen128" minOccurs="0" maxOccurs="1" />
+              <xs:element name="PrimaryExtID" minOccurs="0" maxOccurs="1" type="stringLen26" />
+              <xs:element name="OfferID" type="xs:long" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ClientOfferID" type="stringLen40" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ROID" type="xs:long" minOccurs="0" maxOccurs="1" />
+              <xs:element name="IssuanceDate" type="xs:dateTime" minOccurs="0" maxOccurs="1" />
+              <xs:element name="DeliverableType" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Void" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="RewardQty" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ProgramID" type="xs:long" minOccurs="0" maxOccurs="1" />
+              <xs:element name="RewardValue" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+              <xs:element name="UniqueID" type="stringLen30" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Expiration" type="xs:dateTime" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ChargeBackVendorID" type="stringLen50" minOccurs="0" maxOccurs="1" />
+              <xs:element name="CashierNum" type="stringLen30" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Gross" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Net" type="xs:decimal" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ChargebackDept" type="stringLen20" minOccurs="0" maxOccurs="1" />
+              <xs:element name="PromoEngine" type="stringLen255" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ExtCRMInterface" type="stringLen100" minOccurs="0" maxOccurs="1" />
+              <xs:element name="SourceTypeID" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ExceedManualThreshold" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+              <xs:element name="LogixTransNum" type="stringLen36" minOccurs="0" maxOccurs="1" />
+              <xs:element name="VendorCouponCode" type="stringLen20" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ManufacturerCoupon" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="CustomerTypeID" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="StatusFlag" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="DiscountedUPC" type="stringLen100" minOccurs="0" maxOccurs="1" />
+              <xs:element name="CardTypeID" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ResolvedCustomerID" type="stringLen26" minOccurs="0" maxOccurs="1" />
+              <xs:element name="HHID" type="stringLen26" minOccurs="0" maxOccurs="1" />
+              <xs:element name="AirmileMemberID" type="stringLen50" minOccurs="0" maxOccurs="1" />
+              <xs:element name="OfferCatExtID" type="stringLen50" minOccurs="0" maxOccurs="1" />
+              <xs:element name="PromoEngineSubtypeID" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ConditionalUPCs" type="stringLen180" minOccurs="0" maxOccurs="1" />
+              <xs:element name="TriggerID" type="stringLen20" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ExtRewardID" type="stringLen255" minOccurs="0" maxOccurs="1" />
+              <xs:element name="RewardData" type="stringLen255" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Is_instantwin_winner" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+			  <xs:element name="Coupon" type="xs:String" minOccurs="0" maxOccurs="1" />
+			  <xs:element name="CouponExtProgramID" type="xs:stringLen20" minOccurs="0" maxOccurs="1" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="statusCode" type="statusCodeType" use="required" />
+      <xs:attribute name="message" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="stringLen26">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="26" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen20">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen30">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen36">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="36" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen40">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen50">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen100">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="stringLen255">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="255" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="statusCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS" />
+      <xs:enumeration value="INVALID_GUID" />
+      <xs:enumeration value="APPLICATION_EXCEPTION" />
+      <xs:enumeration value="INVALID_DATE" />
+      <xs:enumeration value="INVALID_COLUMN_DEFINITIONS" />
+      <xs:enumeration value="INVALID_CRITERIA" />
+      <xs:enumeration value="MISSING_EXT_CRM_INTERFACE_ID" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

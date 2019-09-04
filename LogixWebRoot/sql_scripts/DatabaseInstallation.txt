@@ -1,0 +1,152 @@
+
+== Installing Logix 7.3.1 databases ==
+
+
+This document assumes you will use SQL Server Authentication using the standard
+Copient_Logix user. For information on using Windows Authentication with Logix,
+please consult your NCR representative.
+
+
+LogixRT
+-------
+To install or update the LogixRT Database: 
+
+If it does not already exist, on your SQL Server instance create a new database 
+named 'LogixRT'.
+
+Ensure that the LogixRT database has the Copient_Logix_uspRole role defined, 
+and that Copient_Logix is a member of that role. If not, run the SQL below to 
+create the role and add Copient_Logix as a member.
+
+        sp_addrole 'Copient_Logix_uspRole'
+        GO
+        sp_addrolemember 'Copient_Logix_uspRole', 'Copient_Logix'
+        GO
+
+Ensure that Copient_Logix has db_owner permission on the LogixRT database.
+
+In SQL Server Management Studio (SSMS), select your LogixRT database and run 
+the following scripts in the given order
+
+    LogixRTUpgrade.sql* (if present)
+    LogixRT_database.sql
+    LogixRTPhraseLibrary-Complete.sql
+    LogixRT_Adjustments_to_base.sql (if present)
+
+*IF THE UPGRADE SCRIPT IS INCLUDED,
+DO NOT RUN THIS SCRIPT MORE THAN ONCE! The LogixRTUpgrade.sql script is intended 
+to only be run on a database one time. It is a transitional script, to bring the 
+database from a known pre-5.11.1 state to the post 5.11.1 state, after which the 
+LogixRT_database.sql will bring the database to the proper current state. If the 
+database it is run on is not in the expected starting state, errors will occur.
+
+
+
+LogixXS
+-------
+To install or update the LogixXS Database: 
+
+If it does not already exist, on your SQL Server instance create a new database 
+named 'LogixXS'.
+
+Ensure that the LogixXS database has the Copient_Logix_uspRole role defined, 
+and that Copient_Logix is a member of that role. If not, run the SQL below to 
+create the role and add Copient_Logix as a member.
+
+        sp_addrole 'Copient_Logix_uspRole'
+        GO
+        sp_addrolemember 'Copient_Logix_uspRole', 'Copient_Logix'
+        GO
+
+Ensure that Copient_Logix has db_datareader and db_datawriter permissions on 
+the LogixXS database.
+
+In SSMS, select your LogixXS database, and run the following script
+
+    LogixXSUpgrade.sql* (if present) 
+    LogixXS_database.sql
+    LogixXS_Adjustments_to_base.sql (if present) 
+
+*IF THE UPGRADE SCRIPT IS INCLUDED,
+DO NOT RUN THIS SCRIPT MORE THAN ONCE! The LogixXSUpgrade.sql script is intended 
+to only be run on a database one time. It is a transitional script, to bring the 
+database from a known pre-5.11.1 state to the post 5.11.1 state, after which the 
+LogixXS_database.sql will bring the database to the proper current state. If the 
+database it is run on is not in the expected starting state, errors will occur.
+
+
+LogixWH
+-------
+To install or update the LogixWH Database: 
+
+If it does not already exist, on your SQL Server instance create a new database 
+named 'LogixWH'.
+
+Ensure that the LogixWH database has the Copient_Logix_uspRole role defined, 
+and that Copient_Logix is a member of that role. If not, run the SQL below to 
+create the role and add Copient_Logix as a member.
+
+        sp_addrole 'Copient_Logix_uspRole'
+        GO
+        sp_addrolemember 'Copient_Logix_uspRole', 'Copient_Logix'
+        GO
+
+Ensure that Copient_Logix has db_datareader and db_datawriter permissions on 
+the LogixWH database.
+
+In SSMS, select your LogixWH database, and run the following script
+
+    LogixWHUpgrade.sql* (if present) 
+    LogixWH_database.sql
+    LogixWH_Adjustments_to_base.sql (if present) 
+
+
+*IF THE UPGRADE SCRIPT IS INCLUDED,
+DO NOT RUN THIS SCRIPT MORE THAN ONCE! The LogixWHUpgrade.sql script is intended 
+to only be run on a database one time. It is a transitional script, to bring the 
+database from a known pre-5.11.1 state to the post 5.11.1 state, after which the 
+LogixWH_database.sql will bring the database to the proper current state. If the 
+database it is run on is not in the expected starting state, errors will occur.
+
+
+
+
+LogixEX
+-------
+To install or update the Logix EX Database: 
+
+If it does not already exist, on your SQL Server instance create a new database 
+named 'LogixEX'.
+
+Ensure that the LogixEX database has the Copient_Logix_uspRole role defined, 
+and that Copient_Logix is a member of that role. If not, run the SQL below to 
+create the role and add Copient_Logix as a member.
+
+        sp_addrole 'Copient_Logix_uspRole'
+        GO
+        sp_addrolemember 'Copient_Logix_uspRole', 'Copient_Logix'
+        GO
+
+Ensure that Copient_Logix has db_owner permission on the LogixEX database
+
+In SSMS, select your LogixEX database, and run the following script
+
+    LogixEXUpgrade.sql* (if present)
+    LogixEX_database.sql
+    LogixEX_Adjustments_to_base.sql (if present)
+
+*IF THE UPGRADE SCRIPT IS INCLUDED,
+DO NOT RUN THIS SCRIPT MORE THAN ONCE! The LogixEXUpgrade.sql script is intended 
+to only be run on a database one time. It is a transitional script, to bring the 
+database from a known pre-5.11.1 state to the post 5.11.1 state, after which the 
+LogixEX_database.sql will bring the database to the proper current state. If the 
+database it is run on is not in the expected starting state, errors will occur.
+
+
+
+Your Logix databases are now up-to-date and ready for use.
+
+
+
+---------------------------------------------------------------------
+$Rev: 83053 $ $Date: 2014-09-18 08:34:13 -0400 (Thu, 18 Sep 2014) $

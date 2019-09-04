@@ -1,0 +1,32 @@
+7.0
+30
+1	SQLCHAR	0	255	","	2	ClientLocationCode
+2	SQLCHAR	0	255	","	3	BoxID
+3	SQLCHAR	0	255	","	4	TransactionNumber
+4	SQLCHAR	0	255	","	5	PrimaryExtID
+5	SQLCHAR	0	255	","	6	OfferID
+6	SQLCHAR	0	255	","	7	ROID
+7	SQLCHAR	0	255	","	8	IssuanceDate
+8	SQLCHAR	0	255	","	9	DeliverableTypeID
+9	SQLCHAR	0	255	","	10	Void
+10	SQLCHAR	0	255	","	11	RewardQty
+11	SQLCHAR	0	255	","	12	ProgramID
+12	SQLCHAR	0	255	","	13	ChargeBackVendorID
+13	SQLCHAR	0	255	","	14	CashierNum
+14	SQLCHAR	0	255	","	15	ChargebackDept
+15	SQLCHAR	0	255	","	16	ExtCRMInterface
+16	SQLCHAR	0	255	","	17	SourceTypeID
+17	SQLCHAR	0	255	","	18	PromoEngine
+18	SQLCHAR	0	255	","	19	LocationID
+19	SQLCHAR	0	255	","	20	ClientOfferID
+20	SQLCHAR	0	255	","	21	RewardValue
+21	SQLCHAR	0	255	","	22	UniqueID
+22	SQLCHAR	0	255	","	23	Expiration
+23	SQLCHAR	0	255	","	24	Gross
+24	SQLCHAR	0	255	","	25	Net
+25	SQLCHAR	0	255	","	26	ExceedManualThreshold
+26	SQLCHAR	0	255	","	27	LogixTransNum
+27	SQLCHAR	0	255	","	28	VendorCouponCode
+28	SQLCHAR	0	255	","	29	ManufacturerCoupon
+29	SQLCHAR	0	255	","	33	AirmileMemberID
+30	SQLCHAR	0	255	"\r\n"	34	CardTypeID

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ProductHierarchy">
+		<xs:complexType mixed="false">
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="RemoveHierarchy" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AddHierarchy" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne"/>
+							<xs:element name="LeafName" type="hundredChars"/>
+							<xs:element name="DisplayID" type="hundredChars" minOccurs="0"/>
+							<xs:element name="Restricted" type="bit" minOccurs="0" maxOccurs="1"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AddBranch" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne"/>
+							<xs:element name="Branch" type="xs:string"/>
+							<xs:element name="LeafName" type="hundredChars"/>
+							<xs:element name="DisplayID" type="hundredChars" minOccurs="0"/>
+							<xs:element name="Restricted" type="bit" minOccurs="0" maxOccurs="1"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RemoveBranch" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne"/>
+							<xs:element name="Branch" type="xs:string"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AddLeaf" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne" minOccurs="1"/>
+							<xs:element name="Branch" type="xs:string" minOccurs="1"/>
+							<xs:element name="LeafName" type="hundredChars" minOccurs="1"/>
+							<xs:element name="LeafDescription" type="hundredChars" minOccurs="0"/>
+							<xs:element name="LeafType" minOccurs="0" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="nodeandleaftype">
+										<xs:minInclusive value="0" fixed="false"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Restricted" type="bit" minOccurs="0" maxOccurs="1"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RemoveLeaf" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne" minOccurs="1"/>
+							<xs:element name="Branch" type="xs:string" minOccurs="1"/>
+							<xs:element name="LeafType" minOccurs="0" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="nodeandleaftype">
+										<xs:minInclusive value="0" fixed="false"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AddNode" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne"/>
+							<xs:element name="NodeID" type="hundredtwentyCharsMinimumOne"/>
+							<xs:element name="ParentID" type="hundredtwentyCharsMinimumOne"/>
+							<xs:element name="Name" type="hundredChars"/>
+							<xs:element name="DisplayID" type="hundredChars" minOccurs="0"/>
+							<xs:element name="Restricted" type="bit" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="NodeType" minOccurs="0" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="nodeandleaftype">
+										<xs:minInclusive value="0" fixed="false"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RemoveNode" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne"/>
+							<xs:element name="NodeID" type="hundredtwentyCharsMinimumOne"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AddProduct" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne"/>
+							<xs:element name="NodeID" type="hundredtwentyCharsMinimumOne"/>
+							<xs:element name="ProductID" type="hundredtwentyChars"/>
+							<xs:element name="ProductDescription" type="hundredChars" minOccurs="0"/>
+							<xs:element name="ProductTypeID" type="productTypeIDs" minOccurs="0"/>
+							<xs:element name="Restricted" type="bit" minOccurs="0" maxOccurs="1"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RemoveProduct" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HierarchyID" type="hundredCharsMinimumOne"/>
+							<xs:element name="NodeID" type="hundredtwentyCharsMinimumOne"/>
+							<xs:element name="ProductID" type="hundredtwentyChars"/>
+							<xs:element name="ProductTypeID" type="productTypeIDs" minOccurs="0"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="hundredtwentyChars">
+		<xs:restriction base="xs:string">
+		<xs:whiteSpace value="collapse"/>
+			<xs:minLength value="1"/>
+			<xs:maxLength value="120"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="fiftyChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="hundredChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="hundredCharsMinimumOne">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="hundredtwentyCharsMinimumOne">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="120"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="twohundredChars">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="nodeandleaftype">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxExclusive value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="productTypeIDs">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"/>
+			<xs:maxExclusive value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="bit">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

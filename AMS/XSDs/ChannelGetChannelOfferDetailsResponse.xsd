@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GetChannelOfferDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Offers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Offer" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OfferID" type="xs:long" />
+                    <xs:element name="Media">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="MediaAsset" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="MediaTypeID" type="xs:int" />
+                                <xs:element name="MediaType" type="xs:string" />
+                                <xs:element name="MediaFormatID" type="xs:int" />
+                                <xs:element name="MediaFormat" type="xs:string" />
+                                <xs:element name="MediaData" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

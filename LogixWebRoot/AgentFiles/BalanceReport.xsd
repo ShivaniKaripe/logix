@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema id="BalanceReport" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="balancereport">
+    <xs:complexType mixed="false">
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="reportrecord" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="programcode" type="xs:string" />
+              <xs:element name="memberid" type="memberIdType" />
+              <xs:element name="standingcount" type="xs:nonNegativeInteger" />
+              <xs:element name="rewardcount" type="xs:nonNegativeInteger" />
+              <xs:element name="currentcredit" type="xs:decimal" />
+              <xs:element name="valuetoearn" type="xs:decimal" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="start" type="xs:dateTime" />
+      <xs:attribute name="end" type="xs:dateTime" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="memberIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{26}" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

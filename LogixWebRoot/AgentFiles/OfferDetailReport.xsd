@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xs:schema id="OfferDetail" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="OfferDetail">
+    <xs:complexType>
+	 <xs:sequence>
+	  <xs:element name="Offer" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OfferID" type="xs:int" minOccurs="1" />
+			  <xs:element name="ROID" type="xs:int" minOccurs="0" />	              
+			  <xs:element name="OfferName" type="xs:string" minOccurs="1" />
+			  <xs:element name="OfferStatus" type="xs:string" minOccurs="1" />
+              <xs:element name="Description" type="xs:string" minOccurs="0" />
+			  <xs:element name="ExternalID" type="xs:int" minOccurs="0" />	
+              <xs:element name="Tiers" type="xs:int" minOccurs="0" />
+              <xs:element name="Category" type="xs:int" minOccurs="0" />
+			  <xs:element name="Priority" type="xs:string"  minOccurs="0" />	
+              <xs:element name="Period" type="xs:string"  minOccurs="0" />	  
+              <xs:element name="Limits" type="xs:string"  minOccurs="0" />	
+			  <xs:element name="ChargebackVendor" type="xs:string"  minOccurs="0" />	
+			  <xs:element name="CreationSource" type="xs:string"  minOccurs="0" />
+			  <xs:element name="SendOutboundData" type="xs:string"  minOccurs="0" />
+			  <xs:element name="EnableHouseHolding" type="xs:string"  minOccurs="0" />
+              <xs:element name="Conditions" minOccurs="0"/>			 
+		      <xs:element name="Rewards" minOccurs="0"/>
+              <xs:element name="StoreGroup" minOccurs="0"/>	
+              <xs:element name="Terminals" minOccurs="0"/>			  
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+     </xs:sequence>
+	</xs:complexType>
+   </xs:element>
+</xs:schema>

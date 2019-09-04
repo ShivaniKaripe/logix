@@ -1,0 +1,1 @@
+This directory is used to keep copies of deployed offer files for CPEOfferAgent and UEOfferAgent.

@@ -1,0 +1,1 @@
+This directory is the default location for Remote Data output.

@@ -1,0 +1,11 @@
+7.0
+8
+1	SQLCHAR	0	255	","	1	ExternalID
+2	SQLCHAR	0	255	","	2	ExtCardTypeID
+3	SQLCHAR	0	255	","	3	AdjAmount
+4	SQLCHAR	0	255	","	12	AdjustmentSourceID
+5	SQLCHAR	0	255	","	13	AdjustmentTypeID
+6	SQLCHAR	0	255	","	14	AdjustmentReasonID
+7	SQLCHAR	0	255	","	15	AdjustmentReasonText
+8	SQLCHAR	0	255	"\r\n"	17	ExternalIDOriginal
+

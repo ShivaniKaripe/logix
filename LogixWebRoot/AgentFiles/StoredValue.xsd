@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema elementFormDefault="qualified"
+           targetNamespace="http://www.ncr.com/rsd/cm/storedvalue/1.0"
+           xmlns="http://www.ncr.com/rsd/cm/storedvalue/1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   
+   <xs:element name="StoredValueSummary" type="StoredValueSummaryType" />
+   
+   <xs:complexType name="StoredValueSummaryType">
+      <xs:sequence>
+         <xs:element name="StoredValueReward" type="StoredValueRewardType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:complexType name="StoredValueRewardType">
+      <xs:attribute name="MemberID" type="xs:string" use="required" />
+      <xs:attribute name="DateTime" type="xs:dateTime" use="required" />
+      <xs:attribute name="TerminalNum" type="xs:unsignedShort" use="required" />
+      <xs:attribute name="TransNum" type="xs:unsignedInt" use="required" />
+      <xs:attribute name="ProgramID" type="xs:unsignedInt" use="required" />
+      <xs:attribute name="ServerSerial" type="xs:int" use="required" />
+      <xs:attribute name="ExternalID" type="UniqueIDType" use="required" />
+      <xs:attribute name="LocalID" type="UniqueIDType" use="required" />
+      <xs:attribute name="Expiration" type="xs:dateTime" use="required" />
+      <xs:attribute name="Status" use="required">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="Issued" />
+               <xs:enumeration value="Claimed" />
+               <xs:enumeration value="Redeemed" />
+               <xs:enumeration value="Released" />
+               <xs:enumeration value="Reissued" />
+               <xs:enumeration value="Expired" />
+               <xs:enumeration value="Revoked" />
+               <xs:enumeration value="Invalid" />
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="UnitLimit" type="xs:decimal" use="required" />
+      <xs:attribute name="UnitValue" type="xs:decimal" use="required" />
+      <xs:attribute name="QuantityEarned" type="xs:unsignedInt" use="required" />
+      <xs:attribute name="ComputedTotalAmount" type="xs:decimal" use="required" />
+      <xs:attribute name="ComputedBreakageAmount" type="xs:decimal" use="required" />
+      <xs:attribute name="ComputedRedeemedAmount" type="xs:decimal" use="required" />
+      <xs:attribute name="TransactionType" use="required">
+         <xs:simpleType>
+            <xs:restriction base="xs:string">
+               <xs:enumeration value="Online" />
+               <xs:enumeration value="Offline Replay" />    <!-- Offline to server -->
+               <xs:enumeration value="Offline Central" />   <!-- Offline to host -->
+               <xs:enumeration value="Central Update" />
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="UserID" type="xs:string" use="optional"/>
+      <xs:attribute name="UserName" type="xs:string" use="optional"/>
+      <xs:sequence>
+         <xs:element name="Offer" type="OfferType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:complexType name="OfferType">
+      <xs:attribute name="OfferID" type="xs:unsignedInt" use="required"/>
+      <xs:attribute name="OfferQuantityEarned" type="xs:unsignedInt" use="required"/>
+   </xs:complexType>
+   
+   <xs:simpleType name="UniqueIDType">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="12" />
+      </xs:restriction>
+   </xs:simpleType>
+   
+</xs:schema>

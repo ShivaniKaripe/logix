@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<Cards xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="KioskWebCards.xsd" returnCode="SUCCESS">
+  <Card>
+    <CardID>1233213</CardID>
+    <CardStatus>ACTIVE</CardStatus>
+    <CardType>CUSTOMER</CardType>
+  </Card>
+  <Card>
+    <CardID>2424234</CardID>
+    <CardStatus>ACTIVE</CardStatus>
+    <CardType>CUSTOMER</CardType>
+  </Card>
+</Cards>
+
+
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+        <xs:element name="GetTrackableCouponPrograms">
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:element name="TracakableCouponPrograms">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="TracakableCouponProgram" maxOccurs="unbounded">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="ProgramID" type="xs:int"></xs:element>
+                                                               <xs:element name="Name" type="xs:string"></xs:element>
+                                                               <xs:element name="ExtProgramID" type="xs:int"></xs:element>
+															   <xs:element name="Description" type="xs:string" minOccurs="0"></xs:element>
+                                                               <xs:element name="MaxRedeemCount" type="xs:Byte"></xs:element>
+                                                               <xs:element name="CreatedDate" type="xs:dateTime"></xs:element>
+                                                               <xs:element name="LastUpdate" type="xs:dateTime"></xs:element>
+															   <xs:element name="LastLoaded" type="xs:dateTime" minOccurs="0"></xs:element>
+															   <xs:element name="ExpireDate" type="xs:dateTime" minOccurs="0"></xs:element>
+                                                               <xs:element name="AssosiatedCouponCount" type="xs:int"></xs:element>
+                                                               <xs:element name="Deleted" type="xs:boolean"></xs:element>
+                                                         </xs:sequence>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:element name="Status">
+                                 <xs:complexType>
+                                       <xs:attribute name="operation" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="success" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="responsecode" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="message" type="xs:string"></xs:attribute>
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>

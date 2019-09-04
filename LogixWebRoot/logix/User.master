@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="User.master.cs" Inherits="logix_LogixMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+  
+ <script type="text/javascript" src="/javascript/logix.js"></script>
+  <script type="text/javascript" src="/javascript/jquery.min.js"></script>
+  <script type="text/javascript" src="/javascript/datePicker.js"></script>
+  <script type="text/javascript" src="/javascript/jquery-ui-1.10.3/jquery-ui-min.js"></script>
+  <link rel="stylesheet" href="/javascript/jquery-ui-1.10.3/style/jquery-ui.min.css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+      
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+<div id="custom1"></div>
+<div id="wrap">
+<div id="custom2"></div>
+<a id="top" name="top"></a>
+
+<div id="bar">
+  <span id="skip"><a href="#skiptabs">▼</a></span>
+  <span id="time" runat="server" clientidmode="Static"></span>
+ <span id="date" runat="server" clientidmode="Static"> </span>
+ <!-- Admin UserID =1 -->
+
+ <span id="user"><a id="useredit" runat="server"></a><span class="noprint"> | </span></span>
+  <a href="/logix/login.aspx?mode=logout" id="logout"><b><%=(this.Page as AuthenticatedUI).PhraseLib.Lookup("term.logout",(this.Page as AuthenticatedUI).LanguageID)%> </b></a>
+</div>
+
+<div id="logos">
+  <div id="logix" title='<%=(this.Page as AuthenticatedUI).PhraseLib.Lookup("term.logix", (this.Page as AuthenticatedUI).LanguageID) %>'></div>
+  <%
+    if (System.IO.File.Exists(Server.MapPath("/images/logos/licenseecustom.png")))
+    { %>
+  <div id="licenseecustom" title='<%= (this.Page as AuthenticatedUI).PhraseLib.Lookup("term.licensee", (this.Page as AuthenticatedUI).LanguageID) %>'></div>
+  <%}
+    else
+    { %>
+  <div id="licensee" title='<%=(this.Page as AuthenticatedUI).PhraseLib.Lookup("term.licensee", (this.Page as AuthenticatedUI).LanguageID)%>'></div>
+    <%} %>
+  <br clear="all" />
+</div>
+
+<div id="tabs">
+<asp:PlaceHolder runat="server" ID="phMenu" ></asp:PlaceHolder>
+
+  <br clear="all" />
+</div>
+<div id="subtabs">
+<asp:PlaceHolder runat="server" ID="phSubMenu" ></asp:PlaceHolder>
+
+  <br clear="all" />
+  <hr class="hidden" />
+  <a id="skiptabs" name="skiptabs"></a>
+
+</div>
+
+    <form id="mainform" runat="server">
+    <asp:ScriptManager
+      ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+    <ContentTemplate>
+    <div>
+    <asp:Label ID="lblErrorMsg" runat="server" Text="Label"></asp:Label>
+    </div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+   </ContentTemplate>
+
+    </asp:UpdatePanel>
+    </form>
+    <a id="bottom" name="bottom"></a>
+<div id="footer">
+  Logix is copyright 2002 NCR Corporation, all rights reserved.
+</div>
+<div id="custom3"></div>
+</div> <!-- End wrap -->
+<div id="custom4"></div>
+
+</body>
+</html>

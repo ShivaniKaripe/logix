@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Cards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Card" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CardID" type="stringLen26" minOccurs="1" maxOccurs="1" />
+              <xs:element name="CardStatus" type="CardStatusType" minOccurs="1" maxOccurs="1" />
+              <xs:element name="CardType" type="CardKind" minOccurs="1" maxOccurs="1" />
+              <xs:element name="CustomerPK" type="xs:long" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Error" minOccurs="0" maxOccurs="1" type="xs:string" />
+      </xs:sequence>
+      <xs:attribute name="returnCode" type="statusCodeType" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="stringLen26">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="26" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="statusCodeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS" />
+      <xs:enumeration value="INVALID_GUID" />
+      <xs:enumeration value="APPLICATION_EXCEPTION" />
+      <xs:enumeration value="INVALID_LOCATION" />
+      <xs:enumeration value="ALT_ID_NOT_FOUND" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CardStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE" />
+      <xs:enumeration value="INACTIVE" />
+      <xs:enumeration value="CANCELED" />
+      <xs:enumeration value="EXPIRED" />
+      <xs:enumeration value="LOST_STOLEN" />
+      <xs:enumeration value="DEFAULT_CARD" />
+      <xs:enumeration value="UNKNOWN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CardKind">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CUSTOMER" />
+      <xs:enumeration value="HOUSEHOLD" />
+      <xs:enumeration value="CAM" />
+      <xs:enumeration value="UNKNOWN" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

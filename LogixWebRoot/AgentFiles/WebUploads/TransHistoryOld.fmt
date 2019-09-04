@@ -1,0 +1,10 @@
+7.0
+8
+1	SQLCHAR	0	255	","	1	OfferID
+2	SQLCHAR	0	255	","	2	ExtLocationCode
+3	SQLCHAR	0	255	","	3	CustomerPrimaryExtID
+4	SQLCHAR	0	255	","	4	RedemptionCount
+5	SQLCHAR	0	255	","	5	RedemptionAmount
+6	SQLCHAR 0	255	","	6	TransDate
+7	SQLCHAR	0	255	","	7	TerminalNum
+8	SQLCHAR	0	255	"\r\n"	8	TransNum

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="OptOutOfOffer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Status">
+          <xs:complexType>
+            <xs:attribute name="message" type="xs:string" use="required" />
+            <xs:attribute name="responsecode" type="xs:string" use="required" />
+            <xs:attribute name="success" type="xs:boolean" use="required" />
+            <xs:attribute name="operation" type="xs:string" use="required" />            
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

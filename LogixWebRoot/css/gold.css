@@ -1,0 +1,351 @@
+/* Logix 5 screen stylesheet */
+/* version:7.3.1.138972.Official Build (SUSDAY10202) */
+/* "Gold" variant */
+
+
+/* GENERAL DECLARATIONS============== */
+
+body {
+  background: #000000 url("../images/gold/background.png") repeat-x top center;
+  }
+body.popup {
+  background: #ffffff url("../images/clear.png") no-repeat;
+  }
+#custom1 {
+  background: url("../images/gold/shadow.png") repeat-y top center;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  }
+* html #custom1 {
+  background: #000000 url("");
+  top: 0;
+  width: 776px;
+  }
+#custom2 {
+  background-color: #000000;
+  height: 100px;
+  position: absolute;
+  width: 776px;
+  z-index: 5;
+  }
+* html #custom2 {
+  display: none;
+  }
+body.popup #custom1 {
+  display: none;
+  }
+body.popup #custom2 {
+  display: none;
+  }
+.popup .boxwrap {
+  background: url("../images/gold/box.png") repeat-x scroll center top #FFFFFF;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  text-align: left;
+  text-indent:5px;
+  }
+.popup .boxwrap h3 {
+  padding-top:5px;
+  height:20px;
+  color:#000000;
+  }
+
+.greybox {
+  background:WHITE url("../images/ncr/grayBox.png") repeat-x top;
+  border-radius: 5px;
+  height:auto;
+  -moz-border-radius: 5px;
+  border:1px solid black;
+  
+  }
+/* offer redemption section in IE9 with h2 attributes */
+.redemption {
+  color: #000000;
+  font-weight: bold;
+  margin: 1px;
+  padding: 0;
+  }
+.tempofferredeem {
+  background-color: #ffdddd;
+  border: 1px solid #ff0000;
+  display: block;
+  float: right;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0 3px 3px 0;
+  padding: 1px 3px 1px 2px;
+  position: relative;
+  right: -5px;
+  }
+* html .tempofferredeem {
+  padding: 0 1px 0 0;
+  top: -19px;
+  }
+
+/* DIV CASCADES====================== */
+
+/* BAR SECTION */
+#bar {
+  background: url("") no-repeat top center;
+  color: #dddddd;
+  font-size: 11px;
+  padding-top: 5px;
+  }
+
+
+/* HELP BUTTON */
+/* #gethelp {
+/*  background: url("../images/gold/help.png") no-repeat top right;
+/*  height: 23px;
+/*  right: 0;
+/*  top: 0;
+/*  width: 23px;
+/*  }
+/*#helpbutton {
+/*  height: 23px;
+/*  width: 23px;
+/*  }
+
+
+/* LOGOS SECTION */
+#logos {
+  background-color: transparent;
+  }
+#logix {
+  background: url("../images/logos/logix-black.png") no-repeat top left;
+  height: 38px;
+  margin-left: 5px;
+  }
+#licensee {
+  background: url("../images/logos/licensee-black.png") no-repeat top right;
+  height: 38px;
+  margin-right: 6px;
+  }
+#licenseecustom {
+  background: url("../images/logos/licenseecustom.png") no-repeat top right;
+  float: right;
+  height: 30px;
+  text-align: right;
+  width: 113px;
+  }
+
+/* TABS SECTION */
+#tabs {
+  background: #000000 url("../images/gold/tabs.png");
+  color: #ffffff;
+  font-size: 13px;
+  height: 27px;
+  top: 41px;
+  }
+#tabs a, #tabs a.on {
+  background: #000000 url("../images/gold/tabs.png");
+  /* border-left: 1px solid #999999; */
+  color: #ffffff;
+  font-weight: bold;
+  height: auto !important;
+  left: 10px;
+  line-height: auto !important;
+  margin: auto;
+  width: auto;
+  padding: 0 10px 9px 10px;
+  top: 4px;
+  width: auto;
+  }
+#tabs a:hover {
+  background: transparent url("../images/gold/tab-hover.png") no-repeat bottom center;
+  }
+#tabs a.on {
+  background: transparent url("../images/gold/tab-on.png") no-repeat bottom center;
+  font-weight: bold;
+  height: 25px;
+  }
+* html #tabs a.on {
+  height: 30px;
+  }
+#tabs a.on:hover {
+  background: transparent url("../images/gold/tab-on.png") no-repeat bottom center;
+  }
+#tabs > a:first-child {
+  border: 0;
+  }
+
+
+/* SUBTABS SECTION */
+#subtabs {
+  background: transparent url("../images/gold/subtabs.png");
+  color: #ffffff;
+  font-size: 13px;
+  height: 27px;
+  position: absolute;
+  top: 68px;
+  width: 776px;
+  z-index: 30;
+  }
+#subtabs a {
+  background: transparent url("../images/gold/subtabs.png") 0px -5px;
+  border: 0;
+  /* border-left: 1px solid #999999; */
+  color: #ffffff !important;
+  float: left;
+  font-weight: bold;
+  height: auto !important;
+  left: 10px;
+  line-height: auto;
+  margin: auto;
+  padding: 0 6px 8px 6px;
+  top: 5px;
+  }
+#subtabs a:hover {
+  background: transparent url("../images/gold/subtab-hover.png") no-repeat bottom center;
+  color: #ffffff;
+  font-weight: bold;
+  margin: auto;
+  padding: 0 6px 8px 6px;
+  }
+#subtabs a.on {
+  background: transparent url("../images/gold/subtab-on.png") no-repeat bottom center;
+  border-bottom: 0;
+  color: #ffffff;
+  font-weight: bold;
+  }
+#subtabs > a:first-child {
+  border: 0;
+  }
+
+
+/* INTRO SECTION */
+#intro {
+  background: #ffffff url("");
+  border: 0;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  height: 32px;
+  padding: 11px 11px 0 11px;
+  width: 754px;
+  }
+* html #intro {
+  height: 45px;
+  }
+.template #intro {
+  background: #ffffff url("../images/gold/template.png");
+  }
+
+
+/* LIST BAR */
+#searcher, .searcher1 ,.customsearch {
+  background-color: #d0caea;
+  }
+
+#paginator ,#paginator1{
+  background-color: #d0caea;
+  }
+#paginator-short {
+  background-color: #d0caea;
+  }
+#filter ,#enginefilter{
+  background-color: #d0caea;
+  }
+#daterangebar {
+  background-color: #d0caea;
+  }
+
+
+/* MAIN SECTION */
+#main {
+  background-color: #ffffff !important;
+  border: 0;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  padding: 0 1px 10px 17px;
+  width: 758px;
+  }
+
+
+/* BOXES */
+.box {
+  background: #ffffff url("../images/gold/box.png") repeat-x top;
+  border: 1px solid #504030;
+  }
+#warnings {
+  background: #ffffff url('../images/gold/box-important.png') repeat-x top;
+  border-color: #603020;
+  }
+.subbox {
+  background: #ffffff url("../images/gold/subbox.png") repeat-x top;
+  border: 1px solid #cccccc;
+  padding: 0;
+  }
+.subbox h3 {
+  margin-bottom: 2px;
+  padding:2px 3px 3px 3px;
+  width: 50%;
+  }
+
+
+/* NOTES SECTION */
+
+
+
+/* FOOTER SECTION */
+#footer {
+  background: #886644 url("");
+  color: #cccccc;
+  }
+
+
+
+/* USER MANUAL RULES================ */
+
+.book h1 {
+  background-color: #997744;
+  }
+.book h2 {
+  background-color: #d0bb99;
+  }
+.book h3 {
+  background-color: #f0eed0;
+  }
+.part .helplinks a {
+  color: #ccbba2;
+  }
+.chapter .helplinks a {
+  color: #e8ddcc;
+  }
+
+
+
+/* MISCELLANEOUS===================== */
+.shaded {
+  background-color: #f0eded;
+  }
+.shadedmid {
+  background-color: #d0ccff;
+  }
+.shadeddark {
+  background-color: #dbd8d8;
+  }
+.shadedlight {
+  background-color: #ddeeff;
+  }
+.shadedlighter {
+  background-color: #eeeeff;
+  }
+.shadedred {
+  background-color: #FF2E2E;
+  color: White;
+  }
+.shadedlightred {
+  background-color: #ffcccc;
+  }
+.shadeddarkred {
+  background-color: #9C012A;
+  color: White;
+  }
+   .shadeddarkred a
+  {
+      color:White;
+  }
+.sortarrow {
+  color: #6666ff;
+  }

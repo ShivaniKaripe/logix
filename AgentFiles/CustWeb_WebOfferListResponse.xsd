@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <xs:schema id="OfferList" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="OfferList">
+      <xs:complexType>
+	     <xs:sequence>
+            <xs:element name="Status" minOccurs="1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="StatusCode" type="xs:int" minOccurs="0" />
+                <xs:element name="Description" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+           <xs:element name="Groups" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="OfferID" type="xs:long" minOccurs="1" />
+				<xs:element name="CPEClientOfferID" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Description" type="xs:string" minOccurs="0" />
+                <xs:element name="OfferCategoryID" type="xs:int" minOccurs="0" />
+                <xs:element name="StartDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="EndDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="CustomerGroupID" type="xs:long" minOccurs="0" />
+                <xs:element name="AllowOptOut" type="xs:boolean" minOccurs="0" />
+                <xs:element name="EmployeesOnly" type="xs:boolean" minOccurs="0" />
+                <xs:element name="EmployeesExcluded" type="xs:boolean" minOccurs="0" />
+                <xs:element name="BodyText" type="xs:string" minOccurs="0" />
+                <xs:element name="Graphic" type="xs:string" minOccurs="0" />
+                <xs:element name="OptType" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+		</xs:sequence>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>

@@ -1,0 +1,20 @@
+7.0
+18
+1	SQLCHAR	0	255	","	1	OfferID
+2	SQLCHAR	0	255	","	2	ExtLocationCode
+3	SQLCHAR	0	255	","	3	CustomerPrimaryExtID
+4	SQLCHAR	0	255	","	4	RedemptionCount
+5	SQLCHAR	0	255	","	5	RedemptionAmount
+6	SQLCHAR	0	255	","	6	TransDate
+7	SQLCHAR	0	255	","	7	TerminalNum
+8	SQLCHAR	0	255	","	8	TransNum
+9	SQLCHAR	0	255	","	10	LogixTransNum
+10	SQLCHAR	0	255	","	11	CustomerTypeID
+11	SQLCHAR	0	255	","	12	PresentedCustomerID
+12	SQLCHAR	0	255	","	13	PresentedCardTypeID
+13	SQLCHAR	0	255	","	14	HHID
+14	SQLCHAR	0	255	","	15	Replayed
+15	SQLCHAR 0	255	","	16	SVAmount
+16	SQLCHAR 0	255	","	17	SVProgramID
+17  SQLCHAR 0   255 "," 18  PointsAmount
+18	SQLCHAR 0	255	"\r\n"	19	PointsProgramID

@@ -1,0 +1,4 @@
+7.0
+2
+1	SQLCHAR	0	256	","	2	ExternalID
+2	SQLCHAR	0	256	"\r\n"	8	ExternalIDOriginal

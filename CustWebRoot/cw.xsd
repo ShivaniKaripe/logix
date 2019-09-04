@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- Introduction -->
+	<xs:annotation>
+		<xs:documentation>
+      This schema defines the structure of XML data for the
+      customer-facing website.  It creates custom types first,
+      then assembles these into sections, then finally arranges
+      the sections into the form of the final instance document.
+    </xs:documentation>
+	</xs:annotation>
+	<!-- Reusable types -->
+	<xs:simpleType name="int19">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0" />
+			<xs:maxInclusive value="9999999999999999999" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="int1">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:totalDigits value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="string50">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="string100">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="string200">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="200" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="currency">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="3" />
+			<xs:minInclusive value="0" />
+			<xs:maxInclusive value="999999999999.999" />
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Section assemblies -->
+	<xs:complexType name="CustomerType">
+		<xs:sequence>
+			<xs:element name="PrimaryExtID" type="int19" maxOccurs="1" minOccurs="1" />
+			<xs:element name="FirstName" type="string50" maxOccurs="1" minOccurs="1" />
+			<xs:element name="LastName" type="string50" maxOccurs="1" minOccurs="1" />
+			<xs:element name="Employee" type="xs:boolean" maxOccurs="1" minOccurs="1" />
+			<xs:element name="CardStatusID" type="int1" maxOccurs="1" minOccurs="1" />
+			<xs:element name="CurrYearSTD" type="currency" maxOccurs="1" minOccurs="1" />
+			<xs:element name="LastYearSTD" type="currency" maxOccurs="1" minOccurs="1" />
+			<xs:element name="CustomerTypeID" type="int1" maxOccurs="1" minOccurs="1" />
+			<xs:element name="HHPK" type="xs:long" maxOccurs="1" minOccurs="1" />
+			<xs:element name="Address" type="string100" maxOccurs="1" minOccurs="1" />
+			<xs:element name="City" type="string100" maxOccurs="1" minOccurs="1" />
+			<xs:element name="State" type="string100" maxOccurs="1" minOccurs="1" />
+			<xs:element name="Zip" type="string100" maxOccurs="1" minOccurs="1" />
+			<xs:element name="Country" type="string100" maxOccurs="1" minOccurs="1" />
+			<xs:element name="Phone" type="string100" maxOccurs="1" minOccurs="1" />
+			<xs:element name="Email" type="string100" maxOccurs="1" minOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="Editable" type="xs:boolean" />
+	</xs:complexType>
+	<xs:complexType name="OffersType">
+		<xs:sequence>
+			<xs:element name="Offer" maxOccurs="unbounded" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OfferID" type="xs:int" maxOccurs="1" minOccurs="1" />
+						<xs:element name="Name" type="string200" maxOccurs="1" minOccurs="1" />
+						<xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1" />
+						<xs:element name="StartDate" type="xs:date" maxOccurs="1" minOccurs="1" />
+						<xs:element name="EndDate" type="xs:date" maxOccurs="1" minOccurs="1" />
+						<xs:element name="AllowOptOut" type="xs:boolean" maxOccurs="1" minOccurs="1" />
+						<xs:element name="EmployeesOnly" type="xs:boolean" maxOccurs="1" minOccurs="1" />
+						<xs:element name="EmployeesExcluded" type="xs:boolean" maxOccurs="1" minOccurs="1" />
+						<xs:element name="Points" type="xs:int" maxOccurs="1" minOccurs="0" />
+						<xs:element name="Accumulation" type="xs:decimal" maxOccurs="1" minOccurs="0" />
+						<xs:element name="BodyText" type="xs:string" maxOccurs="1" minOccurs="0" />
+						<xs:element name="Graphic" type="xs:string" maxOccurs="1" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StoresType">
+		<xs:sequence>
+			<xs:element name="Store" maxOccurs="unbounded" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="LocationID" type="xs:int" maxOccurs="1" minOccurs="1" />
+						<xs:element name="LocationName" type="xs:string" maxOccurs="1" minOccurs="1" />
+						<xs:element name="ExtLocationCode" type="xs:string" maxOccurs="1" minOccurs="1" />
+						<xs:element name="Address1" type="xs:string" maxOccurs="1" minOccurs="1" />
+						<xs:element name="Address2" type="xs:string" maxOccurs="1" minOccurs="1" />
+						<xs:element name="City" type="xs:string" maxOccurs="1" minOccurs="1" />
+						<xs:element name="State" type="xs:string" maxOccurs="1" minOccurs="1" />
+						<xs:element name="Zip" type="xs:string" maxOccurs="1" minOccurs="1" />
+						<xs:element name="Country" type="xs:string" maxOccurs="1" minOccurs="1" />
+						<xs:element name="Phone" type="xs:string" maxOccurs="1" minOccurs="1" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AcknowledgmentType">
+		<xs:sequence>
+			<xs:element name="Acknowledgment" maxOccurs="unbounded" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PrimaryExtID" type="int19" maxOccurs="1" minOccurs="1" />
+						<xs:element name="CustomerGroupID" type="int19" maxOccurs="1" minOccurs="1" />
+						<xs:element name="OptIn" type="int1" maxOccurs="1" minOccurs="0" />
+						<xs:element name="OptOut" type="int1" maxOccurs="1" minOccurs="0" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Instance document structure -->
+	<xs:element name="CustWeb">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="Customer" type="CustomerType" maxOccurs="1" minOccurs="0" />
+				<xs:element name="Offers" type="OffersType" maxOccurs="1" minOccurs="0" />
+				<xs:element name="Groups" type="OffersType" maxOccurs="1" minOccurs="0" />
+				<xs:element name="Stores" type="StoresType" maxOccurs="1" minOccurs="0" />
+				<xs:element name="Acknowledgment" type="AcknowledgmentType" maxOccurs="1" minOccurs="0" />
+			</xs:all>
+			<xs:attribute name="CustomerPK" type="xs:int" />
+			<xs:attribute name="Mode" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

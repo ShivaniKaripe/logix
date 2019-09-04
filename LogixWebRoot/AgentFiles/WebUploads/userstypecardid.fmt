@@ -1,0 +1,6 @@
+7.0
+4
+1	SQLCHAR	0	255	","	2	ExternalID
+2	SQLCHAR	0	255	","	4	ExtCardTypeID
+3	SQLCHAR	0	255	","	8	ExternalIDOriginal
+4	SQLCHAR	0	255	"\r\n"	5	CardTypeID

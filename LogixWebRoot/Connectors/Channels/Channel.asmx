@@ -1,0 +1,1 @@
+<%@ WebService Language="C#" Class="ChannelService" CodeBehind="~/App_Code/CSCode/Channel.cs" %>

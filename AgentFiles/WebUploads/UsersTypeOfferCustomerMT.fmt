@@ -1,0 +1,15 @@
+7.0
+13
+1	SQLCHAR	0	255	","	1	ClientOfferID
+2	SQLCHAR	0	255	","	2	OfferID
+3	SQLCHAR	0	255	","	3	ExternalID
+4	SQLCHAR	0	255	","	4	ExtCardTypeID
+5	SQLCHAR	0	255	","	5	CardTypeID
+6	SQLCHAR	0	255	","	6	CustomerPK
+7	SQLCHAR	0	255	","	7	CustomerGroupID
+8	SQLCHAR	0	255	","	8	ProcessFlag
+9	SQLCHAR	0	255	","	9	ExtSourceID
+10	SQLCHAR	0	255	","	10	ExtInterfaceID
+11	SQLCHAR	0	255	","	11	ReferenceID
+12	SQLCHAR	0	255	","	12	ExternalIDOriginal
+13	SQLCHAR	0	255	"\r\n"	13	PaddingLength

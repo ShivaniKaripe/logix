@@ -1,0 +1,6 @@
+7.0
+3
+1	SQLCHAR	0	120	","	1	ExtProductID
+2	SQLCHAR	0	255	","	2	ProductTypeID
+3	SQLCHAR 0	255	"\r\n"	3	Description
+

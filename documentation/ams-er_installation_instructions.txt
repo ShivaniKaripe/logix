@@ -1,0 +1,24 @@
+Installation instructions for the AMS-ER product
+
+-Setting up the database
+There are two system options that are associated to AMS-ER. These are found in the LogixRT database on the SystemOptions table and are option ID 114 and 115.
+These queries can be run to set these system options:
+--
+Declare @FilePath nvarchar(255)
+Declare @AutoDeleteDays nvarchar(255)
+Set @FilePath = '' -- Put in the file path where you would like the report files to be stored. (Keep the single quotes)
+Set @AutoDeleteDays = '' -- Put in the number of days you would like these report files and records to be kept. (Keep the single quotes)
+update SystemOptions set OptionValue=@FilePath where OptionID=114;
+update SystemOptions set OptionValue=@AutoDeleteDays where OptionID=115;
+--
+If the file path for the report file is not set, the default install path, using the environment variables, will be used.
+If the deletion days are not set, reports will not be removed until manually deleted from the Logix UI.
+
+-Register libraries
+Registering the AMS-ER libraries requires running the registerone.bat file found in the RegisteredServerDLLs directory with the call "registerone.bat Reports".
+
+-Install agent
+The AMS-ER ReportProcessingAgent can be installed by running the install_agent.bat file found in the Agents directory with the call "install_agent.bat ReportProcessingAgent.exe .\CopientSVC App0mattox Y".
+
+-Uninstall agent
+The AMS-ER ReportProcessingAgent can be uninstalled by running the uninstall_agent.bat.bat file found in the Agents directory.

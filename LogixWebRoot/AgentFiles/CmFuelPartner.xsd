@@ -1,0 +1,55 @@
+﻿<?xml version="1.0"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ <xs:element name="Transactions">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="Transaction" minOccurs="0" maxOccurs="unbounded">
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element name="Type" type="TransactionType" minOccurs="1" maxOccurs="1" />
+       <xs:element name="ServerSerial" type="xs:integer" minOccurs="1" maxOccurs="1" />
+       <xs:element name="LocalID" type="xs:long" minOccurs="1" maxOccurs="1" />
+       <xs:element name="ProgramID" type="xs:long" minOccurs="1" maxOccurs="1" />
+       <xs:element name="CustomerID" type="CustomerIDType" minOccurs="1" maxOccurs="1" />
+       <xs:element name="Quantity" type="xs:integer" minOccurs="0" maxOccurs="1" />
+       <xs:element name="Expiration" type="xs:dateTime" minOccurs="0" maxOccurs="1" />
+       <xs:element name="UnitValue" type="xs:decimal" minOccurs="0" maxOccurs="1" default="0.01" />
+       <xs:element name="UnitLimit" type="xs:integer" minOccurs="0" maxOccurs="1" default="20" />
+       <xs:element name="Error" type="xs:string" minOccurs="0" maxOccurs="1" default="" />
+      </xs:sequence>
+     </xs:complexType>
+    </xs:element>
+   </xs:sequence>
+   <xs:attribute name="Source" type="xs:string" use="required" />
+   <xs:attribute name="Date" type="xs:dateTime" use="required" />
+   <xs:attribute name="TransactionCount" type="xs:integer" use="optional" />
+   <xs:attribute name="DailySequenceNumber" type="xs:integer" use="optional" />
+  </xs:complexType>
+ </xs:element>
+ <!-- Complex Types Start -->
+ <!-- Simple Types Start -->
+ <xs:simpleType name="TransactionType">
+  <xs:restriction base="xs:string">
+   <xs:enumeration value="Issue" />
+   <xs:enumeration value="Redeem" />
+   <xs:enumeration value="Revoke" />
+  </xs:restriction>
+ </xs:simpleType>
+ <xs:simpleType name="CustomerIDType">
+  <xs:restriction base="xs:string">
+  </xs:restriction>
+ </xs:simpleType>
+ <xs:simpleType name="HoursType">
+  <xs:restriction base="xs:integer">
+   <xs:minInclusive value="0" />
+   <xs:maxInclusive value="23" />
+  </xs:restriction>
+ </xs:simpleType>
+ <xs:simpleType name="MinutesType">
+  <xs:restriction base="xs:integer">
+   <xs:minInclusive value="0" />
+   <xs:maxInclusive value="59" />
+  </xs:restriction>
+ </xs:simpleType>
+</xs:schema>

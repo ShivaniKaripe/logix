@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ProductUpdate">
+    <xs:complexType mixed="false">
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="UpdateProduct" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="ProductID" type="prodIdType" />
+              <xs:element name="ProductTypeID" type="xs:positiveInteger" />
+              <xs:element name="Description" type="descType" />
+              <xs:element name="Attributes"  minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Attribute" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Value" type="attributevaluetype" minOccurs="1" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="Name" type="attributenametype" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RemoveProduct" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="ProductID" type="prodIdType" />
+              <xs:element name="ProductTypeID" type="xs:positiveInteger" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+		 <xs:element name="AddAttributeAndValues" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="AddAttribute">
+                  <xs:complexType mixed="true">
+                    <xs:sequence minOccurs="0">
+                      <xs:element minOccurs="0" maxOccurs="unbounded" name="AttributeValue" type="attributevaluetype" />
+                    </xs:sequence>
+                    <xs:attribute name="AttributeName" type="attributenametype" use="required" />                   
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element> 
+	     <xs:element name="RemoveAttributeAndValues" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="1" maxOccurs="unbounded" name="RemoveAttribute">
+                  <xs:complexType mixed="true">
+                    <xs:sequence minOccurs="0">
+                      <xs:element maxOccurs="unbounded" name="AttributeValue" type="attributevaluetype" />
+                    </xs:sequence>
+                    <xs:attribute name="AttributeName" type="attributenametype" use="required" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+	 </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="prodIdType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="120" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="descType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="200" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="attributenametype">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+	  <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+    <xs:simpleType name="attributevaluetype">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+	  <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

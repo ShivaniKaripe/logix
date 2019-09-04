@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:6.1.0.91203.Unstable Build - WUSLF250051-5LO -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="LocationHierarchy">
+    <xs:complexType mixed="false">
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RemoveHierarchy" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AddHierarchy" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" />
+              <xs:element name="LeafName" type="hundredChars" />
+              <xs:element name="DisplayID" type="hundredChars" minOccurs="0" />
+			  <xs:element name="BannerID" type="fiftyChars" minOccurs="0" maxOccurs="1" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AddBranch" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" />
+              <xs:element name="Branch" type="xs:string" />
+              <xs:element name="LeafName" type="hundredChars" />
+              <xs:element name="DisplayID" type="hundredChars" minOccurs="0" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RemoveBranch" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" />
+              <xs:element name="Branch" type="xs:string" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AddLeaf" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" minOccurs="1" maxOccurs="1" />
+              <xs:element name="Branch" type="xs:string" minOccurs="1"  maxOccurs="1" />
+              <xs:element name="LeafName" type="hundredChars" minOccurs="1"  maxOccurs="1" />
+              <xs:element name="LocationCode" type="twentyChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="Addr" type="twohundredChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="Addr2" type="twohundredChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="City" type="hundredChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="State" type="fiftyChars" minOccurs="0"  maxOccurs="1"/>
+              <xs:element name="Zip" type="twentyChars" minOccurs="0"  maxOccurs="1" />
+			  <xs:element name="ISO3166Alpha2CountryCode" type="twoChars" minOccurs="0" maxOccurs="1"  />
+              <xs:element name="CountryID" type="xs:int" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="EngineID" type="xs:int" minOccurs="0" maxOccurs="1" />
+              <xs:element name="BannerID" type="fiftyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="TimeZone" type="twentyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ISO4217CurrencyCode" type="threeChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Contact" type="hundredChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Phone" type="twentyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Description" type="thousandChars" minOccurs="0" maxOccurs="1" />
+			  <xs:element name="TestingLocation" type="bit" minOccurs="0" maxOccurs="1" />
+			  <xs:element name="UnitOfMeasureSetID" type="xs:int" minOccurs="0" maxOccurs="1" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RemoveLeaf" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" minOccurs="1" />
+              <xs:element name="Branch" type="xs:string" minOccurs="1" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AddNode" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" />
+              <xs:element name="NodeID" type="hundredChars" />
+              <xs:element name="ParentID" type="hundredChars" />
+              <xs:element name="Name" type="hundredChars" />
+              <xs:element name="DisplayID" type="hundredChars" minOccurs="0" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RemoveNode" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" />
+              <xs:element name="NodeID" type="hundredChars" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AddLocation" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="NodeID" type="hundredChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="LocationName" type="hundredChars" minOccurs="0" />
+              <xs:element name="LocationCode" type="twentyChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="Addr" type="twohundredChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="Addr2" type="twohundredChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="City" type="hundredChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="State" type="fiftyChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="Zip" type="twentyChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="EngineID" type="xs:int" minOccurs="0" maxOccurs="1" />
+			  <xs:element name="ISO3166Alpha2CountryCode" type="twoChars" minOccurs="0" maxOccurs="1"  />
+              <xs:element name="CountryID" type="xs:int" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="BannerID" type="fiftyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="TimeZone" type="twentyChars" minOccurs="0"  maxOccurs="1" />
+              <xs:element name="ISO4217CurrencyCode" type="threeChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Contact" type="hundredChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Phone" type="twentyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Description" type="thousandChars" minOccurs="0" maxOccurs="1" />
+			  <xs:element name="TestingLocation" type="bit" minOccurs="0" maxOccurs="1" />
+			  <xs:element name="UnitOfMeasureSetID" type="xs:int" minOccurs="0" maxOccurs="1" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RemoveLocation" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="HierarchyID" type="hundredChars" />
+              <xs:element name="NodeID" type="hundredChars" />
+              <xs:element name="LocationCode" type="twentyChars" />
+              <xs:element name="EngineID" type="xs:int" minOccurs="0" maxOccurs="1" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="bit">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="twoChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="threeChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tenChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="twentyChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="fiftyChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="hundredChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="twohundredChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="200" />
+    </xs:restriction>
+  </xs:simpleType>
+    <xs:simpleType name="thousandChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1000" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

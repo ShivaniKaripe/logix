@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CustomerService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AddCustomer" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CustomerID" type="twenty-sixChars" minOccurs="1" maxOccurs="1" />
+              <xs:element name="CustomerType" type="customerType" minOccurs="1" maxOccurs="1" default="CUSTOMER" />
+              <xs:element name="FirstName" type="fiftyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="LastName" type="fiftyChars" minOccurs="0" maxOccurs="1" />
+              <xs:element name="DOB" type="xs:date" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Employee" type="bit" minOccurs="0" maxOccurs="1" />
+              <xs:element name="CardStatus" type="cardStatusType" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Phone" type="xs:long" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Address" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="City" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="State" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="ZIP" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Email" type="xs:string" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Country" type="xs:string" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+
+  </xs:element>
+  
+  <!-- Simple Types -->
+  <xs:simpleType name="twenty-sixChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="26" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="fiftyChars">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="bit">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="cardStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE" />
+      <xs:enumeration value="INACTIVE" />
+      <xs:enumeration value="CANCELED" />
+      <xs:enumeration value="EXPIRED" />
+      <xs:enumeration value="LOST_STOLEN" />
+      <xs:enumeration value="DEFAULT_CARD" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="customerType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CUSTOMER" />
+      <xs:enumeration value="HOUSEHOLD" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+</xs:schema>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" >
+  <!-- Definition of Simple Types -->
+  <xs:simpleType name="positiveInt">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="emailType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(([a-zA-Z0-9_-])*\.([a-zA-Z0-9_-])+)+" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="imageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GIF" />
+      <xs:enumeration value="JPG" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="customerCodeType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="0" />
+      <xs:enumeration value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- Definition of Simple Elements -->
+  <xs:element name="offerID" type="positiveInt" />
+  <xs:element name="offerName" type="xs:string" />
+  <xs:element name="startdate" type="xs:date" />
+  <xs:element name="enddate" type="xs:date" />
+  <xs:element name="responseURL" type="xs:anyURI" />
+  <xs:element name="customerID" type="xs:string" />
+  <xs:element name="email" type="emailType" />
+  <xs:element name="firstName" type="xs:string" />
+  <xs:element name="lastName" type="xs:string" />
+  <xs:element name="message" type="xs:string" />
+  <xs:element name="binaryData" type="xs:base64Binary" />
+  <xs:element name="imageFormat" type="imageType" />
+  <xs:element name="width" type="xs:int" />
+  <xs:element name="height" type="xs:int" />
+  <xs:element name="customerGroupID" type="positiveInt" />
+  <xs:element name="programID" type="positiveInt" />
+  <xs:element name="rewardQuantity" type="xs:int" />
+  <xs:element name="programName" type="xs:string" />
+  <xs:element name="customerGroupName" type="xs:string" />
+
+  <!-- Definition of Complex Elements -->
+  <xs:element name="customer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="email" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="firstName" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="lastName" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" use="required" />
+      <xs:attribute name="type" type="customerCodeType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="customerGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="customer" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="id" type="positiveInt" use="required" />
+      <xs:attribute name="excluded" type="xs:boolean" use="required" />
+      <xs:attribute name="name" type="xs:string" use="optional"/>
+      <xs:attribute name="anycardholder" type="xs:boolean" use="optional"/>
+      <xs:attribute name="anycustomer" type="xs:boolean" use="optional"/>
+      <xs:attribute name="newcardholders" type="xs:boolean" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="printedMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="message" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="displayOrder" type="positiveInt" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="graphic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="imageFormat" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="width" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="height" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="binaryData" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="displayOrder" type="positiveInt" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="membership">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="customerGroupID" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="customerGroupName" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="points">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="programID" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="programName" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="rewardQuantity" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="storedValue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="programID" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="programName" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="rewardQuantity" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="conditions">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="customerGroup" minOccurs="1" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="notifications">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="printedMessage" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="graphic" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rewards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="membership" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="points" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="storedValue" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="offer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="offerID" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="offerName" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="startdate" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="enddate" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="responseURL" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="conditions" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="notifications" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="rewards" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

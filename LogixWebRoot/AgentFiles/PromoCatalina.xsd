@@ -1,0 +1,892 @@
+﻿<?xml version="1.0"?>
+<!-- version:7.3.1.138972.Official Build (SUSDAY10202) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!-- Modifications made by Beiwei Zhang for SCER 325997, see below -->
+<!-- Added PMT version "2.00.00" -->
+<!-- Added NON_MEMBERS to the enumerated Exclude Group in Condition record --> 
+<!-- Added NON_MEMBERS to the enumerated Include Group in Reward record --> 
+<!-- Added INSERT_INTO_MEMBER_GROUP to the enumerated Reward Type -->
+<!-- Added REMOVE_FROM_MEMBER_GROUP to the enumurated Reward Type -->
+<!-- Added SUMMARY_RECEIPT_MESSAGE to the enumerated Reward Type -->
+<!-- Added new data type GroupIDType -->
+<!-- Added new data type ItemType -->
+<!-- Added new data type DeptType -->
+<!-- Added new data type MixMatchCodeType -->
+<!-- Added new data type MfrFamilyCodeType -->
+<!-- Modified ItemGroupType to use the new data types defined above -->
+<!-- Added optional <PGroups> to <ItemGroup> -->
+<!-- Added an optional attribute "BestDeal" to Reward record -->
+<!-- Added an optional attribute "ArithmeticRedemption" to Reward record -->
+<!-- Added new PMT record type <ProductGroup> -->
+<!-- Added new PMT record type <TenderGroup> -->
+<!-- Added Insert and Remove operations for member groups <ProductGroup> and <TenderGroup> -->
+<!-- Added <ProductGroup> and <TenderGroup> to Add and Delete operations -->
+<!-- Added new element <TGroups> to <Tenders> following <Tender> -->
+<!-- Added new element <TGroups> under <Tenders> following <Tender> -->
+<!-- Made <Tender> optional as there could be just <TGroups> -->
+<!-- Made <Limit> of <Reward> optional as it does not apply to group reward -->
+<!-- Made <Promo> record optional as there could be just member group records --> 
+<!-- end of modification history -->
+ <xsd:element name="PromoMaint" type="PromoMaintType"/>
+ <!-- Explicit type definitions -->
+	<xsd:simpleType name="PromoMaintString">
+	<xsd:restriction base="xsd:string">
+	 <xsd:pattern value="[^,]{1,}"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <!-- (1:255) -->
+ <xsd:simpleType name="positiveUnsignedByte">
+	<xsd:restriction base="xsd:unsignedByte">
+	 <xsd:minInclusive value="1"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <!-- (1:32767) -->
+ <xsd:simpleType name="positiveShort">
+	<xsd:restriction base="xsd:short">
+	 <xsd:minInclusive value="1"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <!-- (0:32767) -->
+ <xsd:simpleType name="nonnegShort">
+	<xsd:restriction base="xsd:short">
+	 <xsd:minInclusive value="0"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <!-- (1:2147483647) -->
+ <xsd:simpleType name="positiveInt">
+	<xsd:restriction base="xsd:int">
+	 <xsd:minInclusive value="1"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <!-- (-2147483648:2147483647) -->
+ <xsd:simpleType name="Int">
+	<xsd:restriction base="xsd:int">
+	 <xsd:minInclusive value="-2147483648"/>
+	 </xsd:restriction>
+ </xsd:simpleType>
+ <!-- (1:100) -->
+ <xsd:simpleType name="RepeatAtType">
+	<xsd:restriction base="xsd:unsignedByte">
+	 <xsd:minInclusive value="1"/>
+	 <xsd:maxInclusive value="100"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <!-- (0:15) -->
+ <xsd:simpleType name="MemberLevelType">
+	<xsd:restriction base="xsd:unsignedByte">
+	 <xsd:maxInclusive value="15"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <!-- (1:999999999) -->
+ <xsd:simpleType name="PromoIDType">
+	<xsd:restriction base="xsd:int">
+	 <xsd:minInclusive value="1"/>
+	 <xsd:maxInclusive value="999999999"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <xsd:simpleType name="MCLUType">
+	<xsd:restriction base="xsd:string">
+	</xsd:restriction>
+</xsd:simpleType>
+ <xsd:simpleType name="GroupIDType">
+	<xsd:restriction base="xsd:int">
+	</xsd:restriction>
+ </xsd:simpleType>
+ <xsd:simpleType name="ItemType">
+	<xsd:restriction base="xsd:string">
+	 <xsd:pattern value="[-]{0,1}[0-9]{1,14}"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <xsd:simpleType name="DeptType">
+	<xsd:restriction base="xsd:string">
+	 <xsd:pattern value="[-]{0,1}[0-9]{1,4}"/>
+	</xsd:restriction>  
+ </xsd:simpleType>
+ <xsd:simpleType name="MixMatchCodeType">
+	<xsd:restriction base="xsd:string">
+	 <xsd:pattern value="[-]{0,1}[0-9]{1,5}"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <xsd:simpleType name="MfrFamilyCodeType">
+	<xsd:restriction base="xsd:string">
+	 <xsd:pattern value="[-]{0,1}[0-9]{8}"/>
+	</xsd:restriction>
+ </xsd:simpleType> 
+ <xsd:simpleType name="ItemizerType">
+	<xsd:restriction base="xsd:string">
+	 <xsd:enumeration value="YES"/>
+	 <xsd:enumeration value="NO"/>
+	 <xsd:enumeration value="ANY"/>
+	</xsd:restriction>
+ </xsd:simpleType>
+ <xsd:complexType name="ItemGroupType">
+	<xsd:sequence>
+	 <xsd:element name="Items" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="Item" type="ItemType" maxOccurs="unbounded"></xsd:element> 
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>
+	 <xsd:element name="PGroups" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="PGroup" type="GroupIDType" maxOccurs="unbounded"></xsd:element>
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>
+	 <xsd:element name="Depts" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="Dept" type="DeptType" maxOccurs="unbounded"></xsd:element>
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>
+	 <xsd:element name="MixMatchCodes" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="MixMatchCode" type="MixMatchCodeType" maxOccurs="unbounded"></xsd:element>
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>
+	 <xsd:element name="MfrFamilyCodes" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="MfrFamilyCode" type="MfrFamilyCodeType" maxOccurs="unbounded"></xsd:element>
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>
+	 <xsd:element name="Itemizers" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:attribute name="Tax1" type="ItemizerType" use="optional" default="ANY"/>
+		 <xsd:attribute name="Itemizer1" type="ItemizerType" use="optional" default="ANY"/>
+		 <xsd:attribute name="Itemizer2" type="ItemizerType" use="optional" default="ANY"/>
+		 <xsd:attribute name="Itemizer3" type="ItemizerType" use="optional" default="ANY"/>
+		 <xsd:attribute name="Itemizer4" type="ItemizerType" use="optional" default="ANY"/>
+		 <xsd:attribute name="Itemizer6" type="ItemizerType" use="optional" default="ANY"/>
+		 <xsd:attribute name="Itemizer7" type="ItemizerType" use="optional" default="ANY"/>
+		 <xsd:attribute name="Itemizer8" type="ItemizerType" use="optional" default="ANY"/>
+		</xsd:complexType>
+	 </xsd:element>
+	 <xsd:element name="PriceChangeTypes" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:attribute name="PermanentPrice" type="xsd:boolean" use="optional" default="false"/>
+		 <xsd:attribute name="PermanentSale" type="xsd:boolean" use="optional" default="false"/>
+		 <xsd:attribute name="PermanentClearance" type="xsd:boolean" use="optional" default="false"/>
+		</xsd:complexType>
+	 </xsd:element>
+	 <xsd:element name="PoolCodes" minOccurs="0">
+    <xsd:complexType>
+	   <xsd:sequence>
+	    <xsd:element name="PoolCode" type="xsd:int" maxOccurs="unbounded"></xsd:element>
+	   </xsd:sequence>
+    </xsd:complexType>
+	 </xsd:element>
+	</xsd:sequence>
+	<xsd:attribute name="ExcludeFromItemLevelDistribution" type="xsd:boolean" use="optional" default="false"/>
+ </xsd:complexType>
+ <xsd:complexType name="TendersType">
+	<xsd:sequence>
+	 <xsd:element name="Tender" minOccurs="0" maxOccurs="unbounded">
+		<xsd:simpleType>
+		 <xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9]{4}"/>
+		 </xsd:restriction>
+		</xsd:simpleType>
+	 </xsd:element>
+	 <xsd:element name="TGroups" minOccurs="0" maxOccurs="unbounded">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="TGroup" type="GroupIDType" maxOccurs="unbounded"></xsd:element>
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>
+	</xsd:sequence>
+ </xsd:complexType> 
+ <xsd:complexType name="PromoMaintType">
+	<xsd:all>
+	 <xsd:element name="Delete" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="Promo" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:attribute name="ID" type="PromoIDType" use="required"/>
+				<xsd:attribute name="MCLU" type="MCLUType" use="optional"/>
+			 </xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ProductGroup" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:attribute name="ID" type="GroupIDType" use="required" />
+			</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TenderGroup" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:attribute name="ID" type="GroupIDType" use="required" />
+			 </xsd:complexType>
+			</xsd:element>
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>    
+	 <xsd:element name="Add" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="Promo" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:sequence>
+				 <xsd:element name="Header">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="Desc">
+						 <xsd:simpleType>
+							<xsd:restriction base="PromoMaintString">
+							 <xsd:maxLength value="29"/>
+							</xsd:restriction>
+						 </xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Schedule">
+						 <xsd:complexType>
+							<xsd:attribute name="StartDateTime" type="xsd:dateTime" use="required"/>
+							<xsd:attribute name="EndDateTime" type="xsd:dateTime" use="required"/>
+						 </xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Priority">
+						 <xsd:simpleType>
+							<xsd:restriction base="xsd:int">
+							 <xsd:minInclusive value="1"/>
+							 <xsd:maxInclusive value="99"/>
+							</xsd:restriction>
+						 </xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Limit" minOccurs="0">
+						 <xsd:complexType>
+							<xsd:attribute name="Type" use="required">
+							 <xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+								 <xsd:enumeration value="NONE"/>
+								 <xsd:enumeration value="COUNT"/>
+								</xsd:restriction>
+							 </xsd:simpleType>
+							</xsd:attribute>
+							<xsd:attribute name="Value" type="xsd:unsignedInt" use="optional"/>
+							<xsd:attribute name="PromoVarID" type="positiveInt" use="optional"/>
+							<xsd:attribute name="UpdateHost" type="xsd:boolean" use="optional"/>
+						 </xsd:complexType>
+						</xsd:element>
+						<xsd:element name="InstantWin" minOccurs="0">
+						 <xsd:complexType>
+							<xsd:sequence>
+							 <xsd:element name="Odds">
+								<xsd:complexType>
+								 <xsd:simpleContent>
+									<xsd:extension base="nonnegShort">
+									 <xsd:attribute name="Type" use="required">
+										<xsd:simpleType>
+										 <xsd:restriction base="xsd:string">
+											<xsd:enumeration value="FIXED"/>
+											<xsd:enumeration value="RANDOM"/>
+										 </xsd:restriction>
+										</xsd:simpleType>
+									 </xsd:attribute>
+									 <xsd:attribute name="RecalculateInTrx" type="xsd:boolean" use="required"/>
+									</xsd:extension>
+								 </xsd:simpleContent>
+								</xsd:complexType>
+							 </xsd:element>
+							</xsd:sequence>
+							<xsd:attribute name="NumPrizes" type="xsd:unsignedInt" use="optional" default="0"/>
+						 </xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ExcludedZones" minOccurs="0">
+						 <xsd:complexType>
+							<xsd:sequence>
+							 <xsd:element name="Zone" type="xsd:unsignedInt" maxOccurs="unbounded"/>
+							</xsd:sequence>
+						 </xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Advertisement" minOccurs="0">
+						 <xsd:complexType>
+							<xsd:sequence>
+							 <xsd:element name="Line" maxOccurs="4">
+								<xsd:simpleType>
+								 <xsd:restriction base="PromoMaintString">
+									<xsd:maxLength value="39"/>
+								 </xsd:restriction>
+								</xsd:simpleType>
+							 </xsd:element>
+							</xsd:sequence>
+							<xsd:attribute name="Value" type="xsd:unsignedInt" use="required"/>
+						 </xsd:complexType>
+						</xsd:element>
+					 </xsd:sequence>
+					 <xsd:attribute name="Participants" use="optional" default="EVERYONE">
+						<xsd:simpleType>
+						 <xsd:restriction base="xsd:string">
+							<xsd:enumeration value="EVERYONE"/>
+							<xsd:enumeration value="EMPLOYEES_ONLY"/>
+							<xsd:enumeration value="NON_EMPLOYESS_ONLY"/>
+						 </xsd:restriction>
+						</xsd:simpleType>
+					 </xsd:attribute>
+					 <xsd:attribute name="OfflineDeactivate" use="optional" default="NEVER">
+						<xsd:simpleType>
+						 <xsd:restriction base="xsd:string">
+							<xsd:enumeration value="NEVER"/>
+							<xsd:enumeration value="ALWAYS"/>
+							<xsd:enumeration value="LOCAL_DATA_OLD"/>
+						 </xsd:restriction>
+						</xsd:simpleType>
+					 </xsd:attribute>
+					 <xsd:attribute name="DefaultRecordDeactivate" use="optional" default="NEVER">
+						<xsd:simpleType>
+						 <xsd:restriction base="xsd:string">
+							<xsd:enumeration value="NEVER"/>
+							<xsd:enumeration value="ALWAYS"/>
+						 </xsd:restriction>
+						</xsd:simpleType>
+					 </xsd:attribute>
+					 <xsd:attribute name="StoreCreated" type="xsd:boolean" use="optional" default="false"/>
+					 <xsd:attribute name="StoreModified" type="xsd:boolean" use="optional" default="false"/>
+					 <xsd:attribute name="Targeted" type="xsd:boolean" use="optional" default="false"/>
+					 <xsd:attribute name="ForcePPToPS" type="xsd:boolean" use="optional" default="true"/>
+					 <xsd:attribute name="ReportDept" type="nonnegShort" use="optional" default="0"/>
+					 <xsd:attribute name="ReportCategory" type="nonnegShort" use="optional" default="0"/>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="Conditions" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="Condition" minOccurs="0" maxOccurs="unbounded">
+						 <xsd:complexType>
+							<xsd:sequence>
+							 <xsd:choice>
+								<xsd:element name="Value" type="xsd:int" minOccurs="0"/>
+								<xsd:element name="Tiers" minOccurs="0">
+								 <xsd:complexType>
+									<xsd:sequence>
+									 <xsd:element name="Value" type="xsd:unsignedInt" maxOccurs="100"/>
+									</xsd:sequence>
+								 </xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Days" minOccurs="0">
+								 <xsd:complexType>
+									<xsd:sequence>
+									 <xsd:element name="Day" maxOccurs="7">
+										<xsd:simpleType>
+										 <xsd:restriction base="xsd:string">
+											<xsd:enumeration value="MON"/>
+											<xsd:enumeration value="TUE"/>
+											<xsd:enumeration value="WED"/>
+											<xsd:enumeration value="THU"/>
+											<xsd:enumeration value="FRI"/>
+											<xsd:enumeration value="SAT"/>
+											<xsd:enumeration value="SUN"/>
+										 </xsd:restriction>
+										</xsd:simpleType>
+									 </xsd:element>
+									</xsd:sequence>
+									<xsd:attribute name="StartTime" type="xsd:time" use="required"/>
+									<xsd:attribute name="EndTime" type="xsd:time" use="required"/>
+								 </xsd:complexType>
+								</xsd:element>
+							 </xsd:choice>
+							 <xsd:element name="Exclude" minOccurs="0">
+								<xsd:complexType>
+								 <xsd:sequence>
+									<xsd:element name="Level" type="MemberLevelType" minOccurs="0" maxOccurs="16"/>
+								 </xsd:sequence>
+								 <xsd:attribute name="Group" use="required">
+									<xsd:simpleType>
+									 <xsd:restriction base="xsd:string">
+										<xsd:enumeration value="ALL_MEMBERS"/>
+										<xsd:enumeration value="SOME_MEMBERS"/>
+										<xsd:enumeration value="NON_MEMBERS" />
+									 </xsd:restriction>
+									</xsd:simpleType>
+								 </xsd:attribute>
+								</xsd:complexType>
+							 </xsd:element>
+							 <xsd:element name="ItemGroup" minOccurs="0">
+								<xsd:complexType>
+								 <xsd:complexContent>
+									<xsd:extension base="ItemGroupType">
+									 <xsd:attribute name="MinOrderItemsOnly" type="xsd:boolean" use="optional" default="false"/>
+									</xsd:extension>
+								 </xsd:complexContent>
+								</xsd:complexType>
+							 </xsd:element>
+							 <xsd:element name="Tenders" type="TendersType" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="Type" use="required">
+							 <xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+								 <xsd:enumeration value="ITEM_QUANTITY"/>
+								 <xsd:enumeration value="ITEM_AMOUNT"/>
+								 <xsd:enumeration value="ITEM_WEIGHT"/>
+								 <xsd:enumeration value="ITEM_GALLONS"/>
+								 <xsd:enumeration value="MIN_ORDER_AMOUNT"/>
+								 <xsd:enumeration value="POINTS"/>
+								 <xsd:enumeration value="PROMO_POINTS"/>
+								 <xsd:enumeration value="PROMO_VAR"/>
+								 <xsd:enumeration value="TENDER_AMOUNT"/>
+								 <xsd:enumeration value="TERMINAL_TYPE"/>
+								 <xsd:enumeration value="TRX_AMOUNT"/>
+								 <xsd:enumeration value="DAY_TIME"/>
+								</xsd:restriction>
+							 </xsd:simpleType>
+							</xsd:attribute>
+							<xsd:attribute name="Code" type="positiveUnsignedByte" use="required"/>
+							<xsd:attribute name="SubCode" type="xsd:unsignedByte" use="required"/>
+							<xsd:attribute name="Process" use="optional">
+							 <xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+								 <xsd:enumeration value="EQUAL"/>
+								 <xsd:enumeration value="GREATER_THAN_OR_EQUAL"/>
+								 <xsd:enumeration value="BIT_MASK"/>
+								 <xsd:enumeration value="FOR_EACH"/>
+								</xsd:restriction>
+							 </xsd:simpleType>
+							</xsd:attribute>
+							<xsd:attribute name="PromoVarID" type="positiveInt" use="optional"/>
+							<xsd:attribute name="HostValueOnly" type="xsd:boolean" use="optional"/>
+						 </xsd:complexType>
+						</xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="Rewards">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="Reward" minOccurs="1" maxOccurs="unbounded">
+						 <xsd:complexType>
+							<xsd:sequence>
+							 <xsd:element name="Value" type="xsd:int" minOccurs="0"/>                                         
+							 <xsd:element name="Tiers" minOccurs="0">
+								<xsd:complexType>
+								 <xsd:choice>
+									<xsd:element name="Value" type="xsd:int" maxOccurs="100"/>
+									<xsd:element name="StrValue" maxOccurs="100">
+									 <xsd:complexType>
+										<xsd:sequence>
+										 <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+										</xsd:sequence> 
+									 </xsd:complexType>
+									</xsd:element>      
+								 </xsd:choice>
+								</xsd:complexType>
+							 </xsd:element>
+							 <xsd:element name="SpecialPricing" minOccurs="0">
+								<xsd:complexType>
+								 <xsd:sequence>
+									<xsd:element name="Value" type="xsd:unsignedInt" maxOccurs="100"/>
+								 </xsd:sequence>
+								 <xsd:attribute name="RepeatAt" type="RepeatAtType" use="required"/>
+								</xsd:complexType>
+							 </xsd:element>
+							 <xsd:element name="StrValue" minOccurs="0">
+								<xsd:complexType>
+								 <xsd:sequence>
+									<xsd:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+								 </xsd:sequence> 
+								</xsd:complexType>
+							 </xsd:element>         
+							 <xsd:element name="Include">
+								<xsd:complexType>
+								 <xsd:sequence>
+									<xsd:element name="Level" type="MemberLevelType" minOccurs="0" maxOccurs="16"/>
+								 </xsd:sequence>
+								 <xsd:attribute name="Group" use="required">
+									<xsd:simpleType>
+									 <xsd:restriction base="xsd:string">
+										<xsd:enumeration value="ALL_CUSTOMERS"/>
+										<xsd:enumeration value="ALL_MEMBERS"/>
+										<xsd:enumeration value="SOME_MEMBERS"/>
+										<xsd:enumeration value="NON_MEMBERS" />
+									 </xsd:restriction>
+									</xsd:simpleType>
+								 </xsd:attribute>
+								</xsd:complexType>
+							 </xsd:element>
+							 <xsd:element name="Limit" minOccurs="0">
+								<xsd:complexType>
+								 <xsd:attribute name="Type" use="required">
+									<xsd:simpleType>
+									 <xsd:restriction base="xsd:string">
+										<xsd:enumeration value="NONE"/>
+										<xsd:enumeration value="COUNT"/>
+										<xsd:enumeration value="AMOUNT"/>
+										<xsd:enumeration value="WEIGHT"/>
+										<xsd:enumeration value="POINTS"/>
+									 </xsd:restriction>
+									</xsd:simpleType>
+								 </xsd:attribute>
+								 <xsd:attribute name="Value" type="xsd:unsignedInt" use="optional"/>
+								 <xsd:attribute name="PromoVarID" type="positiveInt" use="optional"/>
+								 <xsd:attribute name="UpdateHost" type="xsd:boolean" use="optional"/>
+								</xsd:complexType>
+							 </xsd:element>
+							 <xsd:element name="ItemGroup" minOccurs="0">
+								<xsd:complexType>
+								 <xsd:complexContent>
+									<xsd:extension base="ItemGroupType">
+									 <xsd:attribute name="DiscountableItemsOnly" type="xsd:boolean" use="optional" default="false"/>
+									</xsd:extension>
+								 </xsd:complexContent>
+								</xsd:complexType>
+							 </xsd:element>
+							 <xsd:element name="Tenders" type="TendersType" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="Type" use="required">
+							 <xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+								 <xsd:enumeration value="AMOUNT_OFF"/>
+								 <xsd:enumeration value="AMOUNT_OFF_PER_GALLON"/>
+								 <xsd:enumeration value="PERCENT_OFF"/>
+								 <xsd:enumeration value="AMOUNT_OFF_PER_LB"/>
+								 <xsd:enumeration value="SELL_AT_PRICE"/>
+								 <xsd:enumeration value="SELL_AT_PRICE_PER_LB"/>
+								 <xsd:enumeration value="FREE_ITEM"/>
+								 <xsd:enumeration value="POINTS"/>
+								 <xsd:enumeration value="POINTS_PER_DOLLAR"/>
+								 <xsd:enumeration value="POINTS_PER_TRX_DOLLAR"/>
+								 <xsd:enumeration value="POINTS_PER_LB"/>
+								 <xsd:enumeration value="POINTS_MULTIPLIER"/>
+								 <xsd:enumeration value="POINTS_VOUCHER"/>
+								 <xsd:enumeration value="PROMO_POINTS"/>
+								 <xsd:enumeration value="PROMO_POINTS_PER_DOLLAR"/>
+								 <xsd:enumeration value="PROMO_POINTS_PER_TRX_DOLLAR"/>
+								 <xsd:enumeration value="PROMO_POINTS_PER_LB"/>
+								 <xsd:enumeration value="PROMO_POINTS_MULTIPLIER"/>
+								 <xsd:enumeration value="PROMO_POINTS_VOUCHER"/>
+								 <xsd:enumeration value="PROMO_VAR"/>
+								 <xsd:enumeration value="PROMO_VAR_PER_DOLLAR"/>
+								 <xsd:enumeration value="PROMO_VAR_PER_TRX_DOLLAR"/>
+								 <xsd:enumeration value="PROMO_VAR_PER_LB"/>
+								 <xsd:enumeration value="PROMO_VAR_MULTIPLIER"/>
+								 <xsd:enumeration value="PROMO_VAR_VOUCHER"/>
+								 <xsd:enumeration value="CASHIER_DISPLAY_MESSAGE"/>
+								 <xsd:enumeration value="CUSTOMER_RECEIPT_MESSAGE"/>
+								 <xsd:enumeration value="CUSTOMER_RECEIPT_MESSAGE_AFTER_TRAILER"/>
+								 <xsd:enumeration value="SWEEPSTAKES_ENTRY"/>
+								 <xsd:enumeration value="INSERT_INTO_MEMBER_GROUP" />
+								 <xsd:enumeration value="REMOVE_FROM_MEMBER_GROUP" />
+								 <xsd:enumeration value="SUMMARY_RECEIPT_MESSAGE" />    
+								</xsd:restriction>
+							 </xsd:simpleType>
+							</xsd:attribute>
+							<xsd:attribute name="Code" type="positiveUnsignedByte" use="required"/>
+							<xsd:attribute name="SubCode" type="xsd:unsignedByte" use="required"/>
+							<xsd:attribute name="Trigger" type="positiveShort" use="optional" default="1"/>
+							<xsd:attribute name="Apply" type="nonnegShort" use="optional" default="1"/>
+							<xsd:attribute name="PromoVarID" type="positiveInt" use="optional"/>
+							<xsd:attribute name="UpdateHost" type="xsd:boolean" use="optional"/>
+							<xsd:attribute name="PromoteToTrxLevel" type="xsd:boolean" use="optional" default="false"/>
+							<xsd:attribute name="VendorSponsored" type="xsd:boolean" use="optional" default="false"/>
+							<xsd:attribute name="CanExceedValue" type="xsd:boolean" use="optional" default="false"/>
+							<xsd:attribute name="AffectMinOrder" type="xsd:boolean" use="optional" default="false"/>
+							<xsd:attribute name="ReportDept" type="nonnegShort" use="optional" default="0"/>
+							<xsd:attribute name="SortKey" use="optional">              
+							 <xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+								 <xsd:enumeration value="UNIT_PRICE"/>
+								 <xsd:enumeration value="WEIGHT"/>
+								 <xsd:enumeration value="PRICE_PER_LB"/>
+								</xsd:restriction>
+							 </xsd:simpleType>
+							</xsd:attribute>
+							<xsd:attribute name="SortOrder" use="optional" default="DESCENDING">
+							 <xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+								 <xsd:enumeration value="ASCENDING"/>
+								 <xsd:enumeration value="DESCENDING"/>
+								</xsd:restriction>
+							 </xsd:simpleType>
+							</xsd:attribute>
+							<xsd:attribute name="BestDeal" type="xsd:boolean" use="optional" default="false" />
+							<xsd:attribute name="ArithmeticRedemption" type="xsd:boolean" use="optional" default="false" />
+							<xsd:attribute name="DisplayImmediate" type="xsd:boolean" use="optional" default="false" />
+						 </xsd:complexType>
+						</xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="ID" type="PromoIDType" use="required"/>
+				<xsd:attribute name="MCLU" type="MCLUType" use="optional"/>
+			 </xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ProductGroup" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:sequence>
+				 <xsd:element name="Desc" minOccurs="0">
+					<xsd:simpleType>
+					 <xsd:restriction base="PromoMaintString">
+						<xsd:maxLength value="100" />
+					 </xsd:restriction>
+					</xsd:simpleType>
+				 </xsd:element>
+				 <xsd:element name="Items" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="Item" type="ItemType" maxOccurs="unbounded"></xsd:element> 
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>        
+				 <xsd:element name="Depts" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="Dept" type="DeptType" maxOccurs="unbounded"></xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="MixMatchCodes" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="MixMatchCode" type="MixMatchCodeType" maxOccurs="unbounded"></xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="MfrFamilyCodes" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="MfrFamilyCode" type="MfrFamilyCodeType" maxOccurs="unbounded"></xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="Itemizers" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:attribute name="Tax1" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer1" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer2" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer3" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer4" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer6" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer7" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer8" type="ItemizerType" use="optional" default="ANY"/>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="PriceChangeTypes" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:attribute name="PermanentPrice" type="xsd:boolean" use="optional" default="false"/>
+					 <xsd:attribute name="PermanentSale" type="xsd:boolean" use="optional" default="false"/>
+					 <xsd:attribute name="PermanentClearance" type="xsd:boolean" use="optional" default="false"/>
+					</xsd:complexType>
+				 </xsd:element>
+					<xsd:element name="PoolCodes" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="PoolCode" type="xsd:int" maxOccurs="unbounded"></xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="ID" type="GroupIDType" use="required" />
+				</xsd:complexType>
+			</xsd:element>                        
+			<xsd:element name="TenderGroup" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:sequence>
+				 <xsd:element name="Desc" minOccurs="0">
+					<xsd:simpleType>
+					 <xsd:restriction base="PromoMaintString">
+						<xsd:maxLength value="100" />
+					 </xsd:restriction>
+					</xsd:simpleType>
+				 </xsd:element>
+				 <xsd:element name="Tenders" type="TendersType" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:attribute name="ID" type="GroupIDType" use="required" />
+			 </xsd:complexType>
+			</xsd:element>    
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>
+	 <xsd:element name="Remove" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="ProductGroup" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:sequence>
+				 <xsd:element name="Desc" minOccurs="0">
+					<xsd:simpleType>
+					 <xsd:restriction base="PromoMaintString">
+						<xsd:maxLength value="100" />
+					 </xsd:restriction>
+					</xsd:simpleType>
+				 </xsd:element>
+					<xsd:element name="Items" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="Item" type="ItemType" maxOccurs="unbounded"></xsd:element> 
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>        
+				 <xsd:element name="Depts" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="Dept" type="DeptType" maxOccurs="unbounded"></xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="MixMatchCodes" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="MixMatchCode" type="MixMatchCodeType" maxOccurs="unbounded"></xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="MfrFamilyCodes" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="MfrFamilyCode" type="MfrFamilyCodeType" maxOccurs="unbounded"></xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="Itemizers" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:attribute name="Tax1" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer1" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer2" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer3" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer4" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer6" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer7" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer8" type="ItemizerType" use="optional" default="ANY"/>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="PriceChangeTypes" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:attribute name="PermanentPrice" type="xsd:boolean" use="optional" default="false"/>
+					 <xsd:attribute name="PermanentSale" type="xsd:boolean" use="optional" default="false"/>
+					 <xsd:attribute name="PermanentClearance" type="xsd:boolean" use="optional" default="false"/>
+					</xsd:complexType>
+				 </xsd:element>
+					<xsd:element name="PoolCodes" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="PoolCode" type="xsd:int" maxOccurs="unbounded"></xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="ID" type="GroupIDType" use="required" />
+			 </xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TenderGroup" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:sequence>
+				 <xsd:element name="Desc" minOccurs="0">
+					<xsd:simpleType>
+					 <xsd:restriction base="PromoMaintString">
+						<xsd:maxLength value="100" />
+					 </xsd:restriction>
+					</xsd:simpleType>
+				 </xsd:element>
+				 <xsd:element name="Tenders" type="TendersType" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:attribute name="ID" type="GroupIDType" use="required" />
+			 </xsd:complexType>
+			</xsd:element>
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>
+	 <xsd:element name="Insert" minOccurs="0">
+		<xsd:complexType>
+		 <xsd:sequence>
+			<xsd:element name="ProductGroup" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:sequence>
+				 <xsd:element name="Desc" minOccurs="0">
+					<xsd:simpleType>
+					 <xsd:restriction base="PromoMaintString">
+						<xsd:maxLength value="100" />
+					 </xsd:restriction>
+					</xsd:simpleType>
+				 </xsd:element>
+				 <xsd:element name="Items" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="Item" type="ItemType" maxOccurs="unbounded"></xsd:element> 
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="Depts" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="Dept" type="DeptType" maxOccurs="unbounded"></xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="MixMatchCodes" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="MixMatchCode" type="MixMatchCodeType" maxOccurs="unbounded"></xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="MfrFamilyCodes" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:sequence>
+						<xsd:element name="MfrFamilyCode" type="MfrFamilyCodeType" maxOccurs="unbounded"></xsd:element>
+					 </xsd:sequence>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="Itemizers" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:attribute name="Tax1" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer1" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer2" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer3" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer4" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer6" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer7" type="ItemizerType" use="optional" default="ANY"/>
+					 <xsd:attribute name="Itemizer8" type="ItemizerType" use="optional" default="ANY"/>
+					</xsd:complexType>
+				 </xsd:element>
+				 <xsd:element name="PriceChangeTypes" minOccurs="0">
+					<xsd:complexType>
+					 <xsd:attribute name="PermanentPrice" type="xsd:boolean" use="optional" default="false"/>
+					 <xsd:attribute name="PermanentSale" type="xsd:boolean" use="optional" default="false"/>
+					 <xsd:attribute name="PermanentClearance" type="xsd:boolean" use="optional" default="false"/>
+					</xsd:complexType>
+				 </xsd:element>
+					<xsd:element name="PoolCodes" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="PoolCode" type="xsd:int" maxOccurs="unbounded"></xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="ID" type="GroupIDType" use="required" />
+			 </xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TenderGroup" minOccurs="0" maxOccurs="unbounded">
+			 <xsd:complexType>
+				<xsd:sequence>
+				 <xsd:element name="Desc" minOccurs="0">
+					<xsd:simpleType>
+					 <xsd:restriction base="PromoMaintString">
+						<xsd:maxLength value="100" />
+					 </xsd:restriction>
+					</xsd:simpleType>
+				 </xsd:element>
+				 <xsd:element name="Tenders" type="TendersType" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:attribute name="ID" type="GroupIDType" use="required" />
+			 </xsd:complexType>
+			</xsd:element>
+		 </xsd:sequence>
+		</xsd:complexType>
+	 </xsd:element>
+	</xsd:all>
+	<xsd:attribute name="Version" use="required">
+	 <xsd:simpleType>
+		<xsd:restriction base="xsd:string">
+		 <xsd:enumeration value="1.00.00"/>
+		 <xsd:enumeration value="2.00.00" />
+		</xsd:restriction>
+	 </xsd:simpleType>
+	</xsd:attribute>
+	<xsd:attribute name="CreatedBy" type="xsd:string" use="optional"/>
+ </xsd:complexType>
+</xsd:schema>
